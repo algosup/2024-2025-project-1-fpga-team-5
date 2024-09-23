@@ -83,3 +83,20 @@
 
 [VIII. **Revision History**](#viii-revision-history)
 
+## I. Introduction
+
+### 1. Glossary
+
+| Term | Definition |
+| --- | --- |
+| Frogger | Frogger is a classic arcade game developed by Konami and released in 1981. The game involves guiding a frog across a busy road and river, avoiding obstacles and hazards along the way. |
+| FPGA | Field-Programmable Gate Array `Definition still in progress...`|
+| HDL | Hardware Description Language `Definition still in progress...`|
+| Verilog | Verilog is a HDL used to model electronic systems. It is commonly used in the design and verification of digital circuits. |
+| VGA | Video Graphics Array `Definition still in progress...`|
+
+### 2. Project Overview
+
+The project aims to develop a hardware-based implementation of the classic arcade game **Frogger** using an **FPGA** board. The game will be designed to run on a **VGA display** and will be controlled using switches already integrated in the board. The game will be implemented using a hardware description language (HDL) more precisely on **Verilog** and will be optimized for performance and resource utilization on the FPGA platform.
+
+

@@ -11,7 +11,7 @@
 
 </br>
 
-**Written by:** [***Rémy CHARLES***](#) </br>
+**Written by:** [***Rémy CHARLES***](https://github.com/RemyCHARLES) </br>
 **Created on:** *2024-09-23* </br>
 **Last updated:** *2024-09-23*
 
@@ -66,14 +66,6 @@
    1. [➣ Performance](#1-performance)
       - [⊢Responsiveness](#responsiveness)
       - [⊢Resource Utilization](#resource-utilization)
-
-[V. **Market Analysis**](#v-market-analysis)
-   1. [➣ Competitive Analysis](#1-competitive-analysis)
-      - [⊢Market Landscape](#market-landscape)
-      - [⊢Differentiators](#differentiators)
-   2. [➣ Marketing Strategies](#2-marketing-strategies)
-      - [⊢Target Markets](#target-markets)
-      - [⊢Promotion Techniques](#promotion-techniques)
 
 [VI. **Future Enhancements**](#vi-future-enhancements)
    1. [➣ Feature Roadmap](#1-feature-roadmap)

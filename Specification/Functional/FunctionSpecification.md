@@ -3,12 +3,16 @@
 <div align="center">
   <h1 align="center">Functional Specification</h1>
   <p align="center">
-    <strong>Frogger in FPGA</strong>
+    <strong>Frogger in FPGA - Team 5's project</strong>
     <br />
   
   </p>
 </div>
 
+|**Author**|Rémy CHARLES|
+|:---|:---|
+|**Created on**|**2024-01-12**|
+|**Last updated**|**2024-01-23**|
 
 <!-- TABLE OF CONTENTS -->
 

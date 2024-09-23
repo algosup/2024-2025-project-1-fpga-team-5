@@ -9,10 +9,11 @@
   </p>
 </div>
 
-|**Author**|Rémy CHARLES|
-|:---|:---|
-|**Created on**|**2024-01-12**|
-|**Last updated**|**2024-01-23**|
+</br>
+
+**Written by:** [***Rémy CHARLES***](#) </br>
+**Created on:** *2024-09-23* </br>
+**Last updated:** *2024-09-23*
 
 <!-- TABLE OF CONTENTS -->
 

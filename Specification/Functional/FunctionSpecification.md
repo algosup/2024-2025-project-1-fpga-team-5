@@ -19,56 +19,53 @@
 
 ### Table of Contents
 
-- [I. Introduction](#i-introduction)
-  - [1. Glossary](#1-glossary)
-  - [2. Project Overview](#2-project-overview)
-  - [3. **Project Definition**](#3-project-definition)
-    - [**Vision**:](#vision)
-    - [**Objectives**:](#objectives)
-    - [**Scope**:](#scope)
-    - [**Target Audience**:](#target-audience)
-    - [**Deliverables**:](#deliverables)
-- [II. **Game Design**](#ii-game-design)
-  - [1. **Game Concept**](#1-game-concept)
-    - [Storyline and Theme](#storyline-and-theme)
+[I. **Introduction**](#i-introduction)
+   1. [➣ Glossary](#1-glossary)
+   2. [➣ Project Overview](#2-project-overview)
+   3. [➣ Project Definition](#3-project-definition)
+      - [Vision](#vision)
+      - [Objectives](#objectives)
+      - [Scope](#scope)
+      - [Target Audience](#target-audience)
+      - [Deliverables](#deliverables)
   
 [II. **Game Design**](#ii-game-design)
    1. [➣ Game Concept](#1-game-concept)
-      - [⊢Storyline and Theme](#storyline-and-theme)
-      - [⊢Game Objectives](#game-objectives)
-      - [⊢Player Goals](#player-goals)
+      - [Storyline and Theme](#storyline-and-theme)
+      - [Game Objectives](#game-objectives)
+      - [Player Goals](#player-goals)
    2. [➣ Gameplay Mechanics](#2-gameplay-mechanics)
-      - [⊢Game Rules](#game-rules)
-      - [⊢Levels and Challenges](#levels-and-challenges)
-      - [⊢Scoring System](#scoring-system)
+      - [Game Rules](#game-rules)
+      - [Levels and Challenges](#levels-and-challenges)
+      - [Scoring System](#scoring-system)
    3. [➣ User Interface Design](#3-user-interface-design)
-      - [⊢Mockups](#mockups)
-      - [⊢Screen Layouts](#screen-layouts)
-      - [⊢Controls and Inputs](#controls-and-inputs)
-      - [⊢Feedback Mechanisms](#feedback-mechanisms)
+      - [Mockups](#mockups)
+      - [Screen Layouts](#screen-layouts)
+      - [Controls and Inputs](#controls-and-inputs)
+      - [Feedback Mechanisms](#feedback-mechanisms)
    4. [➣ Audio-Visual Elements](#4-audio-visual-elements)
-      - [⊢Color Palette](#color-palette)
-      - [⊢Graphics and Animations](#graphics-and-animations)
-      - [⊢Sound Effects and Music](#sound-effects-and-music)
+      - [Color Palette](#color-palette)
+      - [Graphics and Animations](#graphics-and-animations)
+      - [Sound Effects and Music](#sound-effects-and-music)
 
 [III. **User Experience**](#iii-user-experience)
    1. [➣ Accessibility Features](#1-accessibility-features)
-      - [⊢Assistive Technologies](#assistive-technologies)
-      - [⊢Accessibility Standards](#accessibility-standards)
+      - [Assistive Technologies](#assistive-technologies)
+      - [Accessibility Standards](#accessibility-standards)
    2. [➣ User Engagement Strategies](#2-user-engagement-strategies)
-      - [⊢In-game Rewards](#in-game-rewards)
-      - [⊢User Progress Tracking](#user-progress-tracking)
+      - [In-game Rewards](#in-game-rewards)
+      - [User Progress Tracking](#user-progress-tracking)
    3. [➣ Adaptability to User Feedback](#3-adaptability-to-user-feedback)
-      - [⊢Feedback Channels](#feedback-channels)
-      - [⊢Iterative Design Updates](#iterative-design-updates)
+      - [Feedback Channels](#feedback-channels)
+      - [Iterative Design Updates](#iterative-design-updates)
    4. [➣ Device Compatibility](#4-device-compatibility)
-      - [⊢Supported Devices](#supported-devices)
-      - [⊢Cross-Platform Compatibility](#cross-platform-compatibility)
+      - [Supported Devices](#supported-devices)
+      - [Cross-Platform Compatibility](#cross-platform-compatibility)
   
 [IV. **Non-Functional Requirements**](#iv-non-functional-requirements)
    1. [➣ Performance](#1-performance)
-      - [⊢Responsiveness](#responsiveness)
-      - [⊢Resource Utilization](#resource-utilization)
+      - [Responsiveness](#responsiveness)
+      - [Resource Utilization](#resource-utilization)
 
 [VI. **Future Enhancements**](#vi-future-enhancements)
    1. [➣ Feature Roadmap](#1-feature-roadmap)
@@ -78,10 +75,9 @@
 
 [VIII. **Revision History**](#viii-revision-history)
 
+## I. Introduction
 
-# I. Introduction
-
-## 1. Glossary
+### 1. Glossary
 
 | Term | Definition |
 | --- | --- |
@@ -91,47 +87,51 @@
 | Verilog | Verilog is a HDL used to model electronic systems. It is commonly used in the design and verification of digital circuits. |
 | VGA | Video Graphics Array `Definition still in progress...`|
 
-## 2. Project Overview
+### 2. Project Overview
 
-The project aims to develop a hardware-based implementation of the classic arcade game **Frogger** using an **FPGA** board. The game will be designed to run on a **VGA display** and will be controlled using switches already integrated in the board. The game will be implemented using a hardware description language (HDL) more precisely on **Verilog** and will be optimized for performance and resource utilization on the FPGA platform.
+This project aims to recreate the classic arcade game **Frogger** on an FPGA platform. 
 
-## 3. **Project Definition**
+### 3. Project Definition
 
-### **Vision**:
+#### Vision
 
-To recreate the classic arcade game Frogger on the Nandland Go Board, leveraging the capabilities of FPGA technology to deliver an engaging, real-time gaming experience. This project aims to demonstrate the flexibility and power of FPGA boards for gaming and educational purposes, showcasing how classic games can be revitalized through modern technology.
+The vision of this project is to provide an interactive and engaging gaming experience that pays homage to the classic arcade game Frogger. By leveraging the capabilities of FPGA technology, we aim to create a faithful recreation of the original game with enhanced graphics and gameplay features.
 
-### **Objectives**:
+This game will be designed to appeal to both nostalgic players who remember the original Frogger and new players who are looking for a fun and challenging gaming experience.
 
-- Develop a fully functional version of Frogger using Verilog on the Nandland Go Board.
-- Utilize FPGA-specific features to optimize game performance and graphics.
-- Ensure the game is easy to use and accessible on the Go Board.
-  
-### **Scope**:
+#### Objectives
 
-- The project encompasses the design, development, and implementation of game logic, graphics, and control mechanisms on the FPGA.
-- Key components include game setup, player control logic, obstacle movements, collision detection, score tracking, and level progression.
-- The scope is limited to recreating the core gameplay of Frogger; additional features like online leaderboards or multiplayer functionality are outside the current project scope.
+   - **Technology**: Implement the game logic and graphics using Verilog HDL on an FPGA platform.
+   - **Gameplay**: Recreate the classic Frogger gameplay with enhanced graphics and additional features.
 
-### **Target Audience**:
-   
-- FPGA enthusiasts and hobbyists interested in gaming projects.
-- Students and educators looking for practical applications of FPGA and Verilog in a fun and engaging way.
-- Retro gaming fans who appreciate classic arcade games.
+#### Scope
 
-### **Deliverables**:
+This project will be developped on a "[Go-Board](https://nandland.com/the-go-board/)" FPGA platform. Using Verilog HDL, we will implement the game logic, graphics, and user interface elements required to recreate the classic Frogger game.
 
-- A fully functional FPGA-based game of Frogger playable on the Nandland Go Board.
-- Documentation covering the design process, code, and user guide for playing the game.
-- Presentation materials for demonstrating the game at educational or hobbyist events.
+#### Target Audience
 
-# II. **Game Design**
+The target audience for this project includes:
+   - Fans of classic arcade games who are familiar with the original Frogger.
+   - Players looking for a challenging and engaging gaming experience.
+   - Students and hobbyists interested in FPGA development and game design.
 
-## 1. **Game Concept**
+#### Deliverables
 
-### Storyline and Theme
+The main deliverables is the source code of the game, supported by multiple version of this game and mockups of the design.
 
-Frogger is a classic arcade game where players control a frog that must navigate through a hazardous environment to reach its destination. The game is set in a busy road and river, with various obstacles and hazards that the player must avoid. The goal is to guide the frog safely across the screen to the designated area, earning points for each successful crossing.
+Other deliverables include:
+   - Functional Specification Document
+   - Technical Specification Document
+   - User Manual
+   - Test Plan and Test Cases
+   - Management Plan & Weekly reports
+
+## II. Game Design
+
+
+
+
+
 
 
 

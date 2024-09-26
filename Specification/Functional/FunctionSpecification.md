@@ -19,15 +19,18 @@
 
 ### Table of Contents
 
-[I. **Introduction**](#i-introduction)
-   1. [➣ Glossary](#1-glossary)
-   2. [➣ Project Overview](#2-project-overview)
-   3. [➣ Project Definition](#3-project-definition)
-      - [⊢Vision](#vision)
-      - [⊢Objectives](#objectives)
-      - [⊢Scope](#scope)
-      - [⊢Target Audience](#target-audience)
-      - [⊢Deliverables](#deliverables)
+- [I. Introduction](#i-introduction)
+  - [1. Glossary](#1-glossary)
+  - [2. Project Overview](#2-project-overview)
+  - [3. **Project Definition**](#3-project-definition)
+    - [**Vision**:](#vision)
+    - [**Objectives**:](#objectives)
+    - [**Scope**:](#scope)
+    - [**Target Audience**:](#target-audience)
+    - [**Deliverables**:](#deliverables)
+- [II. **Game Design**](#ii-game-design)
+  - [1. **Game Concept**](#1-game-concept)
+    - [Storyline and Theme](#storyline-and-theme)
   
 [II. **Game Design**](#ii-game-design)
    1. [➣ Game Concept](#1-game-concept)
@@ -75,9 +78,10 @@
 
 [VIII. **Revision History**](#viii-revision-history)
 
-## I. Introduction
 
-### 1. Glossary
+# I. Introduction
+
+## 1. Glossary
 
 | Term | Definition |
 | --- | --- |
@@ -87,8 +91,47 @@
 | Verilog | Verilog is a HDL used to model electronic systems. It is commonly used in the design and verification of digital circuits. |
 | VGA | Video Graphics Array `Definition still in progress...`|
 
-### 2. Project Overview
+## 2. Project Overview
 
 The project aims to develop a hardware-based implementation of the classic arcade game **Frogger** using an **FPGA** board. The game will be designed to run on a **VGA display** and will be controlled using switches already integrated in the board. The game will be implemented using a hardware description language (HDL) more precisely on **Verilog** and will be optimized for performance and resource utilization on the FPGA platform.
+
+## 3. **Project Definition**
+
+### **Vision**:
+
+To recreate the classic arcade game Frogger on the Nandland Go Board, leveraging the capabilities of FPGA technology to deliver an engaging, real-time gaming experience. This project aims to demonstrate the flexibility and power of FPGA boards for gaming and educational purposes, showcasing how classic games can be revitalized through modern technology.
+
+### **Objectives**:
+
+- Develop a fully functional version of Frogger using Verilog on the Nandland Go Board.
+- Utilize FPGA-specific features to optimize game performance and graphics.
+- Ensure the game is easy to use and accessible on the Go Board.
+  
+### **Scope**:
+
+- The project encompasses the design, development, and implementation of game logic, graphics, and control mechanisms on the FPGA.
+- Key components include game setup, player control logic, obstacle movements, collision detection, score tracking, and level progression.
+- The scope is limited to recreating the core gameplay of Frogger; additional features like online leaderboards or multiplayer functionality are outside the current project scope.
+
+### **Target Audience**:
+   
+- FPGA enthusiasts and hobbyists interested in gaming projects.
+- Students and educators looking for practical applications of FPGA and Verilog in a fun and engaging way.
+- Retro gaming fans who appreciate classic arcade games.
+
+### **Deliverables**:
+
+- A fully functional FPGA-based game of Frogger playable on the Nandland Go Board.
+- Documentation covering the design process, code, and user guide for playing the game.
+- Presentation materials for demonstrating the game at educational or hobbyist events.
+
+# II. **Game Design**
+
+## 1. **Game Concept**
+
+### Storyline and Theme
+
+Frogger is a classic arcade game where players control a frog that must navigate through a hazardous environment to reach its destination. The game is set in a busy road and river, with various obstacles and hazards that the player must avoid. The goal is to guide the frog safely across the screen to the designated area, earning points for each successful crossing.
+
 
 

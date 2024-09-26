@@ -1,0 +1,10 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Auto Generated files
+.sconsign.dblite
+hardware.bin
+hardware.asc
+hardware.json

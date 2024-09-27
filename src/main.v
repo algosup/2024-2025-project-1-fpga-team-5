@@ -1,5 +1,6 @@
 `include "modules/7_segments.v"
 `include "modules/vga.v"
+`include "modules/movements.v"
 module main (
     // Clock
     input i_Clk,
@@ -11,6 +12,7 @@ module main (
     input i_Switch_1,
     input i_Switch_2,
     input i_Switch_3,
+    input i_Switch_4,
 
     // VGA
     output o_VGA_HSync, // Horizontal Sync
@@ -19,6 +21,8 @@ module main (
     output reg [2:0] o_VGA_Red,
     output reg [2:0] o_VGA_Grn,
     output reg [2:0] o_VGA_Blu,
+
+    output o_LED_1,
 );
     
     reg [24:0] clock_tick = 0;
@@ -51,26 +55,27 @@ module main (
     // VGA module
 
     // Defining the game map
-    reg [19:0] map [0:14];
-    reg [19:0] row_value;  // To store an entire row
+    reg [59:0] map [0:14];
+    reg [59:0] row_value;  // To store an entire row
 
     initial begin
-        // Initialize the array manually (since Verilog doesn't support direct initialization)
-        map[0] = 20'b10101010101010101010;
-        map[1] = 20'b01010101010101010101;
-        map[2] = 20'b11111111111111111111;
-        map[3] = 20'b01010101010101010101;
-        map[4] = 20'b10101010101010101010;
-        map[5] = 20'b01010101010101010101;
-        map[6] = 20'b10101010101010101010;
-        map[7] = 20'b01010101010101010101;
-        map[8] = 20'b10101010101010101010;
-        map[9] = 20'b01010101010101010101;
-        map[10] = 20'b10101010101010101010;
-        map[11] = 20'b01010101010101010101;
-        map[12] = 20'b10101010101010101010;
-        map[13] = 20'b01010101010101010101;
-        map[14] = 20'b10101010101010101010;
+    // Initialize the array manually (since Verilog doesn't support direct initialization)
+    // Initialize each row with 3-bit values packed into 60 bits
+    map[0]  = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[1]  = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[2]  = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[3]  = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[4]  = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[5]  = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[6]  = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[7]  = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[8]  = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[9]  = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[10] = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[11] = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[12] = 60'b001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    map[13] = 60'b000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001_000_001; // [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    map[14] = 60'b001_000_001_000_001_000_001_000_001_010_001_000_001_000_001_000_001_000_001_000; // [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     end
 
     // VGA timing constants for 640x480 resolution
@@ -108,12 +113,15 @@ module main (
     always @(*) begin
         if (pixel_color) begin
             row_value = map[cell_y];
-            case (row_value[cell_x])
-                1'b0: begin
+            case (row_value[cell_x*3+2 : cell_x*3])
+                3'b000: begin
                         o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
                     end
-                1'b1: begin
+                3'b001: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                end
+                3'b010: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Green
                 end
                 default: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
@@ -148,10 +156,41 @@ module main (
                 cell_x <= cell_x + 1;
             end
         end
-
         
+    end
 
-        
+    reg [9:0] player_pos_x = 15;
+    reg [9:0] player_pos_y = 10;    
+
+    // Movements module
+    always @(posedge i_Clk) begin
+        if (i_Switch_1 & clock_tick == 25000000) begin
+            // Move player up
+            if (player_pos_y > 0) begin
+
+                
+                player_pos_y <= player_pos_y - 1;
+                map[player_pos_y] <= (map[player_pos_y] & ~(3'b111 << (player_pos_x * 3))) | (3'b010 << (player_pos_x * 3));
+                // Clear current position
+                // row_value = map[player_pos_y];
+                // row_value[player_pos_x*3+2 : player_pos_x*3] = 3'b000;
+                // map[player_pos_y] = row_value;
+
+                // // Move player up
+                // player_pos_y <= player_pos_y - 1;
+
+                // // // Set new position
+                // row_value = map[player_pos_y];
+                // row_value[player_pos_x*3+2 : player_pos_x*3] = 3'b010;
+                // map[player_pos_y] = row_value;
+
+                // player_pos_y <= player_pos_y - 1;
+
+                // player_row = map[player_pos_y]; // Set new position
+                // player_row[player_pos_x*3+2: player_pos_x*3] = 3'b010;
+                // map[player_pos_y] = player_row;
+            end
+        end 
     end
 
 

@@ -83,7 +83,7 @@
 ### II. Introduction
 
 #### 1. Overview
-The project involves the development of a hardware-accelerated version of the Frogger arcade game on an <a name="FPGA">FPGA</a> using Verilog. The game will run on a VGA display and be controlled through integrated board switches, with a focus on optimizing performance and resource usage on the FPGA.
+The project involves the development of a hardware-accelerated version of the Frogger arcade game on an [FPGA](#FPGA) using Verilog. The game will run on a VGA display and be controlled through integrated board switches, with a focus on optimizing performance and resource usage on the FPGA.
 #### 2. Context
 This project leverages FPGA technology to implement the Frogger game in hardware, aiming to exploit the parallelism and real-time capabilities of the platform. The use of Verilog allows for direct control of the FPGA's resources, ensuring precise timing and efficient logic design.
 
@@ -190,7 +190,7 @@ This project leverages FPGA technology to implement the Frogger game in hardware
 
 |  Terms  |  Definitions  |  Source  |
 |:---:|:---|:---:|
-|  [FPGA](#FPGA)  |  Field-Programmable Gate Array, an integrated circuit designed to be configured by a customer or a designer after manufacturing.  |  [Wikipedia](https://en.wikipedia.org/wiki/Field-programmable_gate_array)  |
+|  <a name="FPGA">FPGA</a>  |  Field-Programmable Gate Array, an integrated circuit designed to be configured by a customer or a designer after manufacturing.  |  [Wikipedia](https://en.wikipedia.org/wiki/Field-programmable_gate_array)  |
 |  [Verilog](#Verilog)  |  A hardware description language used to model electronic systems.  |  [Wikipedia](https://en.wikipedia.org/wiki/Verilog)  |
 |  [VGA](#VGA)  |  Video Graphics Array, a display standard for PC computers.  |  [Wikipedia](https://en.wikipedia.org/wiki/Video_Graphics_Array)  |
 |  [LED](#LED)  |  Light-Emitting Diode, a semiconductor light source.  |  [Wikipedia](https://en.wikipedia.org/wiki/Light-emitting_diode)  |

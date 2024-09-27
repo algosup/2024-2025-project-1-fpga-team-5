@@ -85,9 +85,23 @@
 #### 1. Overview
 The project involves the development of a hardware-accelerated version of the Frogger arcade game on an [FPGA](#FPGA) using [Verilog](#Verilog). The game will run on a [VGA](#VGA) display and be controlled through integrated board switches, with a focus on optimizing performance and resource usage on the [FPGA](#FPGA).
 #### 2. Context
-This project leverages [FPGA](#FPGA) technology to implement the Frogger game in hardware, aiming to exploit the parallelism and real-time capabilities of the platform. The use of Verilog allows for direct control of the [FPGA](#FPGA)'s resources, ensuring precise timing and efficient logic design.
+This project leverages [FPGA](#FPGA) technology to implement the Frogger game in hardware, aiming to exploit the parallelism and real-time capabilities of the platform. The use of [Verilog](#Verilog) allows for direct control of the [FPGA](#FPGA)'s resources, ensuring precise timing and efficient logic design.
 
 #### 3. Goals and Objectives
+**Mandatory Requirements**
+
+- FPGA-based Frogger game using Verilog with VGA output.
+- VGA output with correct signal synchronization and real-time gameplay.
+- Functional input via FPGA switches with reliable debouncing.
+- Display a 1x1 frog sprite and at least one car on screen at all times.
+- Game logic includes frog movement, car collision detection, and level progression.
+- Efficient memory and clock management.
+
+**Nice-to-Have Objectives**
+- Detailed, colored frog sprite and up to 16 cars with varying speeds.
+- Multiple levels (at least 8) with increasing difficulty.
+- Scoring system and enhanced visual feedback via LEDs.
+- Performance optimization and scalability for future features.
 
 #### 4. Assumptions
 

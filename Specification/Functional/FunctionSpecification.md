@@ -20,14 +20,19 @@
 ### Table of Contents
 
 [I. **Introduction**](#i-introduction)
-   1. [➣ Glossary](#1-glossary)
-   2. [➣ Project Overview](#2-project-overview)
-   3. [➣ Project Definition](#3-project-definition)
-      - [Vision](#vision)
-      - [Objectives](#objectives)
-      - [Scope](#scope)
-      - [Target Audience](#target-audience)
-      - [Deliverables](#deliverables)
+- [I. Introduction](#i-introduction)
+  - [1. Glossary](#1-glossary)
+  - [2. Project Overview](#2-project-overview)
+  - [3. Project Definition](#3-project-definition)
+    - [Vision](#vision)
+    - [Objectives](#objectives)
+    - [Scope](#scope)
+    - [Target Audience](#target-audience)
+    - [Deliverables](#deliverables)
+  - [4. Project Layout](#4-project-layout)
+    - [Project Team](#project-team)
+- [II. Game Design](#ii-game-design)
+  - [1. Game Concept](#1-game-concept)
   
 [II. **Game Design**](#ii-game-design)
    1. [➣ Game Concept](#1-game-concept)
@@ -126,7 +131,29 @@ Other deliverables include:
    - Test Plan and Test Cases
    - Management Plan & Weekly reports
 
-## II. Game Design
+### 4. Project Layout
+
+#### Project Team
+
+| Name | Role | Contact (*Click*) |
+| --- | --- | --- |
+| Alexis LASSELIN | Project Manager | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/AlexisLasselin) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/alexis-lasselin-318649251/) |
+| Rémy CHARLES | Program Manager | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/RemyCHARLES) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/) |
+| Michel RIFF | Tech Lead | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/michelriff) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/michel-riff-693007293/) |
+| Mathias GAGNEPAIN | Software Engineer | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/mathiasgagnepain) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/mathias-gagnepain/) |
+| Séréna BAVAROIS | Software Engineer | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/NanaChocolat) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/s%C3%A9r%C3%A9na-bavarois/) |
+| Camille GAYAT | Quality Assurance | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/camillegayat) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/camille-g-a89114293/) |
+| Salaheddine NAMIR | Technical Writer | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20">](https://github.com/T3rryc) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px">](https://www.linkedin.com/in/salaheddine-namir-3402471b8/) |
+
+#### Stakeholders
+
+| Name | Role |
+| --- | --- |
+| Franck JEANNIN ([**ALGOSUP**](https://algosup.com/)) | School Director |
+
+# II. Game Design
+
+## 1. Game Concept
 
 
 

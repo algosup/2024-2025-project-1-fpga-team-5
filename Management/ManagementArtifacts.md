@@ -104,7 +104,7 @@ By utilizing these formulas, we ensure that our progress tracking is clear and c
 
 ### Link to the project's KPIs
 
-You can see our project's KPIs which were explained above following [this link](hhttps://docs.google.com/spreadsheets/d/1mPu72MWZ-LSUZg1itNDJWhMYskVl1vK6RW6i7DCEuyE/edit?usp=sharing).
+You can see our project's KPIs which were explained above following [this link](https://docs.google.com/spreadsheets/d/1mPu72MWZ-LSUZg1itNDJWhMYskVl1vK6RW6i7DCEuyE/edit?usp=sharing).
 
 ## Weekly reports
 

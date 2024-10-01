@@ -13,7 +13,7 @@
 
 **Written by:** [***Rémy CHARLES***](https://github.com/RemyCHARLES) </br>
 **Created on:** *2024-09-23* </br>
-**Last updated:** *2024-09-23*
+**Last updated:** *2024-10-01*
 
 <!-- TABLE OF CONTENTS -->
 
@@ -43,13 +43,20 @@
     - [Scoring System](#scoring-system)
   - [3. User Interface Design](#3-user-interface-design)
     - [Mockups](#mockups)
+      - [**Frogger**](#frogger)
+      - [**Cars**](#cars)
+      - [**Trucks**](#trucks)
+      - [**Logs**](#logs)
+      - [**Turtles**](#turtles)
+      - [**Background**](#background)
     - [Screen Layouts](#screen-layouts)
+      - [**Main Menu**](#main-menu)
+      - [**Game Screen**](#game-screen)
     - [Controls and Inputs](#controls-and-inputs)
     - [Feedback Mechanisms](#feedback-mechanisms)
-  - [4. Audio-Visual Elements](#4-audio-visual-elements)
+  - [4. Visual Elements](#4-visual-elements)
     - [Color Palette](#color-palette)
     - [Graphics and Animations](#graphics-and-animations)
-    - [Sound Effects and Music](#sound-effects-and-music)
 - [III. User Experience](#iii-user-experience)
 
 [III. **User Experience**](#iii-user-experience)
@@ -221,27 +228,104 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ### Mockups
 
-**Main Menu**
+#### **Frogger**
 
-![Main Menu]()
+*Static Frogger*
 
-**Game Screen**
+![Frogger](img/FrogSprite/UpSprite/StaticUpSprite.png)
+![Frogger](img/FrogSprite/DownSprite/StaticDownSprite.png)
 
-![Game Screen]()
+![Frogger](img/FrogSprite/RightSprite/StaticRightSprite.png)
+![Frogger](img/FrogSprite/LeftSprite/StaticLeftSprite.png)
 
-**Game Over Screen**
+*Jumping Frogger*
 
-![Game Over Screen]()
+![Frogger](img/FrogSprite/UpSprite/JumpUpSprite.png)
+![Frogger](img/FrogSprite/DownSprite/JumpDownSprite.png)
+
+![Frogger](img/FrogSprite/RightSprite/JumpRightSprite.png)
+![Frogger](img/FrogSprite/LeftSprite/JumpLeftSprite.png)
+
+
+
+#### **Cars**
+
+*Red Cars*
+
+![Cars](img/CarsSprite/LeftCars2Sprite.png)
+
+![Cars](img/CarsSprite/RightCars2Sprite.png)
+
+*Blue Cars*
+
+![Cars](img/CarsSprite/LeftCar1Sprite.png)
+
+![Cars](img/CarsSprite/RightCar1Sprite.png)
+
+*Racing Cars*
+
+![Cars](img/CarsSprite/LeftRaceCar1Sprite.png)
+
+![Cars](img/CarsSprite/RightRaceCar1Sprite.png)
+
+
+#### **Trucks**
+
+![Trucks](img/TruckSprite/LeftTruckSprite.png)
+
+![Trucks](img/TruckSprite/RightTruckSprite.png)
+
+#### **Logs**
+
+![Logs](img/LogsSprite/LeftLogSprite.png)
+![Logs](img/LogsSprite/MiddleLogSprite.png)
+![Logs](img/LogsSprite/RightLogSprite.png)
+
+#### **Turtles**
+
+![Turtles](img/TurtlesSprite/Turtle1Sprite.png)
+
+**Homes**
+
+![Homes](img/BackgroundSprite/NenuphareSprite.png)
+
+#### **Background**
+
+*Spawn Land*
+
+![Spawn floor](img/BackgroundSprite/SpawnSprite.png)
+
+*Road*
+
+![Road](img/BackgroundSprite/RoadSprite.png)
+
+*Middle Land*
+
+![Middle Land](img/BackgroundSprite/MiddleCPSprite.png)
+
+*River*
+
+![River](img/BackgroundSprite/RiverSprite.png)
+
+*End Land*
+
+![End Land](img/BackgroundSprite/ArrivalAreaSprite.png) 
+
+![End Land](img/BackgroundSprite/ArrivalIntervalSprite.png)
+
 
 ### Screen Layouts
 
-**Main Menu**
+#### **Main Menu**
+
+![Main Menu](img/BackgroundSprite/MainMenuSprite.png)
 
   - **Title**: The game title is displayed prominently at the top of the screen.
   - **Start Button**: Players can start the game by selecting the “Start” button.
-  - **Options**: Additional options, such as sound settings and difficulty levels, are available in the menu.
 
-**Game Screen**
+#### **Game Screen**
+
+![Game Screen](img/BackgroundSprite/MapSprite.png)
 
    - **Frogger**: The player’s frog character is displayed at the bottom of the screen.
    - **Road**: The road with moving vehicles is located in the middle of the screen.
@@ -252,10 +336,11 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 **Game Over Screen**
 
+![Game Over Screen](img/BackgroundSprite/GameOverScreen.png)
+
    - **Game Over Message**: A message is displayed to inform the player that the game is over.
    - **Final Score**: The player’s final score is displayed on the screen.
    - **Restart Button**: Players can restart the game by selecting the “Restart” button.
-   - **Main Menu Button**: Players can return to the main menu by selecting the “Main Menu” button.
 
 ### Controls and Inputs
 
@@ -273,13 +358,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
    - **Movement**: Frogger hops in the direction chosen by the player, providing visual feedback on the player’s input.
    - **Collision**: When Frogger collides with a vehicle or falls into the water, a visual indicator shows the collision.
 
-**Audio Feedback**
-
-   - **Movement**: Sound effects play when Frogger moves in different directions.
-   - **Collision**: Sound effects play when Frogger collides with obstacles or hazards.   
-   - **Success**: Positive sound effects play when Frogger reaches a home successfully.
-
-## 4. Audio-Visual Elements
+## 4. Visual Elements
 
 ### Color Palette
 
@@ -303,19 +382,6 @@ The player’s goal is to successfully guide Frogger across the road and river t
    - **Road**: A grid-based road with lanes for vehicles to move.
    - **River**: A grid-based river with logs and turtles moving across the water.
    - **Homes**: Lily pad homes at the top of the screen where Frogger must reach.
-
-### Sound Effects and Music
-
-**Sound Effects**
-
-   - **Movement**: Sound effects for Frogger’s hopping movements in different directions.
-   - **Collision**: Sound effects for collisions with vehicles or water hazards.
-   - **Success**: Positive sound effects for reaching a home successfully.
-
-**Music**
-
-   - **Main Theme**: Upbeat and engaging music to set the tone for the game.
-   - **Level Completion**: Rewarding music for completing a level and reaching a home. 
 
 # III. User Experience
 

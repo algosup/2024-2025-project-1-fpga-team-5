@@ -159,36 +159,28 @@ module main (
         
     end
 
-    reg [9:0] player_pos_x = 15;
-    reg [9:0] player_pos_y = 10;    
+    reg [9:0] player_pos_x = 10;
+    reg [9:0] player_pos_y = 15;    
+
+    // Temporary variable to store new player position
+    reg [9:0] new_player_pos_y;
+    reg [9:0] new_player_pos_x;
 
     // Movements module
     always @(posedge i_Clk) begin
         if (i_Switch_1 & clock_tick == 25000000) begin
             // Move player up
             if (player_pos_y > 0) begin
-
+                // Replace the previous tile
+                map[player_pos_y] <= (map[player_pos_y] & ~(3'b010 << (player_pos_x * 3))) | (3'b001 << (player_pos_x * 3));
                 
-                player_pos_y <= player_pos_y - 1;
-                map[player_pos_y] <= (map[player_pos_y] & ~(3'b111 << (player_pos_x * 3))) | (3'b010 << (player_pos_x * 3));
-                // Clear current position
-                // row_value = map[player_pos_y];
-                // row_value[player_pos_x*3+2 : player_pos_x*3] = 3'b000;
-                // map[player_pos_y] = row_value;
-
-                // // Move player up
-                // player_pos_y <= player_pos_y - 1;
-
-                // // // Set new position
-                // row_value = map[player_pos_y];
-                // row_value[player_pos_x*3+2 : player_pos_x*3] = 3'b010;
-                // map[player_pos_y] = row_value;
-
-                // player_pos_y <= player_pos_y - 1;
-
-                // player_row = map[player_pos_y]; // Set new position
-                // player_row[player_pos_x*3+2: player_pos_x*3] = 3'b010;
-                // map[player_pos_y] = player_row;
+                new_player_pos_y = player_pos_y - 1;
+                
+                // Move player up
+                player_pos_y <= new_player_pos_y;
+                
+                // Set the new player position
+                map[new_player_pos_y] <= (map[new_player_pos_y] & ~(3'b111 << (player_pos_x * 3))) | (3'b010 << (player_pos_x * 3));
             end
         end 
     end

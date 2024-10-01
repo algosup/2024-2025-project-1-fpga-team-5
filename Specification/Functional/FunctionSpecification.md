@@ -44,6 +44,7 @@
   - [3. User Interface Design](#3-user-interface-design)
     - [Mockups](#mockups)
       - [**Frogger**](#frogger)
+      - [**Death**](#death)
       - [**Cars**](#cars)
       - [**Trucks**](#trucks)
       - [**Logs**](#logs)
@@ -52,6 +53,7 @@
     - [Screen Layouts](#screen-layouts)
       - [**Main Menu**](#main-menu)
       - [**Game Screen**](#game-screen)
+      - [**Game Over Screen**](#game-over-screen)
     - [Controls and Inputs](#controls-and-inputs)
     - [Feedback Mechanisms](#feedback-mechanisms)
   - [4. Visual Elements](#4-visual-elements)
@@ -246,7 +248,17 @@ The player’s goal is to successfully guide Frogger across the road and river t
 ![Frogger](img/FrogSprite/RightSprite/JumpRightSprite.png)
 ![Frogger](img/FrogSprite/LeftSprite/JumpLeftSprite.png)
 
+#### **Death**
 
+![Death](img/DeathSprite/DeathSprite1.png)
+![Death](img/DeathSprite/DeathSprite2.png)
+![Death](img/DeathSprite/DeathSprite3.png)
+
+![Death](img/DeathSprite/DeathSprite4.png)
+![Death](img/DeathSprite/DeathSprite5.png)
+![Death](img/DeathSprite/DeathSprite6.png)
+
+![Death](img/DeathSprite/DeathSprite7.png)
 
 #### **Cars**
 
@@ -283,7 +295,16 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 #### **Turtles**
 
+*Swimming Turtles*
+
 ![Turtles](img/TurtlesSprite/Turtle1Sprite.png)
+![Turtles](img/TurtlesSprite/Turtle2Sprite.png)
+![Turtles](img/TurtlesSprite/Turtle3Sprite.png)
+
+*Submerged Turtles*
+
+![Turtles](img/TurtlesSprite/Turtle4Sprite.png)
+![Turtles](img/TurtlesSprite/Turtle5Sprite.png)
 
 **Homes**
 
@@ -307,12 +328,13 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ![River](img/BackgroundSprite/RiverSprite.png)
 
-*End Land*
+*Homes Area*
 
 ![End Land](img/BackgroundSprite/ArrivalAreaSprite.png) 
 
-![End Land](img/BackgroundSprite/ArrivalIntervalSprite.png)
+*Homes Interval*
 
+![End Land](img/BackgroundSprite/ArrivalIntervalSprite.png)
 
 ### Screen Layouts
 
@@ -321,7 +343,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 ![Main Menu](img/BackgroundSprite/MainMenuSprite.png)
 
   - **Title**: The game title is displayed prominently at the top of the screen.
-  - **Start Button**: Players can start the game by selecting the “Start” button.
+  - **Start Button**: Players can start the game by clicking on a button.
 
 #### **Game Screen**
 
@@ -334,13 +356,13 @@ The player’s goal is to successfully guide Frogger across the road and river t
    - **Score**: The player’s current score is displayed at the top of the screen.
    - **Timer**: A timer counts down the remaining time for the player to complete the level.
 
-**Game Over Screen**
+#### **Game Over Screen**
 
 ![Game Over Screen](img/BackgroundSprite/GameOverScreen.png)
 
    - **Game Over Message**: A message is displayed to inform the player that the game is over.
    - **Final Score**: The player’s final score is displayed on the screen.
-   - **Restart Button**: Players can restart the game by selecting the “Restart” button.
+   - **Restart Button**: Players can restart the game by clicking on a button.
 
 ### Controls and Inputs
 
@@ -371,11 +393,27 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ### Graphics and Animations
 
-**Character Design**
+**Animated Sprites**
 
    - **Frogger**: A green frog character with animated hopping movements.
    - **Vehicles**: Cars and trucks with animated movement across the road.
    - **Logs and Turtles**: River obstacles with animated movement across the water.
+
+*Swimming Turtles Animation*
+
+![Swimming Turtles](img/TurtlesSprite/SwimmingTurtle.gif)
+
+*Submerged Turtles Animation*
+
+![Submerged Turtles](img/TurtlesSprite/SubmergedTurtle.gif)
+
+*Jumping Frogger Animation*
+
+![Jumping Frogger](img/FrogSprite/JumpingFrogger.gif)
+
+*Death Animation*
+
+![Death Animation](img/DeathSprite/DeathAnimation.gif)
 
 **Background Design**
 
@@ -384,21 +422,5 @@ The player’s goal is to successfully guide Frogger across the road and river t
    - **Homes**: Lily pad homes at the top of the screen where Frogger must reach.
 
 # III. User Experience
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

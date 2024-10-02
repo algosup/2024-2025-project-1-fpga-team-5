@@ -5,7 +5,6 @@
   <p align="center">
     <strong>Frogger in FPGA - Team 5's project</strong>
     <br />
-  
   </p>
 </div>
 
@@ -28,7 +27,7 @@
     - [1.2.4 Scope](#124-scope)
     - [1.2.5 Target Audience](#125-target-audience)
     - [1.2.6 User Personas](#126-user-personas)
-    - [1.2.6 Deliverables](#126-deliverables)
+    - [1.2.7 Deliverables](#127-deliverables)
   - [1.3. Project Layout](#13-project-layout)
     - [1.3.1 Project Team](#131-project-team)
     - [1.3.2 Stakeholders](#132-stakeholders)
@@ -90,6 +89,7 @@
     - [Additional Levels](#additional-levels)
     - [Power-Ups and Abilities](#power-ups-and-abilities)
     - [Customization Options](#customization-options)
+- [VII. Conclusion](#vii-conclusion)
 
 
 # I. Introduction
@@ -109,7 +109,7 @@
 
 ## 1.2 Project Overview
 
-This project aims to recreate the classic arcade game **Frogger** on an FPGA platform. 
+This project aims to recreate the classic arcade game "**Frogger**" on an FPGA platform. 
 
 ### 1.2.1 Project Definition
 
@@ -182,7 +182,7 @@ The target audience for this game includes players who enjoy classic arcade game
 
 </details>
 
-### 1.2.6 Deliverables
+### 1.2.7 Deliverables
 
 The main deliverables is the source code of the game, supported by multiple version of this game and mockups of the design.
 
@@ -867,6 +867,7 @@ The budget for this project includes the cost of the FPGA platform, development 
    - **Character Skins**: Allow players to customize Frogger with different skins and colors.
    - **Vehicle Skins**: Customize the appearance of cars, trucks, and other obstacles in the game.
 
+# VII. Conclusion
 
-
+The development of “Frogger: The Classic Leap” aims to recreate the iconic arcade game in a digital format using Verilog HDL on an FPGA platform. The game concept, gameplay mechanics, visual elements, and user interface have been designed to provide an engaging and challenging gaming experience for players. By following the project plan, managing risks, and adhering to technical requirements, the team aims to deliver a high-quality game that meets the specified objectives and requirements. The future enhancements and feature roadmap provide a vision for expanding the game with additional levels, power-ups, and customization options to enhance the player experience. With a focus on performance, responsiveness, and resource utilization, the team is committed to delivering a successful and enjoyable game that captures the spirit of the classic Frogger arcade game.
 

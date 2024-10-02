@@ -402,26 +402,20 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 <Details><Summary><b>Frogger Colors</b></Summary>
 
-
-   - #16fa00 <font color="16fa00">(Green)</font>
-   - #e4ff34 <font color="e4ff34">(Yellow)</font>
-   - #2c6d1e <font color="2c6d1e">(Dark Green)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #000000 <font color="000000">(Black)</font>
+   - ![#16fa00](https://placehold.co/15x15/16fa00/16fa00.png) `#16fa00 `
+   - ![#e4ff34](https://placehold.co/15x15/e4ff34/e4ff34.png) `#e4ff34 `
+   - ![#2c6d1e](https://placehold.co/15x15/2c6d1e/2c6d1e.png) `#2c6d1e `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#000000](https://placehold.co/15x15/000000/000000.png) `#000000 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Death Colors</b></Summary>
 
-   - #822fa1 <font color="822fa1">(Purple)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #d51c1c <font color="d51c1c">(Red)</font>
-
+   - ![#822fa1](https://placehold.co/15x15/822fa1/822fa1.png) `#822fa1 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#d51c1c](https://placehold.co/15x15/d51c1c/d51c1c.png) `#d51c1c `
 </Details>
-
-</br>
 
 <Details><Summary><b>Red Cars Colors</b></Summary>
 
@@ -439,144 +433,122 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 </Details>
 
-</br>
-
 <Details><Summary><b>Blue Cars Colors</b></Summary>
 
-   - #0f0092 <font color="0f0092">(Dark Blue)</font>
-   - #000078 <font color="000078">(Navy Blue)</font>
-   - #fffcb5 <font color="fffcb5">(Light Yellow)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #ff8704 <font color="ff8704">(Orange)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #e5e5e5 <font color="e5e5e5">(Light Grey)</font>
-   - #5fcde4 <font color="5fcde4">(Light Blue)</font>
-   - #6abacb <font color="6abacb">(Blue)</font>
-   - #9badb7 <font color="9badb7">(Grey)</font>
-   - #85949c <font color="85949c">(Dark Grey)</font>
+   - ![#0f0092](https://placehold.co/15x15/0f0092/0f0092.png) `#0f0092 `
+   - ![#000078](https://placehold.co/15x15/000078/000078.png) `#000078 `
+   - ![#fffcb5](https://placehold.co/15x15/fffcb5/fffcb5.png) `#fffcb5 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#ff8704](https://placehold.co/15x15/ff8704/ff8704.png) `#ff8704 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#e5e5e5](https://placehold.co/15x15/e5e5e5/e5e5e5.png) `#e5e5e5 `
+   - ![#5fcde4](https://placehold.co/15x15/5fcde4/5fcde4.png) `#5fcde4 `
+   - ![#6abacb](https://placehold.co/15x15/6abacb/6abacb.png) `#6abacb `
+   - ![#9badb7](https://placehold.co/15x15/9badb7/9badb7.png) `#9badb7 `
+   - ![#85949c](https://placehold.co/15x15/85949c/85949c.png) `#85949c `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Racing Cars Colors</b></Summary>
 
-   - #db0000 <font color="db0000">(Dark Red)</font>
-   - #a70000 <font color="a70000">(Red)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #9badb7 <font color="9badb7">(Grey)</font>
-   - #242424 <font color="242424">(Black)</font>
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #847e87 <font color="847e87">(Dark Grey)</font>
-   - #9c9c9c <font color="9c9c9c">(Grey)</font>
-   - #696a6a <font color="696a6a">(Dark Grey)</font>
+   - ![#db0000](https://placehold.co/15x15/db0000/db0000.png) `#db0000 `
+   - ![#a70000](https://placehold.co/15x15/a70000/a70000.png) `#a70000 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#9badb7](https://placehold.co/15x15/9badb7/9badb7.png) `#9badb7 `
+   - ![#242424](https://placehold.co/15x15/242424/242424.png) `#242424 `
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#847e87](https://placehold.co/15x15/847e87/847e87.png) `#847e87 `
+   - ![#9c9c9c](https://placehold.co/15x15/9c9c9c/9c9c9c.png) `#9c9c9c `
+   - ![#696a6a](https://placehold.co/15x15/696a6a/696a6a.png) `#696a6a `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Trucks Colors</b></Summary>
 
-   - #121b49 <font color="121b49">(Dark Blue)</font>
-   - #ff2121 <font color="ff2121">(Red)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #eecd9a <font color="eecd9a">(Light Yellow)</font>
-   - #0000ff <font color="0000ff">(Blue)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #8cb7c1 <font color="8cb7c1">(Light Blue)</font>
-   - #bcf3ff <font color="bcf3ff">(Light Blue)</font>
+   - ![#121b49](https://placehold.co/15x15/121b49/121b49.png) `#121b49 `
+   - ![#ff2121](https://placehold.co/15x15/ff2121/ff2121.png) `#ff2121 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#eecd9a](https://placehold.co/15x15/eecd9a/eecd9a.png) `#eecd9a `
+   - ![#0000ff](https://placehold.co/15x15/0000ff/0000ff.png) `#0000ff `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#8cb7c1](https://placehold.co/15x15/8cb7c1/8cb7c1.png) `#8cb7c1 `
+   - ![#bcf3ff](https://placehold.co/15x15/bcf3ff/bcf3ff.png) `#bcf3ff `
    
-   Moving to the left: #ff0000 <font color="ff0000">(Red)</font>
+   Moving to the left: ![#ff0000](https://placehold.co/15x15/ff0000/ff0000.png) `#ff0000 ` 
 
-   Moving to the right: #fba6ff <font color="fba6ff">(Pink)</font>
+   Moving to the right: ![#fba6ff](https://placehold.co/15x15/fba6ff/fba6ff.png) `#fba6ff `
 
-</Details>
-
-</br>   
+</Details>  
 
 <Details><Summary><b>Logs Colors</b></Summary>
 
-   - #d55c31 <font color="d55c31">(Brown)</font>
-   - #b16f4f <font color="b16f4f">(Light Brown)</font>
-   - #dbdbdb <font color="dbdbdb">(Light Grey)</font>
+   - ![#d55c31](https://placehold.co/15x15/d55c31/d55c31.png) `#d55c31 `
+   - ![#b16f4f](https://placehold.co/15x15/b16f4f/b16f4f.png) `#b16f4f `
+   - ![#dbdbdb](https://placehold.co/15x15/dbdbdb/dbdbdb.png) `#dbdbdb `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Turtles Colors</b></Summary>
 
-   - #ff0b0b <font color="ff0b0b">(Red)</font>
-   - #31ff1e <font color="31ff1e">(Green)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#ff0b0](https://placehold.co/15x15/ff0b0/ff0b0.png) `#ff0b0 `
+   - ![#31ff1e](https://placehold.co/15x15/31ff1e/31ff1e.png) `#31ff1e `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Homes Colors</b></Summary>
 
-   - #249c44 <font color="249c44">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
+   - ![#249c44](https://placehold.co/15x15/249c44/249c44.png) `#249c44 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Spawn Land Colors</b></Summary>  
 
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #ac3232 <font color="ac3232">(Red)</font>
-   - #639bff <font color="639bff">(Blue)</font>
-   - #df7126 <font color="df7126">(Orange)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#ac3232](https://placehold.co/15x15/ac3232/ac3232.png) `#ac3232 `
+   - ![#639bff](https://placehold.co/15x15/639bff/639bff.png) `#639bff `
+   - ![#df7126](https://placehold.co/15x15/df7126/df7126.png) `#df7126 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Road Colors</b></Summary>
 
-   - #3c3858 <font color="3c3858">(Dark Blue)</font>
-   - #d5d5d5 <font color="d5d5d5">(Light Grey)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#3c3858](https://placehold.co/15x15/3c3858/3c3858.png) `#3c3858 `
+   - ![#d5d5d5](https://placehold.co/15x15/d5d5d5/d5d5d5.png) `#d5d5d5 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Middle Land Colors</b></Summary>
 
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #2061b6 <font color="2061b6">(Blue)</font>
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>River Colors</b></Summary>
 
-   - #2061b6 <font color="2061b6">(Blue)</font>
-   - #2777e0 <font color="2777e0">(Light Blue)</font>
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
+   - ![#2777e0](https://placehold.co/15x15/2777e0/2777e0.png) `#2777e0 `
 
 </Details>
 
-</br>
-
 <Details><Summary><b>Homes Area Colors</b></Summary>
 
-   - #2061b6 <font color="2061b6">(Blue)</font>
-   - #d77bba <font color="d77bba">(Pink)</font>
-   - #76428a <font color="76428a">(Purple)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
+   - ![#d77bba](https://placehold.co/15x15/d77bba/d77bba.png) `#d77bba `
+   - ![#76428a](https://placehold.co/15x15/76428a/76428a.png) `#76428a `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
 
 </Details>
 

@@ -425,17 +425,17 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 <Details><Summary><b>Red Cars Colors</b></Summary>
 
-   - #ff0404 <font color="ff0404">(Red)</font>
-   - #e00000 <font color="e00000">(Dark Red)</font>
-   - #fffcb5 <font color="fffcb5">(Light Yellow)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #ff8704 <font color="ff8704">(Orange)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #e5e5e5 <font color="e5e5e5">(Light Grey)</font>
-   - #5fcde4 <font color="5fcde4">(Light Blue)</font>
-   - #6abacb <font color="6abacb">(Blue)</font>
-   - #9badb7 <font color="9badb7">(Grey)</font>
-   - #85949c <font color="85949c">(Dark Grey)</font>
+   - ![#ff0404](https://placehold.co/15x15/ff0404/ff0404.png) `#ff0404 `
+   - ![#e00000](https://placehold.co/15x15/e00000/e00000.png) `#e00000 `
+   - ![#fffcb5](https://placehold.co/15x15/fffcb5/fffcb5.png) `#fffcb5 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#ff8704](https://placehold.co/15x15/ff8704/ff8704.png) `#ff8704 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#e5e5e5](https://placehold.co/15x15/e5e5e5/e5e5e5.png) `#e5e5e5 `
+   - ![#5fcde4](https://placehold.co/15x15/5fcde4/5fcde4.png) `#5fcde4 `
+   - ![#6abacb](https://placehold.co/15x15/6abacb/6abacb.png) `#6abacb `
+   - ![#9badb7](https://placehold.co/15x15/9badb7/9badb7.png) `#9badb7 `
+   - ![#85949c](https://placehold.co/15x15/85949c/85949c.png) `#85949c `
 
 </Details>
 

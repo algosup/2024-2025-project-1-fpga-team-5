@@ -59,34 +59,22 @@
   - [4. Visual Elements](#4-visual-elements)
     - [Color Palette](#color-palette)
     - [Animations](#animations)
-- [III. User Experience](#iii-user-experience)
-
-[III. **User Experience**](#iii-user-experience)
-   1. [➣ Accessibility Features](#1-accessibility-features)
-      - [Assistive Technologies](#assistive-technologies)
-      - [Accessibility Standards](#accessibility-standards)
-   2. [➣ User Engagement Strategies](#2-user-engagement-strategies)
-      - [In-game Rewards](#in-game-rewards)
-      - [User Progress Tracking](#user-progress-tracking)
-   3. [➣ Adaptability to User Feedback](#3-adaptability-to-user-feedback)
-      - [Feedback Channels](#feedback-channels)
-      - [Iterative Design Updates](#iterative-design-updates)
-   4. [➣ Device Compatibility](#4-device-compatibility)
-      - [Supported Devices](#supported-devices)
-      - [Cross-Platform Compatibility](#cross-platform-compatibility)
-  
-[IV. **Non-Functional Requirements**](#iv-non-functional-requirements)
-   1. [➣ Performance](#1-performance)
-      - [Responsiveness](#responsiveness)
-      - [Resource Utilization](#resource-utilization)
-
-[VI. **Future Enhancements**](#vi-future-enhancements)
-   1. [➣ Feature Roadmap](#1-feature-roadmap)
-   2. [➣ Potential Expansions](#2-potential-expansions)
-
-[VII. **References**](#vii-references)
-
-[VIII. **Revision History**](#viii-revision-history)
+- [III. **Non-Functional Requirements**](#iii-non-functional-requirements)
+  - [1. Performance](#1-performance)
+    - [Responsiveness](#responsiveness)
+      - [**Input Lag**](#input-lag)
+      - [**Frame Rate**](#frame-rate)
+    - [Resource Utilization](#resource-utilization)
+      - [**Resource Efficiency**](#resource-efficiency)
+      - [**Power Consumption**](#power-consumption)
+  - [2. **Technical Requirements**](#2-technical-requirements)
+    - [**Technical Specifications**](#technical-specifications)
+    - [**Constraints Limitations**](#constraints-limitations)
+- [VI. **Future Enhancements**](#vi-future-enhancements)
+  - [1. Feature Roadmap](#1-feature-roadmap)
+    - [**Additional Levels**](#additional-levels)
+    - [**Power-Ups and Abilities**](#power-ups-and-abilities)
+    - [**Customization Options**](#customization-options)
 
 
 # I. Introduction
@@ -402,26 +390,20 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 <Details><Summary><b>Frogger Colors</b></Summary>
 
-
-   - #16fa00 <font color="16fa00">(Green)</font>
-   - #e4ff34 <font color="e4ff34">(Yellow)</font>
-   - #2c6d1e <font color="2c6d1e">(Dark Green)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #000000 <font color="000000">(Black)</font>
+   - ![#16fa00](https://placehold.co/15x15/16fa00/16fa00.png) `#16fa00 `
+   - ![#e4ff34](https://placehold.co/15x15/e4ff34/e4ff34.png) `#e4ff34 `
+   - ![#2c6d1e](https://placehold.co/15x15/2c6d1e/2c6d1e.png) `#2c6d1e `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#000000](https://placehold.co/15x15/000000/000000.png) `#000000 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Death Colors</b></Summary>
 
-   - #822fa1 <font color="822fa1">(Purple)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #d51c1c <font color="d51c1c">(Red)</font>
-
+   - ![#822fa1](https://placehold.co/15x15/822fa1/822fa1.png) `#822fa1 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#d51c1c](https://placehold.co/15x15/d51c1c/d51c1c.png) `#d51c1c `
 </Details>
-
-</br>
 
 <Details><Summary><b>Red Cars Colors</b></Summary>
 
@@ -439,144 +421,122 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 </Details>
 
-</br>
-
 <Details><Summary><b>Blue Cars Colors</b></Summary>
 
-   - #0f0092 <font color="0f0092">(Dark Blue)</font>
-   - #000078 <font color="000078">(Navy Blue)</font>
-   - #fffcb5 <font color="fffcb5">(Light Yellow)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #ff8704 <font color="ff8704">(Orange)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #e5e5e5 <font color="e5e5e5">(Light Grey)</font>
-   - #5fcde4 <font color="5fcde4">(Light Blue)</font>
-   - #6abacb <font color="6abacb">(Blue)</font>
-   - #9badb7 <font color="9badb7">(Grey)</font>
-   - #85949c <font color="85949c">(Dark Grey)</font>
+   - ![#0f0092](https://placehold.co/15x15/0f0092/0f0092.png) `#0f0092 `
+   - ![#000078](https://placehold.co/15x15/000078/000078.png) `#000078 `
+   - ![#fffcb5](https://placehold.co/15x15/fffcb5/fffcb5.png) `#fffcb5 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#ff8704](https://placehold.co/15x15/ff8704/ff8704.png) `#ff8704 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#e5e5e5](https://placehold.co/15x15/e5e5e5/e5e5e5.png) `#e5e5e5 `
+   - ![#5fcde4](https://placehold.co/15x15/5fcde4/5fcde4.png) `#5fcde4 `
+   - ![#6abacb](https://placehold.co/15x15/6abacb/6abacb.png) `#6abacb `
+   - ![#9badb7](https://placehold.co/15x15/9badb7/9badb7.png) `#9badb7 `
+   - ![#85949c](https://placehold.co/15x15/85949c/85949c.png) `#85949c `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Racing Cars Colors</b></Summary>
 
-   - #db0000 <font color="db0000">(Dark Red)</font>
-   - #a70000 <font color="a70000">(Red)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #9badb7 <font color="9badb7">(Grey)</font>
-   - #242424 <font color="242424">(Black)</font>
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #847e87 <font color="847e87">(Dark Grey)</font>
-   - #9c9c9c <font color="9c9c9c">(Grey)</font>
-   - #696a6a <font color="696a6a">(Dark Grey)</font>
+   - ![#db0000](https://placehold.co/15x15/db0000/db0000.png) `#db0000 `
+   - ![#a70000](https://placehold.co/15x15/a70000/a70000.png) `#a70000 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#9badb7](https://placehold.co/15x15/9badb7/9badb7.png) `#9badb7 `
+   - ![#242424](https://placehold.co/15x15/242424/242424.png) `#242424 `
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#847e87](https://placehold.co/15x15/847e87/847e87.png) `#847e87 `
+   - ![#9c9c9c](https://placehold.co/15x15/9c9c9c/9c9c9c.png) `#9c9c9c `
+   - ![#696a6a](https://placehold.co/15x15/696a6a/696a6a.png) `#696a6a `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Trucks Colors</b></Summary>
 
-   - #121b49 <font color="121b49">(Dark Blue)</font>
-   - #ff2121 <font color="ff2121">(Red)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #eecd9a <font color="eecd9a">(Light Yellow)</font>
-   - #0000ff <font color="0000ff">(Blue)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #8cb7c1 <font color="8cb7c1">(Light Blue)</font>
-   - #bcf3ff <font color="bcf3ff">(Light Blue)</font>
+   - ![#121b49](https://placehold.co/15x15/121b49/121b49.png) `#121b49 `
+   - ![#ff2121](https://placehold.co/15x15/ff2121/ff2121.png) `#ff2121 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#eecd9a](https://placehold.co/15x15/eecd9a/eecd9a.png) `#eecd9a `
+   - ![#0000ff](https://placehold.co/15x15/0000ff/0000ff.png) `#0000ff `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#8cb7c1](https://placehold.co/15x15/8cb7c1/8cb7c1.png) `#8cb7c1 `
+   - ![#bcf3ff](https://placehold.co/15x15/bcf3ff/bcf3ff.png) `#bcf3ff `
    
-   Moving to the left: #ff0000 <font color="ff0000">(Red)</font>
+   Moving to the left: ![#ff0000](https://placehold.co/15x15/ff0000/ff0000.png) `#ff0000 ` 
 
-   Moving to the right: #fba6ff <font color="fba6ff">(Pink)</font>
+   Moving to the right: ![#fba6ff](https://placehold.co/15x15/fba6ff/fba6ff.png) `#fba6ff `
 
-</Details>
-
-</br>   
+</Details>  
 
 <Details><Summary><b>Logs Colors</b></Summary>
 
-   - #d55c31 <font color="d55c31">(Brown)</font>
-   - #b16f4f <font color="b16f4f">(Light Brown)</font>
-   - #dbdbdb <font color="dbdbdb">(Light Grey)</font>
+   - ![#d55c31](https://placehold.co/15x15/d55c31/d55c31.png) `#d55c31 `
+   - ![#b16f4f](https://placehold.co/15x15/b16f4f/b16f4f.png) `#b16f4f `
+   - ![#dbdbdb](https://placehold.co/15x15/dbdbdb/dbdbdb.png) `#dbdbdb `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Turtles Colors</b></Summary>
 
-   - #ff0b0b <font color="ff0b0b">(Red)</font>
-   - #31ff1e <font color="31ff1e">(Green)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#ff0b0](https://placehold.co/15x15/ff0b0/ff0b0.png) `#ff0b0 `
+   - ![#31ff1e](https://placehold.co/15x15/31ff1e/31ff1e.png) `#31ff1e `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Homes Colors</b></Summary>
 
-   - #249c44 <font color="249c44">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
+   - ![#249c44](https://placehold.co/15x15/249c44/249c44.png) `#249c44 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Spawn Land Colors</b></Summary>  
 
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #fbf236 <font color="fbf236">(Yellow)</font>
-   - #ac3232 <font color="ac3232">(Red)</font>
-   - #639bff <font color="639bff">(Blue)</font>
-   - #df7126 <font color="df7126">(Orange)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#ac3232](https://placehold.co/15x15/ac3232/ac3232.png) `#ac3232 `
+   - ![#639bff](https://placehold.co/15x15/639bff/639bff.png) `#639bff `
+   - ![#df7126](https://placehold.co/15x15/df7126/df7126.png) `#df7126 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Road Colors</b></Summary>
 
-   - #3c3858 <font color="3c3858">(Dark Blue)</font>
-   - #d5d5d5 <font color="d5d5d5">(Light Grey)</font>
-   - #ffffff <font color="dbdbdb">(White)</font>
+   - ![#3c3858](https://placehold.co/15x15/3c3858/3c3858.png) `#3c3858 `
+   - ![#d5d5d5](https://placehold.co/15x15/d5d5d5/d5d5d5.png) `#d5d5d5 `
+   - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>Middle Land Colors</b></Summary>
 
-   - #222034 <font color="222034">(Dark Blue)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #2061b6 <font color="2061b6">(Blue)</font>
+   - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
 
 </Details>
-
-</br>
 
 <Details><Summary><b>River Colors</b></Summary>
 
-   - #2061b6 <font color="2061b6">(Blue)</font>
-   - #2777e0 <font color="2777e0">(Light Blue)</font>
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
+   - ![#2777e0](https://placehold.co/15x15/2777e0/2777e0.png) `#2777e0 `
 
 </Details>
 
-</br>
-
 <Details><Summary><b>Homes Area Colors</b></Summary>
 
-   - #2061b6 <font color="2061b6">(Blue)</font>
-   - #d77bba <font color="d77bba">(Pink)</font>
-   - #76428a <font color="76428a">(Purple)</font>
-   - #99e550 <font color="99e550">(Light Green)</font>
-   - #1c7233 <font color="1c7233">(Green)</font>
+   - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
+   - ![#d77bba](https://placehold.co/15x15/d77bba/d77bba.png) `#d77bba `
+   - ![#76428a](https://placehold.co/15x15/76428a/76428a.png) `#76428a `
+   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
+   - ![#1c7233](https://placehold.co/15x15/1c7233/1c7233.png) `#1c7233 `
 
 </Details>
 
@@ -602,6 +562,72 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 ![Death Animation](img/DeathSprite/DeathAnimation.gif)
 
 
-# III. User Experience
+# III. **Non-Functional Requirements**
+
+## 1. Performance
+
+### Responsiveness
+
+#### **Input Lag**
+
+The game should respond to player inputs without noticeable lag. The movement of Frogger should be smooth and responsive to the player’s commands.
+
+#### **Frame Rate**
+
+The game should run at a consistent frame rate to provide a smooth and enjoyable gaming experience. The frame rate should be optimized to ensure that animations and movements are displayed without stuttering or lag.
+
+### Resource Utilization
+
+#### **Resource Efficiency**
+
+The game should be optimized to use FPGA resources efficiently. This includes minimizing the use of logic elements, memory blocks, and other resources to ensure that the game runs smoothly on the FPGA platform.
+
+#### **Power Consumption**
+
+The game should be designed to minimize power consumption on the FPGA platform. This includes optimizing the design to reduce power usage and heat generation during gameplay.
+
+## 2. **Technical Requirements**
+
+The game will be developed using Verilog HDL on an FPGA platform. Verilog allows for the design and implementation of digital circuits, making it well-suited for creating the game logic and graphics required for Frogger.
+
+**Why Verilog?**
+
+   - **Hardware Description**: Verilog is a hardware description language that allows for the modeling of digital circuits at a low level.
+   - **FPGA Compatibility**: Verilog is commonly used in FPGA development, making it a suitable choice for implementing the game on an FPGA platform.
+   - **Performance**: Verilog allows for efficient design and optimization of digital circuits, ensuring that the game runs smoothly on the FPGA.
+
+### **Technical Specifications**
+
+   - **Platform**: FPGA (Field-Programmable Gate Array)
+   - **Language**: Verilog HDL
+   - **Resolution**: VGA (Video Graphics Array)
+   - **Inputs**: Directional controls (*SW1* `up`, *SW2* `left`, *SW3* `right` and *SW4* `down`)
+   - **Outputs**: Game screen, 7-segment display for level
+
+### **Constraints Limitations**
+
+   - **Logic Elements**: Limited number of logic elements available on the FPGA platform.
+   - **Memory Blocks**: Limited memory blocks available for storing game data and graphics.
+   - **Clock Speed**: Maximum clock speed supported by the FPGA platform.
+
+# VI. **Future Enhancements**
+
+## 1. Feature Roadmap
+
+### **Additional Levels**
+
+   - **New Challenges**: Introduce new obstacles and challenges in each level to keep the gameplay fresh and engaging.
+   - **Boss Levels**: Include boss levels with unique challenges and enemies for players to overcome.
+
+### **Power-Ups and Abilities**
+
+   - **Speed Boost**: Allow Frogger to move faster for a limited time.
+   - **Shield**: Provide temporary invincibility to Frogger against collisions.
+
+### **Customization Options**
+
+   - **Character Skins**: Allow players to customize Frogger with different skins and colors.
+   - **Vehicle Skins**: Customize the appearance of cars, trucks, and other obstacles in the game.
+
 
 

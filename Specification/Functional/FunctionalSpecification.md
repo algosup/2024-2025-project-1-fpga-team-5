@@ -240,7 +240,7 @@ When you are in the Main Menu, you can start the game by pressing one of the swi
 
 When you are in game you can move the frog with the switches 1, 2, 3 and 4.
 
-And atlist, when you are in the Game Over Screen, you can restart the game by pressing one of the switches.
+And when you are in the Game Over Screen, you can restart the game by pressing one of the switches.
 
 ### 1.4.2 Outputs Specifications
 

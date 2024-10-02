@@ -32,9 +32,6 @@
     - [1.3.1 Project Team](#131-project-team)
     - [1.3.2 Stakeholders](#132-stakeholders)
     - [1.3.3 Team Roles](#133-team-roles)
-  - [1.4 System Inputs and Outputs](#14-system-inputs-and-outputs)
-    - [1.4.1 Inputs Specifications](#141-inputs-specifications)
-    - [1.4.2 Outputs Specifications](#142-outputs-specifications)
 - [II. Game Design](#ii-game-design)
   - [2.1 Game Concept](#21-game-concept)
     - [2.1.1 Storyline and Theme](#211-storyline-and-theme)
@@ -66,7 +63,9 @@
       - [Power Consumption](#power-consumption)
   - [3.2 Technical Requirements](#32-technical-requirements)
     - [3.2.1 Technical Specifications](#321-technical-specifications)
-    - [3.2.2 Constraints Limitations](#322-constraints-limitations)
+      - [System Inputs and Outputs](#system-inputs-and-outputs)
+    - [3.2.2 Input/Output Handling](#322-inputoutput-handling)
+    - [3.2.3 Constraints Limitations](#323-constraints-limitations)
   - [3.3 System Architecture](#33-system-architecture)
     - [3.3.1 Block Diagram](#331-block-diagram)
 - [IV. Development Plan](#iv-development-plan)
@@ -227,27 +226,6 @@ Other deliverables include:
 | Software Engineer | Responsible for developing and testing the game logic and graphics. |
 | Quality Assurance | Responsible for testing the game and ensuring that it meets the specified requirements. |
 | Technical Writer | Responsible for documenting the project and creating user manuals. |
-
-## 1.4 System Inputs and Outputs
-
-### 1.4.1 Inputs Specifications
-
-There are 4 Switches to control the frog movement also for the start and reset of the game.
-
-![Switches](img/GoBoard/GoBoardSwitches.jpg)
-
-When you are in the Main Menu, you can start the game by pressing one of the switches. 
-
-When you are in game you can move the frog with the switches 1, 2, 3 and 4.
-
-And when you are in the Game Over Screen, you can restart the game by pressing one of the switches.
-
-### 1.4.2 Outputs Specifications
-
-The game will be mainly displayed on a VGA screen. But for the level of the game, it will be displayed on the 7-segment display.
-
-![7-segment display](img/GoBoard/GoBoard7Segments.jpg)
-
 
 # II. Game Design
 
@@ -727,10 +705,41 @@ The game will be developed using Verilog HDL on an FPGA platform. Verilog allows
    - **Platform**: FPGA (Field-Programmable Gate Array)
    - **Language**: Verilog HDL
    - **Resolution**: VGA (Video Graphics Array)
-   - **Inputs**: Directional controls (*SW1* `up`, *SW2* `left`, *SW3* `right` and *SW4* `down`)
-   - **Outputs**: Game screen, 7-segment display for level
 
-### 3.2.2 Constraints Limitations
+#### System Inputs and Outputs
+
+**Inputs Specifications**
+
+There are 4 Switches to control the frog movement also for the start and reset of the game.
+
+![Switches](img/GoBoard/GoBoardSwitches.jpg)
+
+
+When you are in the Main Menu, you can start the game by pressing one of the switches. 
+
+When you are in game you can move the frog with the switches 1, 2, 3 and 4:
+   - **Switch 1**: Move the frog up.
+   - **Switch 2**: Move the frog left.
+   - **Switch 3**: Move the frog right.
+   - **Switch 4**: Move the frog down.
+
+And when you are in the Game Over Screen, you can restart the game by pressing one of the switches.
+
+All those inputs will send a binary signal (1 or 0) to the FPGA.
+
+**Outputs Specifications**
+
+![7-segment display](img/GoBoard/GoBoard7Segments.jpg)
+
+The VGA screen will display the game screen, including the frog, cars, logs, turtles, homes and, etc. The 7-segment display will show the current level of the game.
+
+### 3.2.2 Input/Output Handling
+
+   - **Switches**: Input from the player using directional switches to control Frogger’s movement.
+   - **VGA Display**: Output to the player using a VGA display to show the game screen and graphics.
+   - **7-Segment Display**: Output to display the current level of the game. 
+
+### 3.2.3 Constraints Limitations
 
    - **Logic Elements**: Limited number of logic elements available on the FPGA platform.
    - **Memory Blocks**: Limited memory blocks available for storing game data and graphics.

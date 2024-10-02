@@ -42,7 +42,7 @@
     - [Levels and Challenges](#levels-and-challenges)
     - [Scoring System](#scoring-system)
   - [3. User Interface Design](#3-user-interface-design)
-    - [Mockups](#mockups)
+    - [Sprites and Graphics](#sprites-and-graphics)
       - [**Frogger**](#frogger)
       - [**Death**](#death)
       - [**Cars**](#cars)
@@ -58,7 +58,7 @@
     - [Feedback Mechanisms](#feedback-mechanisms)
   - [4. Visual Elements](#4-visual-elements)
     - [Color Palette](#color-palette)
-    - [Graphics and Animations](#graphics-and-animations)
+    - [Animations](#animations)
 - [III. User Experience](#iii-user-experience)
 
 [III. **User Experience**](#iii-user-experience)
@@ -228,7 +228,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ## 3. User Interface Design
 
-### Mockups
+### Sprites and Graphics
 
 #### **Frogger**
 
@@ -240,6 +240,8 @@ The player’s goal is to successfully guide Frogger across the road and river t
 ![Frogger](img/FrogSprite/RightSprite/StaticRightSprite.png)
 ![Frogger](img/FrogSprite/LeftSprite/StaticLeftSprite.png)
 
+By default, Frogger is displayed in a static position facing up, down, left, or right.
+
 *Jumping Frogger*
 
 ![Frogger](img/FrogSprite/UpSprite/JumpUpSprite.png)
@@ -248,17 +250,20 @@ The player’s goal is to successfully guide Frogger across the road and river t
 ![Frogger](img/FrogSprite/RightSprite/JumpRightSprite.png)
 ![Frogger](img/FrogSprite/LeftSprite/JumpLeftSprite.png)
 
+When Frogger moves in a direction, an animation shows the frog jumping in that direction.
+
 #### **Death**
 
 ![Death](img/DeathSprite/DeathSprite1.png)
 ![Death](img/DeathSprite/DeathSprite2.png)
 ![Death](img/DeathSprite/DeathSprite3.png)
-
 ![Death](img/DeathSprite/DeathSprite4.png)
+
 ![Death](img/DeathSprite/DeathSprite5.png)
 ![Death](img/DeathSprite/DeathSprite6.png)
-
 ![Death](img/DeathSprite/DeathSprite7.png)
+
+When Frogger collides with a vehicle or falls into the water, a death animation is displayed.
 
 #### **Cars**
 
@@ -280,6 +285,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ![Cars](img/CarsSprite/RightRaceCar1Sprite.png)
 
+Different types of cars move across the road at varying speeds.
 
 #### **Trucks**
 
@@ -287,11 +293,15 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ![Trucks](img/TruckSprite/RightTruckSprite.png)
 
+Trucks move across the road at a slower speed than cars.
+
 #### **Logs**
 
 ![Logs](img/LogsSprite/LeftLogSprite.png)
 ![Logs](img/LogsSprite/MiddleLogSprite.png)
 ![Logs](img/LogsSprite/RightLogSprite.png)
+
+Logs move across the river, providing platforms for Frogger to jump on.
 
 #### **Turtles**
 
@@ -301,14 +311,20 @@ The player’s goal is to successfully guide Frogger across the road and river t
 ![Turtles](img/TurtlesSprite/Turtle2Sprite.png)
 ![Turtles](img/TurtlesSprite/Turtle3Sprite.png)
 
+Allowing Frogger to jump on them, turtles move across the river.
+
 *Submerged Turtles*
 
 ![Turtles](img/TurtlesSprite/Turtle4Sprite.png)
 ![Turtles](img/TurtlesSprite/Turtle5Sprite.png)
 
+When submerged, turtles do not provide a platform for Frogger to jump on.
+
 **Homes**
 
 ![Homes](img/BackgroundSprite/NenuphareSprite.png)
+
+ Lily pad homes at the top of the screen where Frogger must reach.
 
 #### **Background**
 
@@ -384,20 +400,190 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 ### Color Palette
 
-**Main Colors**
+<Details><Summary><b>Frogger Colors</b></Summary>
 
-   - **Green**: Represents Frogger and the lily pad homes.
-   - **Blue**: Represents the river and water hazards.
-   - **Gray**: Represents the road and vehicle hazards.
-   - **Brown**: Represents logs and other river obstacles.
 
-### Graphics and Animations
+   - #16fa00 <font color="16fa00">(Green)</font>
+   - #e4ff34 <font color="e4ff34">(Yellow)</font>
+   - #2c6d1e <font color="2c6d1e">(Dark Green)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+   - #000000 <font color="000000">(Black)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Death Colors</b></Summary>
+
+   - #822fa1 <font color="822fa1">(Purple)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #d51c1c <font color="d51c1c">(Red)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Red Cars Colors</b></Summary>
+
+   - #ff0404 <font color="ff0404">(Red)</font>
+   - #e00000 <font color="e00000">(Dark Red)</font>
+   - #fffcb5 <font color="fffcb5">(Light Yellow)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #ff8704 <font color="ff8704">(Orange)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+   - #e5e5e5 <font color="e5e5e5">(Light Grey)</font>
+   - #5fcde4 <font color="5fcde4">(Light Blue)</font>
+   - #6abacb <font color="6abacb">(Blue)</font>
+   - #9badb7 <font color="9badb7">(Grey)</font>
+   - #85949c <font color="85949c">(Dark Grey)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Blue Cars Colors</b></Summary>
+
+   - #0f0092 <font color="0f0092">(Dark Blue)</font>
+   - #000078 <font color="000078">(Navy Blue)</font>
+   - #fffcb5 <font color="fffcb5">(Light Yellow)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #ff8704 <font color="ff8704">(Orange)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+   - #e5e5e5 <font color="e5e5e5">(Light Grey)</font>
+   - #5fcde4 <font color="5fcde4">(Light Blue)</font>
+   - #6abacb <font color="6abacb">(Blue)</font>
+   - #9badb7 <font color="9badb7">(Grey)</font>
+   - #85949c <font color="85949c">(Dark Grey)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Racing Cars Colors</b></Summary>
+
+   - #db0000 <font color="db0000">(Dark Red)</font>
+   - #a70000 <font color="a70000">(Red)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #9badb7 <font color="9badb7">(Grey)</font>
+   - #242424 <font color="242424">(Black)</font>
+   - #222034 <font color="222034">(Dark Blue)</font>
+   - #847e87 <font color="847e87">(Dark Grey)</font>
+   - #9c9c9c <font color="9c9c9c">(Grey)</font>
+   - #696a6a <font color="696a6a">(Dark Grey)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Trucks Colors</b></Summary>
+
+   - #121b49 <font color="121b49">(Dark Blue)</font>
+   - #ff2121 <font color="ff2121">(Red)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #eecd9a <font color="eecd9a">(Light Yellow)</font>
+   - #0000ff <font color="0000ff">(Blue)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+   - #222034 <font color="222034">(Dark Blue)</font>
+   - #8cb7c1 <font color="8cb7c1">(Light Blue)</font>
+   - #bcf3ff <font color="bcf3ff">(Light Blue)</font>
+   
+   Moving to the left: #ff0000 <font color="ff0000">(Red)</font>
+
+   Moving to the right: #fba6ff <font color="fba6ff">(Pink)</font>
+
+</Details>
+
+</br>   
+
+<Details><Summary><b>Logs Colors</b></Summary>
+
+   - #d55c31 <font color="d55c31">(Brown)</font>
+   - #b16f4f <font color="b16f4f">(Light Brown)</font>
+   - #dbdbdb <font color="dbdbdb">(Light Grey)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Turtles Colors</b></Summary>
+
+   - #ff0b0b <font color="ff0b0b">(Red)</font>
+   - #31ff1e <font color="31ff1e">(Green)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Homes Colors</b></Summary>
+
+   - #249c44 <font color="249c44">(Green)</font>
+   - #99e550 <font color="99e550">(Light Green)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Spawn Land Colors</b></Summary>  
+
+   - #222034 <font color="222034">(Dark Blue)</font>
+   - #1c7233 <font color="1c7233">(Green)</font>
+   - #99e550 <font color="99e550">(Light Green)</font>
+   - #fbf236 <font color="fbf236">(Yellow)</font>
+   - #ac3232 <font color="ac3232">(Red)</font>
+   - #639bff <font color="639bff">(Blue)</font>
+   - #df7126 <font color="df7126">(Orange)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Road Colors</b></Summary>
+
+   - #3c3858 <font color="3c3858">(Dark Blue)</font>
+   - #d5d5d5 <font color="d5d5d5">(Light Grey)</font>
+   - #ffffff <font color="dbdbdb">(White)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Middle Land Colors</b></Summary>
+
+   - #222034 <font color="222034">(Dark Blue)</font>
+   - #1c7233 <font color="1c7233">(Green)</font>
+   - #99e550 <font color="99e550">(Light Green)</font>
+   - #2061b6 <font color="2061b6">(Blue)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>River Colors</b></Summary>
+
+   - #2061b6 <font color="2061b6">(Blue)</font>
+   - #2777e0 <font color="2777e0">(Light Blue)</font>
+
+</Details>
+
+</br>
+
+<Details><Summary><b>Homes Area Colors</b></Summary>
+
+   - #2061b6 <font color="2061b6">(Blue)</font>
+   - #d77bba <font color="d77bba">(Pink)</font>
+   - #76428a <font color="76428a">(Purple)</font>
+   - #99e550 <font color="99e550">(Light Green)</font>
+   - #1c7233 <font color="1c7233">(Green)</font>
+
+</Details>
+
+
+### Animations
 
 **Animated Sprites**
-
-   - **Frogger**: A green frog character with animated hopping movements.
-   - **Vehicles**: Cars and trucks with animated movement across the road.
-   - **Logs and Turtles**: River obstacles with animated movement across the water.
 
 *Swimming Turtles Animation*
 
@@ -409,17 +595,12 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 *Jumping Frogger Animation*
 
-![Jumping Frogger](img/FrogSprite/JumpingFrogger.gif)
+![Jumping Frogger](img/FrogSprite/UpSprite/JumpingUpAnimation.gif)
 
 *Death Animation*
 
 ![Death Animation](img/DeathSprite/DeathAnimation.gif)
 
-**Background Design**
-
-   - **Road**: A grid-based road with lanes for vehicles to move.
-   - **River**: A grid-based river with logs and turtles moving across the water.
-   - **Homes**: Lily pad homes at the top of the screen where Frogger must reach.
 
 # III. User Experience
 

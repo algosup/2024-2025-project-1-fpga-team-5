@@ -59,34 +59,22 @@
   - [4. Visual Elements](#4-visual-elements)
     - [Color Palette](#color-palette)
     - [Animations](#animations)
-- [III. User Experience](#iii-user-experience)
-
-[III. **User Experience**](#iii-user-experience)
-   1. [➣ Accessibility Features](#1-accessibility-features)
-      - [Assistive Technologies](#assistive-technologies)
-      - [Accessibility Standards](#accessibility-standards)
-   2. [➣ User Engagement Strategies](#2-user-engagement-strategies)
-      - [In-game Rewards](#in-game-rewards)
-      - [User Progress Tracking](#user-progress-tracking)
-   3. [➣ Adaptability to User Feedback](#3-adaptability-to-user-feedback)
-      - [Feedback Channels](#feedback-channels)
-      - [Iterative Design Updates](#iterative-design-updates)
-   4. [➣ Device Compatibility](#4-device-compatibility)
-      - [Supported Devices](#supported-devices)
-      - [Cross-Platform Compatibility](#cross-platform-compatibility)
-  
-[IV. **Non-Functional Requirements**](#iv-non-functional-requirements)
-   1. [➣ Performance](#1-performance)
-      - [Responsiveness](#responsiveness)
-      - [Resource Utilization](#resource-utilization)
-
-[VI. **Future Enhancements**](#vi-future-enhancements)
-   1. [➣ Feature Roadmap](#1-feature-roadmap)
-   2. [➣ Potential Expansions](#2-potential-expansions)
-
-[VII. **References**](#vii-references)
-
-[VIII. **Revision History**](#viii-revision-history)
+- [III. **Non-Functional Requirements**](#iii-non-functional-requirements)
+  - [1. Performance](#1-performance)
+    - [Responsiveness](#responsiveness)
+      - [**Input Lag**](#input-lag)
+      - [**Frame Rate**](#frame-rate)
+    - [Resource Utilization](#resource-utilization)
+      - [**Resource Efficiency**](#resource-efficiency)
+      - [**Power Consumption**](#power-consumption)
+  - [2. **Technical Requirements**](#2-technical-requirements)
+    - [**Technical Specifications**](#technical-specifications)
+    - [**Constraints Limitations**](#constraints-limitations)
+- [VI. **Future Enhancements**](#vi-future-enhancements)
+  - [1. Feature Roadmap](#1-feature-roadmap)
+    - [**Additional Levels**](#additional-levels)
+    - [**Power-Ups and Abilities**](#power-ups-and-abilities)
+    - [**Customization Options**](#customization-options)
 
 
 # I. Introduction
@@ -574,6 +562,72 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 ![Death Animation](img/DeathSprite/DeathAnimation.gif)
 
 
-# III. User Experience
+# III. **Non-Functional Requirements**
+
+## 1. Performance
+
+### Responsiveness
+
+#### **Input Lag**
+
+The game should respond to player inputs without noticeable lag. The movement of Frogger should be smooth and responsive to the player’s commands.
+
+#### **Frame Rate**
+
+The game should run at a consistent frame rate to provide a smooth and enjoyable gaming experience. The frame rate should be optimized to ensure that animations and movements are displayed without stuttering or lag.
+
+### Resource Utilization
+
+#### **Resource Efficiency**
+
+The game should be optimized to use FPGA resources efficiently. This includes minimizing the use of logic elements, memory blocks, and other resources to ensure that the game runs smoothly on the FPGA platform.
+
+#### **Power Consumption**
+
+The game should be designed to minimize power consumption on the FPGA platform. This includes optimizing the design to reduce power usage and heat generation during gameplay.
+
+## 2. **Technical Requirements**
+
+The game will be developed using Verilog HDL on an FPGA platform. Verilog allows for the design and implementation of digital circuits, making it well-suited for creating the game logic and graphics required for Frogger.
+
+**Why Verilog?**
+
+   - **Hardware Description**: Verilog is a hardware description language that allows for the modeling of digital circuits at a low level.
+   - **FPGA Compatibility**: Verilog is commonly used in FPGA development, making it a suitable choice for implementing the game on an FPGA platform.
+   - **Performance**: Verilog allows for efficient design and optimization of digital circuits, ensuring that the game runs smoothly on the FPGA.
+
+### **Technical Specifications**
+
+   - **Platform**: FPGA (Field-Programmable Gate Array)
+   - **Language**: Verilog HDL
+   - **Resolution**: VGA (Video Graphics Array)
+   - **Inputs**: Directional controls (*SW1* `up`, *SW2* `left`, *SW3* `right` and *SW4* `down`)
+   - **Outputs**: Game screen, 7-segment display for level
+
+### **Constraints Limitations**
+
+   - **Logic Elements**: Limited number of logic elements available on the FPGA platform.
+   - **Memory Blocks**: Limited memory blocks available for storing game data and graphics.
+   - **Clock Speed**: Maximum clock speed supported by the FPGA platform.
+
+# VI. **Future Enhancements**
+
+## 1. Feature Roadmap
+
+### **Additional Levels**
+
+   - **New Challenges**: Introduce new obstacles and challenges in each level to keep the gameplay fresh and engaging.
+   - **Boss Levels**: Include boss levels with unique challenges and enemies for players to overcome.
+
+### **Power-Ups and Abilities**
+
+   - **Speed Boost**: Allow Frogger to move faster for a limited time.
+   - **Shield**: Provide temporary invincibility to Frogger against collisions.
+
+### **Customization Options**
+
+   - **Character Skins**: Allow players to customize Frogger with different skins and colors.
+   - **Vehicle Skins**: Customize the appearance of cars, trucks, and other obstacles in the game.
+
 
 

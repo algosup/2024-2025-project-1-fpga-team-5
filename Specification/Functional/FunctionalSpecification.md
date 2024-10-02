@@ -583,7 +583,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 <Details><Summary><b>Turtles Colors</b></Summary>
 
-   - ![#ff0b0](https://placehold.co/15x15/ff0b0/ff0b0.png) `#ff0b0 `
+   - ![#ff0b00](https://placehold.co/15x15/ff0b00/ff0b00.png) `#ff0b00`
    - ![#31ff1e](https://placehold.co/15x15/31ff1e/31ff1e.png) `#31ff1e `
    - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `#ffffff `
 

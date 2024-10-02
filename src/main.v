@@ -6,8 +6,6 @@ module main (
     // 7-segments display
     output reg [6:0] o_Segment1,
     output reg [6:0] o_Segment2,
-<<<<<<< Updated upstream
-=======
 
     input i_Switch_1,
     input i_Switch_2,
@@ -21,7 +19,6 @@ module main (
     output reg [2:0] o_VGA_Red,
     output reg [2:0] o_VGA_Grn,
     output reg [2:0] o_VGA_Blu,
->>>>>>> Stashed changes
 );
     
     reg [24:0] clock_tick = 0;
@@ -51,8 +48,6 @@ module main (
     );
 
 
-<<<<<<< Updated upstream
-=======
     // VGA module
 
 
@@ -69,7 +64,7 @@ module main (
         .INIT_3(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
         .INIT_4(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
         .INIT_5(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_6(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_6(80'b0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
         .INIT_7(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
         .INIT_8(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
         .INIT_9(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
@@ -77,7 +72,7 @@ module main (
         .INIT_B(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
         .INIT_C(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
         .INIT_D(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000)
+        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000)
     ) bram (
         .RDATA(bram_data_out),
         .RADDR(bram_addr),
@@ -125,19 +120,11 @@ module main (
 
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
-
-// Reset color outputs
-    o_VGA_Red = 3'b000;
-    o_VGA_Grn = 3'b000;
-    o_VGA_Blu = 3'b000;
-
     if (pixel_color) begin
         // Compute the BRAM address: two cells per address (4 bits each), 8 cells per row
-        bram_addr = ((cell_y) * 16) + (cell_x /8); // 8 cells per row (each address covers 2 cells)
-        //(cell_y * 8) + (cell_x >> 1); // cell_x / 2 using a shift for even division
+        bram_addr = ((cell_y*8)) + (cell_x/8); // 8 cells per row (each address covers 2 cells)
 
         // Select between the lower and upper cell
-            // Lower 4 bits for the even cell
             if (cell_x % 2 == 0) begin
             // Lower 4 bits for the even cell
             case (bram_data_out[3:0])
@@ -233,5 +220,4 @@ end
     // end
 
 
->>>>>>> Stashed changes
 endmodule

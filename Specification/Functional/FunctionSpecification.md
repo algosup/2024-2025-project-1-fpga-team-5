@@ -13,36 +13,40 @@
 
 **Written by:** [***Rémy CHARLES***](https://github.com/RemyCHARLES) </br>
 **Created on:** *2024-09-23* </br>
-**Last updated:** *2024-10-01*
+**Last updated:** *2024-10-02*
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
 - [I. Introduction](#i-introduction)
-  - [1. Glossary](#1-glossary)
-  - [2. Project Overview](#2-project-overview)
-    - [Project Definition](#project-definition)
-      - [Vision](#vision)
-      - [Objectives](#objectives)
-      - [Scope](#scope)
-      - [Target Audience](#target-audience)
-      - [Deliverables](#deliverables)
-  - [4. Project Layout](#4-project-layout)
-    - [Project Team](#project-team)
-    - [Stakeholders](#stakeholders)
-    - [Team Roles](#team-roles)
+  - [1.1 Glossary](#11-glossary)
+  - [1.2 Project Overview](#12-project-overview)
+    - [1.2.1 Project Definition](#121-project-definition)
+    - [1.2.2 Vision](#122-vision)
+    - [1.2.3 Objectives](#123-objectives)
+    - [1.2.4 Scope](#124-scope)
+    - [1.2.5 Target Audience](#125-target-audience)
+    - [1.2.6 Deliverables](#126-deliverables)
+  - [1.3. Project Layout](#13-project-layout)
+    - [1.3.1 Project Team](#131-project-team)
+    - [1.3.2 Stakeholders](#132-stakeholders)
+    - [1.3.3 Team Roles](#133-team-roles)
 - [II. Game Design](#ii-game-design)
-  - [1. Game Concept](#1-game-concept)
-    - [Storyline and Theme](#storyline-and-theme)
+  - [2.1 Game Concept](#21-game-concept)
+    - [2.1.1 Storyline and Theme](#211-storyline-and-theme)
     - [Game Objectives](#game-objectives)
     - [Player Goals](#player-goals)
-  - [2. Gameplay Mechanics](#2-gameplay-mechanics)
-    - [Game Rules](#game-rules)
-    - [Levels and Challenges](#levels-and-challenges)
-    - [Scoring System](#scoring-system)
-  - [3. User Interface Design](#3-user-interface-design)
-    - [Sprites and Graphics](#sprites-and-graphics)
+    - [2.1.2 Gameplay Mechanics](#212-gameplay-mechanics)
+      - [Levels and Challenges](#levels-and-challenges)
+      - [Scoring System](#scoring-system)
+  - [2.2 Level Design](#22-level-design)
+    - [2.2.1 Level Layout](#221-level-layout)
+    - [2.2.2 Level Progression](#222-level-progression)
+    - [2.2.3 Game Over Conditions](#223-game-over-conditions)
+    - [2.2.4 Win Conditions](#224-win-conditions)
+  - [2.3 User Interface Design](#23-user-interface-design)
+    - [2.3.1 Sprites and Graphics](#231-sprites-and-graphics)
       - [**Frogger**](#frogger)
       - [**Death**](#death)
       - [**Cars**](#cars)
@@ -50,26 +54,46 @@
       - [**Logs**](#logs)
       - [**Turtles**](#turtles)
       - [**Background**](#background)
-    - [Screen Layouts](#screen-layouts)
+    - [2.3.2 Screen Layouts](#232-screen-layouts)
       - [**Main Menu**](#main-menu)
       - [**Game Screen**](#game-screen)
       - [**Game Over Screen**](#game-over-screen)
-    - [Controls and Inputs](#controls-and-inputs)
-    - [Feedback Mechanisms](#feedback-mechanisms)
-  - [4. Visual Elements](#4-visual-elements)
-    - [Color Palette](#color-palette)
-    - [Animations](#animations)
-- [III. **Non-Functional Requirements**](#iii-non-functional-requirements)
-  - [1. Performance](#1-performance)
-    - [Responsiveness](#responsiveness)
+    - [2.3.3 Controls and Inputs](#233-controls-and-inputs)
+    - [2.3.4 Feedback Mechanisms](#234-feedback-mechanisms)
+  - [2.4 Visual Elements](#24-visual-elements)
+    - [2.4.1 Color Palette](#241-color-palette)
+    - [2.4.2 Animations](#242-animations)
+- [III. Non-Functional Requirements](#iii-non-functional-requirements)
+  - [3.1 Performance](#31-performance)
+    - [3.1.1 Responsiveness](#311-responsiveness)
       - [**Input Lag**](#input-lag)
       - [**Frame Rate**](#frame-rate)
-    - [Resource Utilization](#resource-utilization)
+    - [3.1.2 Resource Utilization](#312-resource-utilization)
       - [**Resource Efficiency**](#resource-efficiency)
       - [**Power Consumption**](#power-consumption)
-  - [2. **Technical Requirements**](#2-technical-requirements)
-    - [**Technical Specifications**](#technical-specifications)
-    - [**Constraints Limitations**](#constraints-limitations)
+  - [3.2 **Technical Requirements**](#32-technical-requirements)
+    - [3.2.1 **Technical Specifications**](#321-technical-specifications)
+    - [3.2.2 **Constraints Limitations**](#322-constraints-limitations)
+  - [3.3 System Architecture](#33-system-architecture)
+    - [3.3.1 Block Diagram](#331-block-diagram)
+- [IV. **Development Plan**](#iv-development-plan)
+  - [4.1 **Phases and Milestones**](#41-phases-and-milestones)
+  - [4.2 **Timeline**](#42-timeline)
+  - [4.3 **Budget**](#43-budget)
+- [V. **Risk Management**](#v-risk-management)
+  - [5.1 **Risk Identification**](#51-risk-identification)
+    - [5.1.1 **Technical Risks**](#511-technical-risks)
+    - [5.1.2**Schedule Risks**](#512schedule-risks)
+    - [5.1.3 **Resource Risks**](#513-resource-risks)
+  - [5.2 **Risk Mitigation**](#52-risk-mitigation)
+    - [5.2.1 **Technical Risks**](#521-technical-risks)
+    - [5.2.2 **Schedule Risks**](#522-schedule-risks)
+    - [5.2.3 **Resource Risks**](#523-resource-risks)
+  - [5.3 **Risk Contingency**](#53-risk-contingency)
+    - [5.3.1 **Technical Risks**](#531-technical-risks)
+    - [5.3.2 **Schedule Risks**](#532-schedule-risks)
+    - [5.3.3 **Resource Risks**](#533-resource-risks)
+- [V. **Compliance and Standards**](#v-compliance-and-standards)
 - [VI. **Future Enhancements**](#vi-future-enhancements)
   - [1. Feature Roadmap](#1-feature-roadmap)
     - [**Additional Levels**](#additional-levels)
@@ -79,45 +103,48 @@
 
 # I. Introduction
 
-## 1. Glossary
+## 1.1 Glossary
 
 | Term | Definition |
 | --- | --- |
-| Frogger | Frogger is a classic arcade game developed by Konami and released in 1981. The game involves guiding a frog across a busy road and river, avoiding obstacles and hazards along the way. |
-| FPGA | Field-Programmable Gate Array `Definition still in progress...`|
-| HDL | Hardware Description Language `Definition still in progress...`|
-| Verilog | Verilog is a HDL used to model electronic systems. It is commonly used in the design and verification of digital circuits. |
-| VGA | Video Graphics Array `Definition still in progress...`|
+| **Frogger** | Frogger is a classic arcade game developed by Konami and released in 1981. The game involves guiding a frog across a busy road and river, avoiding obstacles and hazards along the way. |
+| **FPGA (Field-Programmable Gate Array)** | A semiconductor device that can be configured after manufacturing by a customer or a designer using specialized software and a hardware description language (HDL). It is made up of a matrix of configurable logic blocks (CLBs) connected via programmable interconnects.|
+| **HDL (Hardware Description Language)** |  A specialized computer language used to describe the structure and behavior of electronic circuits, and commonly used in the design and development of digital logic in FPGAs. |
+| **Verilog** | A hardware description language (HDL) used to model electronic systems. It is most commonly used in the design and verification of digital circuits at the register-transfer level (RTL) of abstraction. |
+| **VGA (Video Graphics Array)** | A standard for video display controller first introduced with the IBM PS/2 line of computers in 1987. It is widely used for displaying graphics on computer monitors and other display devices. |
+| **Sprite** | A two-dimensional image or animation that is integrated into a larger scene or game. Sprites are commonly used in video games to represent characters, objects, and other elements of the game world. |
+| **Frame Rate** | The rate at which consecutive images (frames) are displayed in a video game or animation. A higher frame rate results in smoother motion and more fluid animations. |
+| **Input Lag** | The delay between the player inputting a command and the game responding to that input. Input lag can affect the responsiveness and playability of a game. |
 
-## 2. Project Overview
+## 1.2 Project Overview
 
 This project aims to recreate the classic arcade game **Frogger** on an FPGA platform. 
 
-### Project Definition
+### 1.2.1 Project Definition
 
-#### Vision
+### 1.2.2 Vision
 
 The vision of this project is to provide an interactive and engaging gaming experience that pays homage to the classic arcade game Frogger. By leveraging the capabilities of FPGA technology, we aim to create a faithful recreation of the original game with enhanced graphics and gameplay features.
 
 This game will be designed to appeal to both nostalgic players who remember the original Frogger and new players who are looking for a fun and challenging gaming experience.
 
-#### Objectives
+### 1.2.3 Objectives
 
    - **Technology**: Implement the game logic and graphics using Verilog HDL on an FPGA platform.
    - **Gameplay**: Recreate the classic Frogger gameplay with enhanced graphics and additional features.
 
-#### Scope
+### 1.2.4 Scope
 
 This project will be developped on a "[Go-Board](https://nandland.com/the-go-board/)" FPGA platform. Using Verilog HDL, we will implement the game logic, graphics, and user interface elements required to recreate the classic Frogger game.
 
-#### Target Audience
+### 1.2.5 Target Audience
 
 The target audience for this project includes:
    - Fans of classic arcade games who are familiar with the original Frogger.
    - Players looking for a challenging and engaging gaming experience.
    - Students and hobbyists interested in FPGA development and game design.
 
-#### Deliverables
+### 1.2.6 Deliverables
 
 The main deliverables is the source code of the game, supported by multiple version of this game and mockups of the design.
 
@@ -128,9 +155,9 @@ Other deliverables include:
    - Test Plan and Test Cases
    - Management Plan & Weekly reports
 
-## 4. Project Layout
+## 1.3. Project Layout
 
-### Project Team
+### 1.3.1 Project Team
 
 | Name | Role | Contact (*Click*) |
 | --- | --- | --- |
@@ -142,14 +169,14 @@ Other deliverables include:
 | Camille GAYAT | Quality Assurance | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="30">](https://github.com/camillegayat) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="30">](https://www.linkedin.com/in/camille-g-a89114293/) |
 | Salaheddine NAMIR | Technical Writer | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="30">](https://github.com/T3rryc) [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="30">](https://www.linkedin.com/in/salaheddine-namir-3402471b8/) |
 
-### Stakeholders
+### 1.3.2 Stakeholders
 
 | Name | Role |
 | --- | --- |
 | Franck JEANNIN ([**ALGOSUP**](https://algosup.com/)) | School Director |
 
 
-### Team Roles
+### 1.3.3 Team Roles
 
 | Role | Description |
 | :--- | :--- |
@@ -162,9 +189,9 @@ Other deliverables include:
 
 # II. Game Design
 
-## 1. Game Concept
+## 2.1 Game Concept
 
-### Storyline and Theme
+### 2.1.1 Storyline and Theme
 
 **Storyline**
 
@@ -185,16 +212,14 @@ The main objective of the game is to guide Frogger safely across the road and ri
 
 The player’s goal is to successfully guide Frogger across the road and river to reach the lily pad home. The player must navigate through multiple levels, each with increasing difficulty and obstacles, to complete the game.
 
-## 2. Gameplay Mechanics
-
-### Game Rules
+### 2.1.2 Gameplay Mechanics
 
 **Player Movement**
 
   - **Controls**: Players use directional inputs to move Frogger up, down, left, and right across the screen. The goal is to navigate from the bottom of the screen to the safe zones located at the top.
   - **Movement dynamics**: Each press of a control results in Frogger hopping one grid space in the chosen direction. The frog cannot move diagonally and cannot move outside the boundaries of the game screen.
 
-### Levels and Challenges
+#### Levels and Challenges
 
 **Level Progression**
 
@@ -206,7 +231,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
   - **Road hazards**: Cars and trucks move across the road at varying speeds. Frogger must avoid getting hit by these vehicles to stay alive.
   - **River obstacles**: Logs and turtles move across the river, providing platforms for Frogger to jump on. Frogger must avoid falling into the water to survive.
 
-### Scoring System
+#### Scoring System
 
 **Scoring Mechanism**
 
@@ -214,9 +239,49 @@ The player’s goal is to successfully guide Frogger across the road and river t
   - **Time Bonus**: Players receive additional points based on the amount of time left on the timer after reaching a home.
   - **Progression**: Completing all homes resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
 
-## 3. User Interface Design
+## 2.2 Level Design
 
-### Sprites and Graphics
+### 2.2.1 Level Layout
+
+**Road**
+
+   - **Cars**: Red cars move from left to right, blue cars move from right to left, and racing cars move in both directions at high speeds.
+   - **Trucks**: Trucks move across the road at a slower speed than cars.
+
+**River**
+
+   - **Logs**: Logs move across the river at varying speeds, providing platforms for Frogger to jump on.
+   - **Turtles**: Turtles move across the river, allowing Frogger to jump on them. Some turtles submerge underwater, making them unsafe to jump on.
+
+**Homes**
+
+   - **Lily Pads**: The lily pad homes are located at the top of the screen, where Frogger must reach to complete the level.
+
+### 2.2.2 Level Progression
+
+**Difficulty Curve**
+
+   - **Increasing Difficulty**: Each level increases in difficulty, with faster-moving vehicles, more obstacles in the river, and other challenges to overcome.
+   - **Progression**: Completing all homes resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
+
+### 2.2.3 Game Over Conditions
+
+**Death**
+
+   - **Collision**: If Frogger collides with a vehicle on the road or falls into the water, the player loses a life.
+   - **Lives**: Players have a limited number of lives to complete the game. Running out of lives results in a game over.
+
+### 2.2.4 Win Conditions
+
+**Victory**
+
+   - **Completing Levels**: Players must guide Frogger safely across the road and river to reach all the lily pad homes and complete the level.
+   - **Progression**: Completing all levels in the game results in victory.
+
+
+## 2.3 User Interface Design
+
+### 2.3.1 Sprites and Graphics
 
 #### **Frogger**
 
@@ -340,7 +405,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 ![End Land](img/BackgroundSprite/ArrivalIntervalSprite.png)
 
-### Screen Layouts
+### 2.3.2 Screen Layouts
 
 #### **Main Menu**
 
@@ -368,7 +433,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - **Final Score**: The player’s final score is displayed on the screen.
    - **Restart Button**: Players can restart the game by clicking on a button.
 
-### Controls and Inputs
+### 2.3.3 Controls and Inputs
 
 **Controls**
 
@@ -377,16 +442,16 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - **Left ←**: Move Frogger left one grid space.
    - **Right →**: Move Frogger right one grid space.
 
-### Feedback Mechanisms
+### 2.3.4 Feedback Mechanisms
 
 **Visual Feedback**
 
    - **Movement**: Frogger hops in the direction chosen by the player, providing visual feedback on the player’s input.
    - **Collision**: When Frogger collides with a vehicle or falls into the water, a visual indicator shows the collision.
 
-## 4. Visual Elements
+## 2.4 Visual Elements
 
-### Color Palette
+### 2.4.1 Color Palette
 
 <Details><Summary><b>Frogger Colors</b></Summary>
 
@@ -541,7 +606,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 </Details>
 
 
-### Animations
+### 2.4.2 Animations
 
 **Animated Sprites**
 
@@ -561,12 +626,11 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 ![Death Animation](img/DeathSprite/DeathAnimation.gif)
 
+# III. Non-Functional Requirements
 
-# III. **Non-Functional Requirements**
+## 3.1 Performance
 
-## 1. Performance
-
-### Responsiveness
+### 3.1.1 Responsiveness
 
 #### **Input Lag**
 
@@ -576,7 +640,7 @@ The game should respond to player inputs without noticeable lag. The movement of
 
 The game should run at a consistent frame rate to provide a smooth and enjoyable gaming experience. The frame rate should be optimized to ensure that animations and movements are displayed without stuttering or lag.
 
-### Resource Utilization
+### 3.1.2 Resource Utilization
 
 #### **Resource Efficiency**
 
@@ -586,7 +650,7 @@ The game should be optimized to use FPGA resources efficiently. This includes mi
 
 The game should be designed to minimize power consumption on the FPGA platform. This includes optimizing the design to reduce power usage and heat generation during gameplay.
 
-## 2. **Technical Requirements**
+## 3.2 **Technical Requirements**
 
 The game will be developed using Verilog HDL on an FPGA platform. Verilog allows for the design and implementation of digital circuits, making it well-suited for creating the game logic and graphics required for Frogger.
 
@@ -596,7 +660,7 @@ The game will be developed using Verilog HDL on an FPGA platform. Verilog allows
    - **FPGA Compatibility**: Verilog is commonly used in FPGA development, making it a suitable choice for implementing the game on an FPGA platform.
    - **Performance**: Verilog allows for efficient design and optimization of digital circuits, ensuring that the game runs smoothly on the FPGA.
 
-### **Technical Specifications**
+### 3.2.1 **Technical Specifications**
 
    - **Platform**: FPGA (Field-Programmable Gate Array)
    - **Language**: Verilog HDL
@@ -604,11 +668,131 @@ The game will be developed using Verilog HDL on an FPGA platform. Verilog allows
    - **Inputs**: Directional controls (*SW1* `up`, *SW2* `left`, *SW3* `right` and *SW4* `down`)
    - **Outputs**: Game screen, 7-segment display for level
 
-### **Constraints Limitations**
+### 3.2.2 **Constraints Limitations**
 
    - **Logic Elements**: Limited number of logic elements available on the FPGA platform.
    - **Memory Blocks**: Limited memory blocks available for storing game data and graphics.
    - **Clock Speed**: Maximum clock speed supported by the FPGA platform.
+   
+## 3.3 System Architecture
+
+### 3.3.1 Block Diagram
+
+![Block Diagram](img/BlockDiagram.png)
+
+# IV. **Development Plan**
+
+## 4.1 **Phases and Milestones**
+
+**Phase 1: Planning and Design:**
+
+   - **Week 1-2**: Define game concept, gameplay mechanics, and visual elements. Develop graphics, sprites, and animations for the game.
+   - **Week 2**: Finalize game design documents and obtain approval.
+
+**Phase 2: Development and Implementation:**
+
+   - **Week 3-4**: Implement game logic, player movement, and level design. Integrate game elements, controls, and feedback mechanisms.
+
+**Phase 3: Testing and Deployment:**
+
+   - **Week 5**: Conduct unit tests, integration tests, and system tests. Address bugs, optimize performance, and finalize game features. Prepare user manual, documentation, and deployment plan. Final review, presentation, and project submission.
+
+
+## 4.2 **Timeline**
+
+**Week 1-2: Planning and Design:**
+
+   - **Week 1**: Project kickoff, team formation, and planning. Start writing the functional specification, technical design, and game concept development.
+   - **Week 2**: User interface design, visual elements, and color palette selection. Finalize design documents, review, and approval. Delevire the functional specification. 
+
+**Week 3-4: Development and Implementation:**
+
+   - **Week 3**: Implement game logic, player movement, and level design. Integrate game elements, controls, and feedback mechanisms. Develop graphics, sprites, and animations for the game.
+   - **Week 4**: Test game functionality, performance, and resource utilization. Conduct unit tests, integration tests, and system tests. Prepare user manual, documentation, and deployment plan.
+
+**Week 5: Review and Presentation:**
+
+   - **Week 5**: Final review, presentation, and project submission.
+
+## 4.3 **Budget**
+
+The budget for this project includes the cost of the FPGA platform, development tools, and other resources required for game development. The budget will be allocated based on the cost of hardware, software, and other expenses associated with the project. 
+
+# V. **Risk Management**
+
+## 5.1 **Risk Identification**
+
+### 5.1.1 **Technical Risks**
+
+   - **Hardware Compatibility**: Ensuring that the game is compatible with the FPGA platform and can run smoothly without performance issues.
+   - **Software Development**: Developing the game logic, graphics, and animations using Verilog HDL may pose challenges due to the complexity of game development.
+
+### 5.1.2**Schedule Risks**
+
+   - **Time Constraints**: Meeting project deadlines, milestones, and deliverables may be challenging due to the complexity of game development.
+   - **Scope Creep**: Expanding the scope of the project beyond the defined requirements may impact project timelines and deliverables.
+
+### 5.1.3 **Resource Risks**
+
+   - **Hardware Availability**: Availability of FPGA platform, development tools, and other resources may impact project development and testing.
+   - **Team Collaboration**: Ensuring effective communication, coordination, and collaboration among team members may pose challenges.
+
+## 5.2 **Risk Mitigation**
+
+### 5.2.1 **Technical Risks**
+
+   - **Hardware Compatibility**: Conduct thorough testing and optimization to ensure that the game runs smoothly on the FPGA platform.
+   - **Software Development**: Break down the game development process into manageable tasks, conduct code reviews, and seek assistance when needed.
+
+### 5.2.2 **Schedule Risks**
+
+   - **Time Constraints**: Develop a detailed project plan, set realistic milestones, and monitor progress to ensure timely completion of deliverables.
+   - **Scope Creep**: Define project scope, requirements, and deliverables clearly to prevent scope creep and maintain focus on project goals.
+
+### 5.2.3 **Resource Risks**
+
+   - **Hardware Availability**: Ensure that all required hardware, software, and resources are available before starting the project. Plan for contingencies in case of resource unavailability.
+   - **Team Collaboration**: Establish clear communication channels, assign roles and responsibilities, and conduct regular team meetings to ensure effective collaboration.
+
+## 5.3 **Risk Contingency**
+
+### 5.3.1 **Technical Risks**
+
+   - **Hardware Compatibility**: Identify alternative hardware platforms or development tools that can be used as backups in case of compatibility issues.
+   - **Software Development**: Seek assistance from mentors, instructors, or online resources to address complex software development challenges.
+
+### 5.3.2 **Schedule Risks**
+
+   - **Time Constraints**: Allocate buffer time in the project schedule to account for unexpected delays or challenges. Prioritize critical tasks to ensure that essential deliverables are completed on time.
+   - **Scope Creep**: Conduct regular reviews of project scope, requirements, and deliverables to prevent scope creep. Seek approval for any changes to the project scope.
+
+### 5.3.3 **Resource Risks**
+
+   - **Hardware Availability**: Maintain a list of alternative resources or platforms that can be used in case of unavailability. Plan for resource constraints and adjust project timelines accordingly.
+   - **Team Collaboration**: Establish clear communication protocols, assign backup roles, and conduct regular team meetings to ensure that team members are aligned and working effectively.
+
+# V. **Compliance and Standards**
+
+**IEEE Standards**:
+   - **IEEE 1364**: Adhering to robust standards for Verilog hardware descriptions, ensuring compatibility and reliability.
+   - **IEEE 1149.1**: Utilizing the JTAG standard to facilitate thorough testing and verification of circuit boards before deployment.
+
+**Environmental Compliance**:
+   - **RoHS**: All electronic components are compliant with RoHS directives, limiting the use of hazardous substances in electronics.
+   - **WEEE**: We follow WEEE guidelines for the responsible disposal and recycling of electronic waste, minimizing environmental impact.
+
+**Quality Assurance**:
+   - **ISO 9001**: Our project aligns with ISO 9001 standards, focusing on continuous improvement and customer satisfaction through rigorous quality management processes.
+
+**Software Development Practices**:
+   - **Agile Methodology**: By adopting agile practices, our project promotes flexible, iterative development and rapid response to feedback.
+   - **Code Review**: We implement stringent code review practices using GitHub's pull request process to ensure high code quality and project integrity.
+
+**Documentation Standards**:
+   - **ISO/IEC/IEEE 26515**: This standard guides our agile documentation strategy, ensuring user manuals and project documentation are continuously updated to reflect current project statuses and changes.
+
+**Security Compliance**:
+   - **OWASP Top 10**: We rigorously apply the OWASP Top 10 security practices to protect against prevalent web vulnerabilities, enhancing our software's security framework.
 
 # VI. **Future Enhancements**
 
@@ -628,6 +812,7 @@ The game will be developed using Verilog HDL on an FPGA platform. Verilog allows
 
    - **Character Skins**: Allow players to customize Frogger with different skins and colors.
    - **Vehicle Skins**: Customize the appearance of cars, trucks, and other obstacles in the game.
+
 
 
 

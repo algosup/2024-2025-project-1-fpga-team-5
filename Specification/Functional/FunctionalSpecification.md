@@ -32,6 +32,9 @@
     - [1.3.1 Project Team](#131-project-team)
     - [1.3.2 Stakeholders](#132-stakeholders)
     - [1.3.3 Team Roles](#133-team-roles)
+  - [1.4 System Inputs and Outputs](#14-system-inputs-and-outputs)
+    - [1.4.1 Inputs Specifications](#141-inputs-specifications)
+    - [1.4.2 Outputs Specifications](#142-outputs-specifications)
 - [II. Game Design](#ii-game-design)
   - [2.1 Game Concept](#21-game-concept)
     - [2.1.1 Storyline and Theme](#211-storyline-and-theme)
@@ -224,6 +227,27 @@ Other deliverables include:
 | Software Engineer | Responsible for developing and testing the game logic and graphics. |
 | Quality Assurance | Responsible for testing the game and ensuring that it meets the specified requirements. |
 | Technical Writer | Responsible for documenting the project and creating user manuals. |
+
+## 1.4 System Inputs and Outputs
+
+### 1.4.1 Inputs Specifications
+
+There are 4 Switches to control the frog movement also for the start and reset of the game.
+
+![Switches](img/GoBoard/GoBoardSwitches.jpg)
+
+When you are in the Main Menu, you can start the game by pressing one of the switches. 
+
+When you are in game you can move the frog with the switches 1, 2, 3 and 4.
+
+And atlist, when you are in the Game Over Screen, you can restart the game by pressing one of the switches.
+
+### 1.4.2 Outputs Specifications
+
+The game will be mainly displayed on a VGA screen. But for the level of the game, it will be displayed on the 7-segment display.
+
+![7-segment display](img/GoBoard/GoBoard7Segments.jpg)
+
 
 # II. Game Design
 
@@ -754,16 +778,16 @@ flowchart TB
 
 **Phase 1: Planning and Design:**
 
-   - **Week 1-2**: Define game concept, gameplay mechanics, and visual elements. Develop graphics, sprites, and animations for the game.
-   - **Week 2**: Finalize game design documents and obtain approval.
+   - Define game concept, gameplay mechanics, and visual elements. Develop graphics, sprites, and animations for the game.
+   - Finalize game design documents and obtain approval.
 
 **Phase 2: Development and Implementation:**
 
-   - **Week 3-4**: Implement game logic, player movement, and level design. Integrate game elements, controls, and feedback mechanisms.
+   - Implement game logic, player movement, and level design. Integrate game elements, controls, and feedback mechanisms.
 
 **Phase 3: Testing and Deployment:**
 
-   - **Week 5**: Conduct unit tests, integration tests, and system tests. Address bugs, optimize performance, and finalize game features. Prepare user manual, documentation, and deployment plan. Final review, presentation, and project submission.
+   - Conduct unit tests, integration tests, and system tests. Address bugs, optimize performance, and finalize game features. Prepare user manual, documentation, and deployment plan. Final review, presentation, and project submission.
 
 
 ## 4.2 Timeline

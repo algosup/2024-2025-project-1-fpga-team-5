@@ -88,10 +88,10 @@
     - [5.3.3 Resource Risks](#533-resource-risks)
 - [V. Compliance and Standards](#v-compliance-and-standards)
 - [VI. Future Enhancements](#vi-future-enhancements)
-  - [1. Feature Roadmap](#1-feature-roadmap)
-    - [Additional Levels](#additional-levels)
-    - [Power-Ups and Abilities](#power-ups-and-abilities)
-    - [Customization Options](#customization-options)
+  - [6.1 Feature Roadmap](#61-feature-roadmap)
+    - [6.1.1 Additional Levels](#611-additional-levels)
+    - [6.1.2 Power-Ups and Abilities](#612-power-ups-and-abilities)
+    - [6.1.3 Customization Options](#613-customization-options)
 - [VII. Conclusion](#vii-conclusion)
 
 
@@ -900,19 +900,19 @@ The budget for this project includes the cost of the FPGA platform, development 
 
 # VI. Future Enhancements
 
-## 1. Feature Roadmap
+## 6.1 Feature Roadmap
 
-### Additional Levels
+### 6.1.1 Additional Levels
 
    - **New Challenges**: Introduce new obstacles and challenges in each level to keep the gameplay fresh and engaging.
    - **Boss Levels**: Include boss levels with unique challenges and enemies for players to overcome.
 
-### Power-Ups and Abilities
+### 6.1.2 Power-Ups and Abilities
 
    - **Speed Boost**: Allow Frogger to move faster for a limited time.
    - **Shield**: Provide temporary invincibility to Frogger against collisions.
 
-### Customization Options
+### 6.1.3 Customization Options
 
    - **Character Skins**: Allow players to customize Frogger with different skins and colors.
    - **Vehicle Skins**: Customize the appearance of cars, trucks, and other obstacles in the game.

@@ -14,6 +14,7 @@ module main (
     input i_Switch_1,
     input i_Switch_2,
     input i_Switch_3,
+    input i_Switch_4,
 
     // VGA
     output o_VGA_HSync, // Horizontal Sync
@@ -51,14 +52,19 @@ module main (
     );
 
 
-
     // Player module
     wire [9:0] player_x;
     wire [9:0] player_y;
     player player_module (
-        .player_x(player_x),
-        .player_y(player_y)
+        .i_Clk(i_Clk),
+        .i_player_up(i_Switch_1),
+        .i_player_down(i_Switch_4),
+        .i_player_left(i_Switch_2),
+        .i_player_right(i_Switch_3),
+        .o_player_x(player_x),
+        .o_player_y(player_y)
     );
+
 
     // Road module
     wire [9:0] road_start;
@@ -155,6 +161,5 @@ module main (
             end
         end        
     end
-
 
 endmodule

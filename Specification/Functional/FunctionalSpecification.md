@@ -186,7 +186,7 @@ The target audience for this game includes players who enjoy classic arcade game
 
 ### 1.2.7 Deliverables
 
-The main deliverables is the source code of the game, supported by multiple version of this game and mockups of the design.
+The main deliverables are the source code of the game, supported by multiple version of this game and mockups of the design.
 
 Other deliverables include:
    - Functional Specification Document
@@ -220,7 +220,7 @@ Other deliverables include:
 | Role | Description |
 | :--- | :--- |
 | Project Manager | Responsible for overall project planning, coordination, and communication. |
-| Program Manager | Responsible of deadlines and deliverables. Design of the project of his directive. Should deliver the functional specification |
+| Program Manager | Responsible of deadlines and deliverables. Design of the project is under his direction. Should deliver the functional specification |
 | Tech Lead | Responsible for technical design and implementation of the project. |
 | Software Engineer | Responsible for developing and testing the game logic and graphics. |
 | Quality Assurance | Responsible for testing the game and ensuring that it meets the specified requirements. |
@@ -242,14 +242,14 @@ The theme of "*Frogger*” centers on the quest for safety and the inherent dang
 
 ### Game Objectives
 
-The main objective of the game is to guide Frogger safely across the road and river to reach his lily pad home. For that, the player must:
+The main objective of the game is to guide Frogger safely across the road and river to reach the other side of the road and river. For that, the player must:
    - Avoid getting hit by cars on the road.
    - Cross the river by jumping on logs and avoiding sinking into the water.
    - Reach the lily pad on the other side of the river 5 times to complete the level.
 
 ### Player Goals
 
-The player’s goal is to successfully guide Frogger across the road and river to reach the lily pad home. The player must navigate through multiple levels, each with increasing difficulty and obstacles, to complete the game.
+The player’s goal is to successfully guide Frogger across the road and river to reach the other side of the road and river. The player must navigate through multiple levels, each with increasing difficulty and obstacles, to complete the game.
 
 ### 2.1.2 Gameplay Mechanics
 
@@ -274,9 +274,8 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 **Scoring Mechanism**
 
-  - **Reaching a Home**: Each time Frogger successfully reaches a home, players score points. The score increases with each home reached.
-  - **Time Bonus**: Players receive additional points based on the amount of time left on the timer after reaching a home.
-  - **Progression**: Completing all homes resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
+  - **Reaching the other shore**: Each time Frogger successfully reaches the other shore, player access to another level. 
+  - **Time Bonus**: Players receive additional points based on the amount of time left on the timer after reaching the shore.
 
 ## 2.2 Level Design
 
@@ -292,29 +291,25 @@ The player’s goal is to successfully guide Frogger across the road and river t
    - **Logs**: Logs move across the river at varying speeds, providing platforms for Frogger to jump on.
    - **Turtles**: Turtles move across the river, allowing Frogger to jump on them. Some turtles submerge underwater, making them unsafe to jump on.
 
-**Homes**
-
-   - **Lily Pads**: The lily pad homes are located at the top of the screen, where Frogger must reach to complete the level.
-
 ### 2.2.2 Level Progression
 
 **Difficulty Curve**
 
    - **Increasing Difficulty**: Each level increases in difficulty, with faster-moving vehicles, more obstacles in the river, and other challenges to overcome.
-   - **Progression**: Completing all homes resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
+   - **Progression**: Reaching the other shore resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
 
 ### 2.2.3 Game Over Conditions
 
 **Death**
 
    - **Collision**: If Frogger collides with a vehicle on the road or falls into the water, the player loses a life.
-   - **Lives**: Players have 5 lives to complete the game. Running out of lives results in a game over.
+   - **Lives**: PLayer has only 1 life to complete the level. If Frogger die, the game is over.
 
 ### 2.2.4 Win Conditions
 
 **Victory**
 
-   - **Completing Levels**: Players must guide Frogger safely across the road and river to reach all the lily pad homes and complete the level.
+   - **Completing Levels**: Players must guide Frogger safely across the road and river to reach the other shore and complete the level.
    - **Progression**: Completing all levels in the game results in victory.
 
 
@@ -356,18 +351,6 @@ When Frogger moves in a direction, an animation shows the frog jumping in that d
 ![Death](img/DeathSprite/DeathSprite7.png)
 
 When Frogger collides with a vehicle or falls into the water, a death animation is displayed.
-
-**Lives**
-
-![Lives](img/FrogSprite/LifeFrogger/FroggerLife.png)
-
-The number of lives remaining is displayed at the top of the screen.
-
-**Frogger on Homes**
-
-![Frogger](img/FrogSprite/OnLilyPad/OnLilyPad.png)
-
-When Frogger reaches a home, the frog is displayed on the lily pad.
 
 **Cars**
 
@@ -424,12 +407,6 @@ Allowing Frogger to jump on them, turtles move across the river.
 
 When submerged, turtles do not provide a platform for Frogger to jump on.
 
-**Homes**
-
-![Homes](img/BackgroundSprite/NenuphareSprite.png)
-
- Lily pad homes at the top of the screen where Frogger must reach.
-
 **Background**
 
 *Spawn Land*
@@ -448,11 +425,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 ![River](img/BackgroundSprite/RiverSprite.png)
 
-*Homes Area*
-
-![End Land](img/BackgroundSprite/ArrivalAreaSprite.png) 
-
-*Homes Interval*
+*End Land*
 
 ![End Land](img/BackgroundSprite/ArrivalIntervalSprite.png)
 
@@ -463,7 +436,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 ![Main Menu](img/BackgroundSprite/MainMenuSprite.png)
 
   - **Title**: The game title is displayed prominently at the top of the screen.
-  - **Start Button**: Players can start the game by clicking on a button.
+  - **Start Button**: Players can start the game by pressing on a button.
 
 **Game Screen**
 
@@ -472,18 +445,14 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - **Frogger**: The player’s frog character is displayed at the bottom of the screen.
    - **Road**: The road with moving vehicles is located in the middle of the screen.
    - **River**: The river with moving logs and turtles is located at the top of the screen.
-   - **Homes**: The lily pad homes are located at the top of the screen, where Frogger must reach to complete the level.
-   - **Score**: The player’s current score is displayed at the top of the screen.
    - **Timer**: A timer counts down the remaining time for the player to complete the level.
-   - **Lives**: The number of lives remaining is displayed at the top of the screen.
 
 **Game Over Screen**
 
 ![Game Over Screen](img/BackgroundSprite/GameOverScreen.png)
 
    - **Game Over Message**: A message is displayed to inform the player that the game is over.
-   - **Final Score**: The player’s final score is displayed on the screen.
-   - **Restart Button**: Players can restart the game by clicking on a button.
+   - **Restart Button**: Players can restart the game by pressing on a button.
 
 ### 2.3.3 Controls and Inputs
 
@@ -520,24 +489,6 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - ![#822fa1](https://placehold.co/15x15/822fa1/822fa1.png) `#822fa1 `
    - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
    - ![#d51c1c](https://placehold.co/15x15/d51c1c/d51c1c.png) `#d51c1c `
-
-</Details>
-
-<Details><Summary><b>Lives Colors</b></Summary>
-
-   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
-   - ![#75ef00](https://placehold.co/15x15/75ef00/75ef00.png) `#75ef00 `
-   - ![#ff00af](https://placehold.co/15x15/ff00af/ff00af.png) `#ff00af `
-
-</Details>
-
-<Details><summary><b>Frogger on Homes Colors</b></summary>
-
-   - ![#70e500](https://placehold.co/15x15/70e500/70e500.png) `#70e500 `
-   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
-   - ![#428700](https://placehold.co/15x15/428700/428700.png) `#428700 `
-   - ![#ff8500](https://placehold.co/15x15/ff8500/ff8500.png) `#ff8500 `
-   - ![#000000](https://placehold.co/15x15/000000/000000.png) `#000000 `
 
 </Details>
 
@@ -622,13 +573,6 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 </Details>
 
-<Details><Summary><b>Homes Colors</b></Summary>
-
-   - ![#249c44](https://placehold.co/15x15/249c44/249c44.png) `#249c44 `
-   - ![#99e550](https://placehold.co/15x15/99e550/99e550.png) `#99e550 `
-
-</Details>
-
 <Details><Summary><b>Spawn Land Colors</b></Summary>  
 
    - ![#222034](https://placehold.co/15x15/222034/222034.png) `#222034 `
@@ -666,7 +610,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
 
 </Details>
 
-<Details><Summary><b>Homes Area Colors</b></Summary>
+<Details><Summary><b>End Land Colors</b></Summary>
 
    - ![#2061b6](https://placehold.co/15x15/2061b6/2061b6.png) `#2061b6 `
    - ![#d77bba](https://placehold.co/15x15/d77bba/d77bba.png) `#d77bba `
@@ -762,7 +706,7 @@ All those inputs will send a binary signal (1 or 0) to the FPGA.
 
 ![7-segment display](img/GoBoard/GoBoard7Segments.jpg)
 
-The VGA screen will display the game screen, including the frog, cars, logs, turtles, homes and, etc. The 7-segment display will show the current level of the game.
+The VGA screen will display the game screen, including the frog, cars, logs, turtles, etc. The 7-segment display will show the current level of the game.
 
 ### 3.2.2 Input/Output Handling
 
@@ -787,7 +731,7 @@ graph TD;
     B -->|Moves| C[Game Map]
     C -->|Contains| D[Lanes]
     C -->|Contains| E[River]
-    C -->|Contains| F[Home Bases]
+    C -->|Contains| F[End Land]
     D -->|Has| G[Cars]
     E -->|Has| H[Logs]
     E -->|Has| I[Turtles]
@@ -820,7 +764,7 @@ graph TD;
 **Week 1-2: Planning and Design:**
 
    - **Week 1**: Project kickoff, team formation, and planning. Start writing the functional specification, technical design, and game concept development.
-   - **Week 2**: User interface design, visual elements, and color palette selection. Finalize design documents, review, and approval. Delevire the functional specification. 
+   - **Week 2**: User interface design, visual elements, and color palette selection. Finalize design documents, review, and approval. Deliver the functional specification. 
 
 **Week 3-4: Development and Implementation:**
 

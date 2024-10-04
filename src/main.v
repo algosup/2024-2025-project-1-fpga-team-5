@@ -100,6 +100,7 @@ module main (
         .grass_spawn_end(grass_spawn_end)
     );
 
+
     // Car module
     // TODO: Find a way to clean this up
     reg [4:0] i_car_x = 1;
@@ -155,7 +156,51 @@ module main (
         .i_car_x(i_car6_x),
         .o_car_x(car6_x),
     );
+    
+    reg [4:0] i_car7_x = 12;
+    wire [4:0] car7_x;
+    wire [3:0] car7_y = 10;
+    car car7_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car7_x),
+        .o_car_x(car7_x),
+    );
 
+    reg [4:0] i_car8_x = 20;
+    wire [4:0] car8_x;
+    wire [3:0] car8_y = 11;
+    car car8_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car8_x),
+        .o_car_x(car8_x),
+    );
+
+    reg [4:0] i_car9_x = 19;
+    wire [4:0] car9_x;
+    wire [3:0] car9_y = 12;
+    car car9_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car9_x),
+        .o_car_x(car9_x),
+    );
+
+    reg [4:0] i_car10_x = 6;
+    wire [4:0] car10_x;
+    wire [3:0] car10_y = 13;
+    car car10_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car10_x),
+        .o_car_x(car10_x),
+    );
+
+    reg [4:0] i_car11_x = 9;
+    wire [4:0] car11_x;
+    wire [3:0] car11_y = 14;
+    car car11_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car11_x),
+        .o_car_x(car11_x),
+    );
 
     // VGA module
     // VGA timing constants for 640x480 resolution
@@ -196,7 +241,12 @@ module main (
                     || (car3_x == cell_x && car3_y == cell_y)
                     || (car4_x == cell_x && car4_y == cell_y)
                     || (car5_x == cell_x && car5_y == cell_y)
-                    // || (car6_x == cell_x && car6_y == cell_y)
+                    || (car6_x == cell_x && car6_y == cell_y)
+                    || (car7_x == cell_x && car7_y == cell_y)
+                    || (car8_x == cell_x && car8_y == cell_y)
+                    || (car9_x == cell_x && car9_y == cell_y)
+                    || (car10_x == cell_x && car10_y == cell_y)
+                    || (car11_x == cell_x && car11_y == cell_y)
             ) begin
                 o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car
                 if (cell_x == player_x && cell_y == player_y) begin

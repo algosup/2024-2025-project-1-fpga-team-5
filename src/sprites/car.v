@@ -2,7 +2,7 @@ module car(
     input i_Clk, // clock 25MHz
 
     input [4:0] i_car_x,
-    output reg [3:0] o_car_x,
+    output reg [4:0] o_car_x,
 );
 
 initial begin

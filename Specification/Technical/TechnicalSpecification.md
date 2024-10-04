@@ -24,13 +24,11 @@
   - [4. Assumptions](#4-assumptions)
 - [III. Hardware](#iii-hardware)
   - [1. Development Board](#1-development-board)
-  - [2. Lattice ICE40](#2-lattice-ice40)
+  - [2. Input Controls](#2-input-controls)
   - [3. Light Emitting Diodes (LEDs)](#3-light-emitting-diodes-leds)
   - [4. 7-Segment Display](#4-7-segment-display)
   - [5. VGA Connector](#5-vga-connector)
-  - [6. Swictches](#6-swictches)
-  - [7. PMOD Connector](#7-pmod-connector)
-  - [8. Other Components](#8-other-components)
+  - [6. Other Components](#6-other-components)
 - [IV. Software Architecture](#iv-software-architecture)
   - [1. Overview of Software Modules](#1-overview-of-software-modules)
   - [2. Module Interactions](#2-module-interactions)
@@ -141,49 +139,39 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
    </tr>
 </table>
 
-#### 2. Lattice ICE40
+#### 2. Input Controls
 <table>
-  <tr>
-      <td><b>Model :</td>
-      <td>Lattice ICE40 1K FPGA</td> 
-  </tr>
-  <tr>
-      <td><b>Logic Capacity:</td>
-      <td> 1,280 Logic Cells (usable as Look-Up Tables)</td>
-  </tr>
-  <tr>
-      <td><b>Open Source Toolchain:</td>
-      <td>IceStorm (supports synthesis from Verilog)</td>
+   <tr>
+         <td><b>Number of Switches:</td>
+         <td colspan="6">4 (tactile pushbutton swicthes)</td>
    </tr>
    <tr>
-      <td><b>Supported Operating Systems:</td>
-      <td>Windows, Linux</td>
+         <td rowspan="2"><b>Functionality:</td>
+         <td rowspan="2"colspan="2">Allow the User to move the Frog in four direction :</td>
+         <td>Switch 1:</td>
+         <td>Switch 2:</td>
+         <td>Switch 3:</td>
+         <td>Switch 4:</td>
    </tr>
    <tr>
-      <td><b>Maximum Operating Frequency:</td>
-      <td>Up to 100 MHz</td>
+         <td><b><i>Up</td>
+         <td>Left</td>
+         <td>Right</td>
+         <td>Down</td>
+   </tr>
+
 </table>
 
 #### 3. Light Emitting Diodes (LEDs)
 <table>
    <tr>
          <td><b>Number of LEDs :</td>
-         <td colspan="2">4</td>
+         <td colspan="3">4</td>
    </tr>
    <tr>
-         <td rowspan="2"><b>Specififcations:</td>
-         <td>Typical forward voltage:</td>
-         <td> 20 mA</td>
-   </tr>
-      <td>Typical forward current:</td>
-      <td> 2.0 - 3.2 V</td>
-   </tr>
-   <tr>
-         <td rowspan="2"><b>Functionality:</td>
+         <td><b>Functionality:</td>
          <td colspan="2">Provides visual feedback for board status and diagnostic information.</td>
-    </tr>
-    <tr>
-      <td colspan="2">Can be controlled via user-defined logic to indicate states, errors, or user-defined outputs.</td>
+      <td colspan="2"><b><i>WHAT THE LED DOING</td>
     </tr>
 </table>
 
@@ -194,17 +182,8 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
          <td>2</td>
    </tr>
    <tr>
-         <td rowspan="2"><b>Specififcations:</td>
-         <td>Common cathode configuration</td>
-   </tr>
-      <td>Each display typically consists of 8 segments plus a dot.</td>
-   </tr>
-   <tr>
-         <td rowspan="2"><b>Functionality:</td>
-         <td>Displays numeric and alphanumeric information.</td>
-    </tr>
-    <tr>
-      <td>Directly controlled through FPGA logic for dynamic output.</td>
+         <td><b>Functionality:</td>
+         <td>Displays numeric and alphanumeric information such as the current level of the User's game.</td>
     </tr>
 </table>
 
@@ -217,100 +196,19 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
    </tr>
    <tr>
          <td><b>Supported Resolutions:</td>
-         <td colspan="2">640x480, 800x600, 1024x768, 1280x1024</td>
+         <td colspan="2"><b>640x480</b>, 800x600, 1024x768, 1280x1024</td>
    </tr>
    <tr>
-         <td><b>Supported Refresh Rates:</td>
-         <td colspan="2">60 Hz, 75 Hz, 85 Hz</td>
-   </tr>
-   <!-- <tr>
-         <td><b>Supported Color Depth:</td>
-         <td colspan="2">8-bit (256 colors)</td>
-   </tr> -->
-   <tr>
-         <td><b>Functionality:</td>
+         <td rowspan="2"><b>Functionality:</td>
          <td colspan="2">Provides video output for displaying game graphics and user interface.</td>
    </tr>
-   <tr>
-         <td rowspan="2"><b>Applications:</td>
-         <td colspan="2">Ideal for graphical projects, such as simple games (e.g., Pong).</td>
-      </tr>
       <tr>
          <td colspan="2">Access to horizontal and vertical sync signals for display timing.</td>
       </tr>
 </table>
 
 
-
-#### 6. Swictches
-<table>
-   <tr>
-         <td><b>Number of Switches:</td>
-         <td colspan="2">4 (tactile pushbutton swicthes)</td>
-   </tr>
-   <tr>
-         <td><b>Functionality:</td>
-         <td colspan="2">Configured to allow user input for projects (e.g., start/stop signals).</td>
-   </tr>
-   <tr>
-         <td rowspan="2"><b>Electrical Characteristics:</td>
-         <td>Typical voltage:</td>
-         <td>5V (when in use).</td>
-   </tr>
-         <td>Short circuit current:</td>
-         <td>20 mA (max).</td>
-   </tr>
-</table>
-
-#### 7. PMOD Connector
-<table>
-   <tr>
-         <td><b>Interface Type:</td>
-         <td>PMOD (Peripheral Module) connector</td>
-   </tr>
-   <tr>
-         <td><b>Pin Configuration</td>
-         <td>2x6 header (12 pins)</td>
-   </tr>
-   <tr>
-         <td rowspan="2"><b>Functionality:</td>
-         <td>Expands board capabilities with various PMOD Peripheral Modules.</td>
-         <tr>
-         <td>Supports protocols like I2C and SPI for interfacing with sensors, displays, and other components.</td>
-      </tr>
-   <tr>
-         <td><b>Available Modules:</td>
-         <td>Extensive library of PMOD modules for additional functionalities (e.g., motor drivers, sensors).</td>
-      </tr>
-</table>
-
-#### 8. Other Components
-  <table>
-   <tr>
-         <td rowspan="3"><b>Oscillator:</td>
-         <td>Type:</td>
-         <td>25 MHz crystal oscillator</td>
-   </tr>
-   <tr>
-         <td>Usage:</td>
-         <td>Non-volatile storage used for booting FPGA configurations.</td>
-   </tr>
-   <tr>
-         <td>Interface:</td>
-         <td>SPI for reading and writing configuration data.</td>
-</table>
-
-<table>
-   <tr>
-         <td rowspan="2"><b>Flash Memory:</td>
-         <td>Size:</td>
-         <td>1 Mb (megabit) Flash memory</td>
-   </tr>
-   <tr>
-         <td>Usage:</td>
-         <td>Stores configuration data and program code for the FPGA.</td>
-   </tr>
-   </table>
+#### 6. Other Components
 
 ---
 
@@ -318,9 +216,68 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 
 #### 1. Overview of Software Modules
 
+<table>
+      <tr>
+            <th><b>Module Name</td>
+            <th><b>Description</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>main.v</td>
+            <td>This is the entry point of the game, responsible for initializing and orchestrating the other modules. It manages the clock signals and ensures proper sequencing of game functions.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>frog.v</td>
+            <td>This module handles all the logic related to the frog’s movements on the screen. It manages user inputs to control the frog, ensuring it moves across the lanes while avoiding cars.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>car.v</td>
+            <td>Defines the behavior of the cars that the frog must avoid. It manages car speed, direction, and position. Multiple cars can be controlled through this module, with varying speeds across different levels.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>game_controller.v</td>
+            <td>Manages the game state, including start, play, game over, and level progression. This module ensures the game follows the intended flow, including tracking the player’s progress and adjusting difficulty.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>display_controller.v</td>
+            <td>Responsible for interfacing with the VGA display, controlling what is shown on the screen. It manages the rendering of the frog, cars, game background, and any other visual elements.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>collision_detector.v</td>
+            <td>Implements logic to detect when the frog collides with a car. This module ensures accurate hit detection, which is critical for determining when the player loses a life.</td>
+      </tr>
+      <tr>
+            <td align="center"><pre><b>level_manager.v</td>
+            <td>Manages the level increments and difficulty scaling. It handles transitions between levels, adjusting car speed and other parameters to make the game more challenging.</td>
+      </tr>
+</table>
+
+
 #### 2. Module Interactions
 
+```mermaid
+      graph TD;
+            A[main.v]:::highlight -->B{Clock Signals} --> C[frog.v]:::highlight;
+            B{Clock Signals} --> D[car.v]:::highlight;
+            B{Clock Signals} --> E[game_controller.v]:::highlight;
+            B{Clock Signals} --> F[display_controller.v]:::highlight;
+            B{Clock Signals} --> G[collision_detector.v]:::highlight;
+            B{Clock Signals} --> H[level_manager.v]:::highlight;
+
+            C[frog.v]:::highlight -->J((User Inputs)):::small --> E[game_controller.v]:::highlight;
+            D[car.v]:::highlight -->K((Car Positions)):::small --> G[collision_detector.v]:::highlight;
+            C[frog.v]:::highlight -->L((Frog Position)):::small --> G[collision_detector.v]:::highlight;
+            G[collision_detector.v]:::highlight -->M((Collision Status)):::small --> E[game_controller.v]:::highlight;
+            E[game_controller.v]:::highlight -->N((Game State)):::small --> F[display_controller.v]:::highlight;
+            E[game_controller.v]:::highlight -->P((Level Info)):::small --> H[level_manager.v]:::highlight;
+            H[level_manager.v]:::highlight -->Q((Level Data)):::small --> D[car.v]:::highlight;
+            F[display_controller.v]:::highlight -->R((Render Data)):::small -->I{VGA};
+
+      classDef highlight fill:#f9f,stroke:#333,stroke-width:2px;
+      classDef small font-size:10px;
+```
+
 #### 3. Inputs and Outputs Mapping
+
 
 #### 4. Data Structures
 

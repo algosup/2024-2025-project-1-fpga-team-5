@@ -783,33 +783,18 @@ The VGA screen will display the game screen, including the frog, cars, logs, tur
 
 ```mermaid
 
-flowchart TB
-    GE[Game Engine]
-    GR[Graphics Renderer]
-    GM[Game Mechanics]
-    LM[Level Management]
-    UI[User Interface]
-
-    GE -->|Manages| GR
-    GE -->|Handles| GM
-    GE -->|Controls| LM
-    GE -->|Updates| UI
-
-    GR -->|Displays| Sprites[Sprite Management]
-    GR -->|Shows| BG[Background Management]
-
-    GM -->|Movement| PC[Player Controller]
-    GM -->|Interactions| CD[Collision Detection]
-    GM -->|Scoring| SS[Score System]
-
-    LM -->|Settings| DS[Difficulty Settings]
-    LM -->|Progress| LP[Level Progression]
-
-    UI -->|Navigation| Menu[Menu System]
-    UI -->|Display| HUD[HUD Display]
-
-    classDef gamecomp fill:#f9f,stroke:#333,stroke-width:2px;
-    class GE,GR,GM,LM,UI gamecomp;
+graph TD;
+    A[Player] -->|Controls| B[Frog]
+    B -->|Moves| C[Game Map]
+    C -->|Contains| D[Lanes]
+    C -->|Contains| E[River]
+    C -->|Contains| F[Home Bases]
+    D -->|Has| G[Cars]
+    E -->|Has| H[Logs]
+    E -->|Has| I[Turtles]
+    F -->|Goal| J[Scoring]
+    J --> K[Level Up Conditions]
+    K -->|Check| B
 
 ```
 

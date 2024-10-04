@@ -33,6 +33,8 @@
   - [1. Overview of Software Modules](#1-overview-of-software-modules)
   - [2. Module Interactions](#2-module-interactions)
   - [3. Inputs and Outputs Mapping](#3-inputs-and-outputs-mapping)
+    - [Input Controls to Game Actions](#input-controls-to-game-actions)
+    - [Outputs to Display](#outputs-to-display)
   - [4. Data Structures](#4-data-structures)
   - [5. Memory Management](#5-memory-management)
   - [6. Clock Management](#6-clock-management)
@@ -154,7 +156,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
          <td>Switch 4:</td>
    </tr>
    <tr>
-         <td><b><i>Up</td>
+         <td>Up</td>
          <td>Left</td>
          <td>Right</td>
          <td>Down</td>
@@ -163,7 +165,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 </table>
 
 #### 3. Light Emitting Diodes (LEDs)
-<table>
+<!-- <table>
    <tr>
          <td><b>Number of LEDs :</td>
          <td colspan="3">4</td>
@@ -173,7 +175,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
          <td colspan="2">Provides visual feedback for board status and diagnostic information.</td>
       <td colspan="2"><b><i>WHAT THE LED DOING</td>
     </tr>
-</table>
+</table> -->
 
 #### 4. 7-Segment Display
 <table>
@@ -209,7 +211,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 
 
 #### 6. Other Components
-
+<!-- idk for now, maybe even not needed -->
 ---
 
 ### IV. Software Architecture
@@ -243,7 +245,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
       </tr>
       <tr>
             <td align="center"><pre><b>collision_detector.v</td>
-            <td>Implements logic to detect when the frog collides with a car. This module ensures accurate hit detection, which is critical for determining when the player loses a life.</td>
+            <td>Implements logic to detect when the frog collides with a car. This module ensures accurate hit detection, which is critical for determining when the player loses the game.</td>
       </tr>
       <tr>
             <td align="center"><pre><b>level_manager.v</td>
@@ -255,31 +257,293 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 #### 2. Module Interactions
 
 ```mermaid
-      graph TD;
-            A[main.v]:::highlight -->B{Clock Signals} --> C[frog.v]:::highlight;
-            B{Clock Signals} --> D[car.v]:::highlight;
-            B{Clock Signals} --> E[game_controller.v]:::highlight;
-            B{Clock Signals} --> F[display_controller.v]:::highlight;
-            B{Clock Signals} --> G[collision_detector.v]:::highlight;
-            B{Clock Signals} --> H[level_manager.v]:::highlight;
+graph TD;
+      A[main.v]:::highlight -->B{Clock Signals} --> C[frog.v]:::highlight;
+      B{Clock Signals} --> D[car.v]:::highlight;
+      B{Clock Signals} --> E[game_controller.v]:::highlight;
+      B{Clock Signals} --> F[display_controller.v]:::highlight;
+      B{Clock Signals} --> G[collision_detector.v]:::highlight;
+      B{Clock Signals} --> H[level_manager.v]:::highlight;
 
-            C[frog.v]:::highlight -->J((User Inputs)):::small --> E[game_controller.v]:::highlight;
-            D[car.v]:::highlight -->K((Car Positions)):::small --> G[collision_detector.v]:::highlight;
-            C[frog.v]:::highlight -->L((Frog Position)):::small --> G[collision_detector.v]:::highlight;
-            G[collision_detector.v]:::highlight -->M((Collision Status)):::small --> E[game_controller.v]:::highlight;
-            E[game_controller.v]:::highlight -->N((Game State)):::small --> F[display_controller.v]:::highlight;
-            E[game_controller.v]:::highlight -->P((Level Info)):::small --> H[level_manager.v]:::highlight;
-            H[level_manager.v]:::highlight -->Q((Level Data)):::small --> D[car.v]:::highlight;
-            F[display_controller.v]:::highlight -->R((Render Data)):::small -->I{VGA};
+      C[frog.v]:::highlight -->J((User Inputs)):::small --> E[game_controller.v]:::highlight;
+      D[car.v]:::highlight -->K((Car Positions)):::small --> G[collision_detector.v]:::highlight;
+      C[frog.v]:::highlight -->L((Frog Position)):::small --> G[collision_detector.v]:::highlight;
+      G[collision_detector.v]:::highlight -->M((Collision Status)):::small --> E[game_controller.v]:::highlight;
+      E[game_controller.v]:::highlight -->N((Game State)):::small --> F[display_controller.v]:::highlight;
+      E[game_controller.v]:::highlight -->P((Level Info)):::small --> H[level_manager.v]:::highlight;
+      H[level_manager.v]:::highlight -->Q((Level Data)):::small --> D[car.v]:::highlight;
+      F[display_controller.v]:::highlight -->R((Render Data)):::small -->I{VGA}:::vga;
 
-      classDef highlight fill:#f9f,stroke:#333,stroke-width:2px;
-      classDef small font-size:10px;
+classDef highlight fill:#7EE778,stroke:#333,stroke-width:3px;
+classDef small font-size:10px;
+classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
 ```
 
 #### 3. Inputs and Outputs Mapping
 
+##### Input Controls to Game Actions
+
+<table>
+      <thead>
+            <tr>
+                  <th ><strong>Input Control</strong></th>
+                  <th><strong>Game Action</strong></th>
+                  <th><strong>Description</strong></th>
+            </tr>
+      </thead>
+      <tbody>
+            <tr>
+                  <td align="center">Switch 1</td>
+                  <td>Move Frog Up</td>
+                  <td>Moves the frog one position up on the screen.</td>
+            </tr>
+            <tr>
+                  <td align="center">Switch 2</td>
+                  <td>Move Frog Left</td>
+                  <td>Moves the frog one position to the left.</td>
+            </tr>
+            <tr>
+                  <td align="center">Switch 3</td>
+                  <td>Move Frog Right</td>
+                  <td>Moves the frog one position to the right.</td>
+            </tr>
+            <tr>
+                  <td align="center">Switch 4</td>
+                  <td>Move Frog Down</td>
+                  <td>Moves the frog one position down on the screen.</td>
+            </tr>
+      </tbody>
+</table>
+
+##### Outputs to Display
+
+<table>
+      <thead>
+            <tr>
+                  <th><strong>Output</strong></th>
+                  <th><strong>Display Element</strong></th>
+                  <th><strong>Description</strong></th>
+            </tr>
+      </thead>
+            <tr>
+                  <td align="center">VGA Output</td>
+                  <td>Frog Sprite</td>
+                  <td>Displays the frog at its current position.</td>
+            </tr>
+            <tr>
+                  <td align="center">VGA Output</td>
+                  <td>Car Sprites</td>
+                  <td>Displays cars moving across the screen.</td>
+            </tr>
+            <tr>
+                  <td align="center">VGA Output</td>
+                  <td>Background</td>
+                  <td>Displays the game background (e.g., road, river).</td>
+            </tr>
+            <tr>
+                  <td align="center">7-Segment Display</td>
+                  <td>Current Level</td>
+                  <td>Shows the current level of the game.</td>
+            </tr>
+</table>
 
 #### 4. Data Structures
+<table>
+      <thead>
+            <tr>
+                  <th>Category</th>
+                  <th>Variable</th>
+                  <th>Description</th>
+            </tr>
+      </thead>
+            <tr>
+                  <td align="center"><b>Clock</td>
+                  <td><code>i_Clk</code></td>
+                  <td>System clock input</td>
+            </tr>
+            <tr>
+                  <td rowspan="2" align="center"><b>7-Segment Display</td>
+                  <td><code>o_Segment1</code></td>
+                  <td>7-segment display output for digit 1</td>
+            </tr>
+            <tr>
+                  <td><code>o_Segment2</code></td>
+                  <td>7-segment display output for digit 2</td>
+            </tr>
+            <tr>
+                  <td rowspan="4" align="center"><b>Switches</td>
+                  <td><code>i_Switch_1</code></td>
+                  <td>Up switch input</td>
+            </tr>
+            <tr>
+                  <td><code>i_Switch_2</code></td>
+                  <td>Left switch input</td>
+            </tr>
+            <tr>
+                  <td><code>i_Switch_3</code></td>
+                  <td>Right switch input</td>
+            </tr>
+            <tr>
+                  <td><code>i_Switch_4</code></td>
+                  <td>Down switch input</td>
+            </tr>
+            <tr>
+                  <td rowspan="5" align="center"><b>VGA Output</td>
+                  <td><code>o_VGA_HSync</code></td>
+                  <td>VGA horizontal sync output</td>
+            </tr>
+            <tr>
+                  <td><code>o_VGA_VSync</code></td>
+                  <td>VGA vertical sync output</td>
+            </tr>
+            <tr>
+                  <td><code>o_VGA_Red</code></td>
+                  <td>VGA red component output</td>
+            </tr>
+            <tr>
+                  <td><code>o_VGA_Grn</code></td>
+                  <td>VGA green component output</td>
+            </tr>
+            <tr>
+                  <td><code>o_VGA_Blu</code></td>
+                  <td>VGA blue component output</td>
+            </tr>
+            <tr>
+                  <td></td>
+            <tr>
+                  <td rowspan="10" align="center"><b>Other</td>
+                  <td><code>clock_tick</code></td>
+                  <td>Signal to increment game clock?????</td>
+            </tr>
+            <tr>
+                  <td><code>level</code></td>
+                  <td>Current level of the game</td>
+            </tr>
+            <tr>
+                  <td><code>player_x</code></td>
+                  <td>Player's x-coordinate</td>
+            </tr>
+            <tr>
+                  <td><code>player_y</code></td>
+                  <td>Player's y-coordinate</td>
+            </tr>
+            <tr>
+                  <td><code>road_top_start</code></td>
+                  <td>Starting position of the top road lane</td>
+            </tr>
+            <tr>
+                  <td><code>road_top_end</code></td>
+                  <td>Ending position of the top road lane</td>
+            </tr>
+            <tr>
+                  <td><code>road_bottom_start</code></td>
+                  <td>Starting position of the bottom road lane</td>
+            </tr>
+            <tr>
+                  <td><code>road_bottom_end</code></td>
+                  <td>Ending position of the bottom road lane</td>
+            </tr>
+            <tr>
+                  <td><code>grass_arrival_start</code></td>
+                  <td>Starting position of the grass lane where the frog arrives</td>
+            </tr>
+            <tr>
+                  <td><code>grass_arrival_end</code></td>
+                  <td>Ending position of the grass lane where the frog arrives</td>
+            </tr>
+            <tr>
+                  <td><code>grass_middle_start</code></td>
+                  <td>Starting position of the middle grass lane</td>
+            </tr>
+            <tr>
+                  <td><code>grass_middle_end</code></td>
+                  <td>Ending position of the middle grass lane</td>     
+            </tr>
+            <tr>
+                  <td><code>grass_spawn_start</code></td>
+                  <td>Starting position of the grass lane where the frog spawns</td>
+            </tr>
+            <tr>
+                  <td><code>grass_spawn_end</code></td>
+                  <td>Ending position of the grass lane where the frog spawns</td>
+            </tr>
+            <tr>
+                  <td></td>
+            </tr>
+            <tr>
+                  <td><code>H_SYNC_CYCLES</code></td>
+                  <td>Number of cycles for horizontal sync pulse</td>
+            </tr>
+            <tr>
+                  <td><code>H_BACK_PORCH</code></td>
+                  <td>Number of cycles for horizontal back porch</td>
+            </tr>
+            <tr>
+                  <td><code>H_DISPLAY</code></td>
+                  <td>Number of cycles for horizontal display</td>
+            </tr>
+            <tr>
+                  <td><code>H_FRONT_PORCH</code></td>
+                  <td>Number of cycles for horizontal front porch</td>
+            </tr>
+            <tr>
+                  <td><code>H_LINE</code></td>
+                  <td>Number of cycles per horizontal line</td>
+            </tr>
+            <tr>
+                  <td><code>V_SYNC_CYCLES</code></td>
+                  <td>Number of cycles for vertical sync pulse</td>
+            </tr>
+            <tr>
+                  <td><code>V_BACK_PORCH</code></td>
+                  <td>Number of cycles for vertical back porch</td>
+            </tr>
+            <tr>
+                  <td><code>V_DISPLAY</code></td>
+                  <td>Number of cycles for vertical display</td>
+            </tr>
+            <tr>
+                  <td><code>V_FRONT_PORCH</code></td>
+                  <td>Number of cycles for vertical front porch</td>
+            </tr>
+            <tr>
+                  <td><code>V_FRAME</code></td>
+                  <td>Number of cycles per vertical line</td>
+            </tr>
+            <tr>
+                  <td><code>h_counter</code></td>
+                  <td>Horizontal counter</td>
+            </tr>
+            <tr>
+                  <td><code>v_counter</code></td>
+                  <td>Vertical counter</td>
+            </tr>
+            <tr>
+                  <td><code>h_active</code></td>
+                  <td>Horizontal active region</td>
+            </tr>
+            <tr>
+                  <td><code>v_active</code></td>
+                  <td>Vertical active region</td>
+            </tr>
+            <tr>
+                  <td><code>tile_size</code></td>
+                  <td>Size of each tile on the screen</td>
+            </tr>
+            <tr>
+                  <td><code>cell_x</code></td>
+                  <td>Current cell x-coordinate</td>
+            </tr>
+            <tr>
+                  <td><code>cell_y</code></td>
+                  <td>Current cell y-coordinate</td>
+            </tr>
+            <tr>
+                  <td><code>pixel_color</code></td>
+                  <td>Color of the current pixel</td>
+            </tr>
+
+</table>
 
 #### 5. Memory Management
 

@@ -11,8 +11,11 @@
 </br>
 
 **Written by:** [*Rémy CHARLES*](https://github.com/RemyCHARLES)
+
 **Created on:** *2024-09-23* 
+
 **Last updated:** *2024-10-04*
+
 **Reviewed by:** *None*
 
 <!-- TABLE OF CONTENTS -->

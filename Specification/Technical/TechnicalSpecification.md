@@ -255,15 +255,14 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 
 
 #### 2. Module Interactions
-
 ```mermaid
 graph TD;
-      A[main.v]:::highlight -->B{Clock Signals} --> C[frog.v]:::highlight;
-      B{Clock Signals} --> D[car.v]:::highlight;
-      B{Clock Signals} --> E[game_controller.v]:::highlight;
-      B{Clock Signals} --> F[display_controller.v]:::highlight;
-      B{Clock Signals} --> G[collision_detector.v]:::highlight;
-      B{Clock Signals} --> H[level_manager.v]:::highlight;
+      A[main.v]:::highlight -->B{Clock Signals}:::grey --> C[frog.v]:::highlight;
+      B{Clock Signals}:::grey --> D[car.v]:::highlight;
+      B{Clock Signals}:::grey --> E[game_controller.v]:::highlight;
+      B{Clock Signals}:::grey --> F[display_controller.v]:::highlight;
+      B{Clock Signals}:::grey --> G[collision_detector.v]:::highlight;
+      B{Clock Signals}:::grey --> H[level_manager.v]:::highlight;
 
       C[frog.v]:::highlight -->J((User Inputs)):::small --> E[game_controller.v]:::highlight;
       D[car.v]:::highlight -->K((Car Positions)):::small --> G[collision_detector.v]:::highlight;
@@ -274,9 +273,10 @@ graph TD;
       H[level_manager.v]:::highlight -->Q((Level Data)):::small --> D[car.v]:::highlight;
       F[display_controller.v]:::highlight -->R((Render Data)):::small -->I{VGA}:::vga;
 
-classDef highlight fill:#7EE778,stroke:#333,stroke-width:3px;
-classDef small font-size:10px;
+classDef highlight fill:#5C955C,stroke:#333,stroke-width:3px,color:#fff;
+classDef small fill:#333,font-size:10px,color:#fff;
 classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
+classDef grey fill:#333,stroke:#333,stroke-width:3px,color:#fff;
 ```
 
 #### 3. Inputs and Outputs Mapping
@@ -312,6 +312,10 @@ classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
                   <td>Move Frog Down</td>
                   <td>Moves the frog one position down on the screen.</td>
             </tr>
+            <tr>
+                  <td align="center">All the Switch</td>
+                  <td>Reset Game</td>
+                  <td>Resets the game to the initial state.</td>
       </tbody>
 </table>
 
@@ -351,7 +355,7 @@ classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
 <table>
       <thead>
             <tr>
-                  <th>Category</th>
+                  <th style="width:10%">Category</th>
                   <th>Variable</th>
                   <th>Description</th>
             </tr>
@@ -408,146 +412,31 @@ classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
                   <td><code>o_VGA_Blu</code></td>
                   <td>VGA blue component output</td>
             </tr>
-            <tr>
-                  <td></td>
-            <tr>
-                  <td rowspan="10" align="center"><b>Other</td>
-                  <td><code>clock_tick</code></td>
-                  <td>Signal to increment game clock?????</td>
-            </tr>
-            <tr>
-                  <td><code>level</code></td>
-                  <td>Current level of the game</td>
-            </tr>
-            <tr>
-                  <td><code>player_x</code></td>
-                  <td>Player's x-coordinate</td>
-            </tr>
-            <tr>
-                  <td><code>player_y</code></td>
-                  <td>Player's y-coordinate</td>
-            </tr>
-            <tr>
-                  <td><code>road_top_start</code></td>
-                  <td>Starting position of the top road lane</td>
-            </tr>
-            <tr>
-                  <td><code>road_top_end</code></td>
-                  <td>Ending position of the top road lane</td>
-            </tr>
-            <tr>
-                  <td><code>road_bottom_start</code></td>
-                  <td>Starting position of the bottom road lane</td>
-            </tr>
-            <tr>
-                  <td><code>road_bottom_end</code></td>
-                  <td>Ending position of the bottom road lane</td>
-            </tr>
-            <tr>
-                  <td><code>grass_arrival_start</code></td>
-                  <td>Starting position of the grass lane where the frog arrives</td>
-            </tr>
-            <tr>
-                  <td><code>grass_arrival_end</code></td>
-                  <td>Ending position of the grass lane where the frog arrives</td>
-            </tr>
-            <tr>
-                  <td><code>grass_middle_start</code></td>
-                  <td>Starting position of the middle grass lane</td>
-            </tr>
-            <tr>
-                  <td><code>grass_middle_end</code></td>
-                  <td>Ending position of the middle grass lane</td>     
-            </tr>
-            <tr>
-                  <td><code>grass_spawn_start</code></td>
-                  <td>Starting position of the grass lane where the frog spawns</td>
-            </tr>
-            <tr>
-                  <td><code>grass_spawn_end</code></td>
-                  <td>Ending position of the grass lane where the frog spawns</td>
-            </tr>
-            <tr>
-                  <td></td>
-            </tr>
-            <tr>
-                  <td><code>H_SYNC_CYCLES</code></td>
-                  <td>Number of cycles for horizontal sync pulse</td>
-            </tr>
-            <tr>
-                  <td><code>H_BACK_PORCH</code></td>
-                  <td>Number of cycles for horizontal back porch</td>
-            </tr>
-            <tr>
-                  <td><code>H_DISPLAY</code></td>
-                  <td>Number of cycles for horizontal display</td>
-            </tr>
-            <tr>
-                  <td><code>H_FRONT_PORCH</code></td>
-                  <td>Number of cycles for horizontal front porch</td>
-            </tr>
-            <tr>
-                  <td><code>H_LINE</code></td>
-                  <td>Number of cycles per horizontal line</td>
-            </tr>
-            <tr>
-                  <td><code>V_SYNC_CYCLES</code></td>
-                  <td>Number of cycles for vertical sync pulse</td>
-            </tr>
-            <tr>
-                  <td><code>V_BACK_PORCH</code></td>
-                  <td>Number of cycles for vertical back porch</td>
-            </tr>
-            <tr>
-                  <td><code>V_DISPLAY</code></td>
-                  <td>Number of cycles for vertical display</td>
-            </tr>
-            <tr>
-                  <td><code>V_FRONT_PORCH</code></td>
-                  <td>Number of cycles for vertical front porch</td>
-            </tr>
-            <tr>
-                  <td><code>V_FRAME</code></td>
-                  <td>Number of cycles per vertical line</td>
-            </tr>
-            <tr>
-                  <td><code>h_counter</code></td>
-                  <td>Horizontal counter</td>
-            </tr>
-            <tr>
-                  <td><code>v_counter</code></td>
-                  <td>Vertical counter</td>
-            </tr>
-            <tr>
-                  <td><code>h_active</code></td>
-                  <td>Horizontal active region</td>
-            </tr>
-            <tr>
-                  <td><code>v_active</code></td>
-                  <td>Vertical active region</td>
-            </tr>
-            <tr>
-                  <td><code>tile_size</code></td>
-                  <td>Size of each tile on the screen</td>
-            </tr>
-            <tr>
-                  <td><code>cell_x</code></td>
-                  <td>Current cell x-coordinate</td>
-            </tr>
-            <tr>
-                  <td><code>cell_y</code></td>
-                  <td>Current cell y-coordinate</td>
-            </tr>
-            <tr>
-                  <td><code>pixel_color</code></td>
-                  <td>Color of the current pixel</td>
-            </tr>
-
 </table>
 
 #### 5. Memory Management
+<!-- Memory Management
+In the Frogger FPGA project, memory is managed by statically allocating resources at compile time, ensuring efficient use of the FPGA's limited internal memory. Key game data such as the frog's position, car positions, and game state are stored in registers, while larger data sets like sprites and the display buffer are managed in Block RAM (BRAM).
+
+To optimize memory:
+
+Registers store small, frequently updated game variables.
+BRAM is used for larger assets, such as sprites and background data.
+Look-Up Tables (LUTs) store fixed graphics like sprite shapes.
+Memory is reused where possible, and double-buffering may be employed to manage display data efficiently and prevent screen flicker.
+This approach ensures the game runs smoothly within the FPGA's hardware constraints. SUMMARY AND NEED TO BE REVIEW-->
 
 #### 6. Clock Management
+
+<!-- Clock Management
+The Frogger FPGA project relies on precise clock signals to synchronize the game’s operations. A primary clock signal is generated by the FPGA and distributed to all modules, ensuring consistent timing across the system.
+
+Key elements of clock management:
+
+Clock division is used to generate slower clock signals for modules like user input and VGA display.
+Game timing is controlled by counting clock cycles, which ensures consistent frog movement, car speed, and level progression.
+Frame rate management ensures smooth rendering on the VGA display by synchronizing with the display refresh rate.
+This ensures all game elements function in sync, providing responsive gameplay and smooth visual output. SUMMARY AND NEED TO BE REVIEW-->
 
 ---
 

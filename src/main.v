@@ -1,8 +1,9 @@
 `include "modules/7_segments.v"
-`include "modules/vga.v"
+// `include "modules/vga.v"
 `include "sprites/player.v"
 `include "sprites/road.v"
 `include "sprites/grass.v"
+`include "sprites/car.v"
 module main (
     // Clock
     input i_Clk,
@@ -30,19 +31,21 @@ module main (
 
     always @(posedge i_Clk) begin
         if (player_y == 1) begin
-            if (level == 99) begin
-                level <= 0;
-            end else begin
-                level <= level + 1;
-            end
-        end
-
-        if (clock_tick < 25000000) begin
-            clock_tick <= clock_tick + 1;
+            // if (clock_tick < 25000000) begin
+                // clock_tick <= clock_tick + 1;
+            // end else begin
+                if (level == 99) begin
+                    level <= 0;
+                end else begin
+                    level <= level + 1;
+                end
+                    // clock_tick <= 0;
+            // end // if (clock_tick < 25000000)
+        end else if (o_reset == 1) begin
+            level <= 0;
         end else begin
-            // 1 second has passed
             clock_tick <= 0;
-        end // if (clock_tick < 25000000)
+        end
     end // always @(posedge i_Clk)
 
     // display level_counter on 7_segments module
@@ -52,10 +55,11 @@ module main (
         .o_Segment2(o_Segment2)
     );
 
-
     // Player module
     wire [9:0] player_x;
     wire [9:0] player_y;
+    reg i_reset = 0;
+    wire o_reset;
     player player_module (
         .i_Clk(i_Clk),
         .i_player_up(i_Switch_1),
@@ -63,7 +67,9 @@ module main (
         .i_player_left(i_Switch_2),
         .i_player_right(i_Switch_3),
         .o_player_x(player_x),
-        .o_player_y(player_y)
+        .o_player_y(player_y),
+        .i_reset(i_reset),
+        .o_reset(o_reset)
     );
 
 
@@ -94,6 +100,63 @@ module main (
         .grass_spawn_start(grass_spawn_start),
         .grass_spawn_end(grass_spawn_end)
     );
+
+    // Car module
+    // TODO: Find a way to clean this up
+    reg [9:0] i_car_x = 1;
+    wire [9:0] car_x;
+    wire [9:0] car_y = 2;
+    car car_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car_x),
+        .o_car_x(car_x),
+    );
+
+    reg [9:0] i_car2_x = 15;
+    wire [9:0] car2_x;
+    wire [9:0] car2_y = 3;
+    car car2_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car2_x),
+        .o_car_x(car2_x),
+    );
+
+    reg [9:0] i_car3_x = 17;
+    wire [9:0] car3_x;
+    wire [9:0] car3_y = 4;
+    car car3_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car3_x),
+        .o_car_x(car3_x),
+    );
+
+    reg [9:0] i_car4_x = 9;
+    wire [9:0] car4_x;
+    wire [9:0] car4_y = 5;
+    car car4_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car4_x),
+        .o_car_x(car4_x),
+    );
+
+    reg [9:0] i_car5_x = 10;
+    wire [9:0] car5_x;
+    wire [9:0] car5_y = 6;
+    car car5_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car5_x),
+        .o_car_x(car5_x),
+    );
+
+    reg [9:0] i_car6_x = 7;
+    wire [9:0] car6_x;
+    wire [9:0] car6_y = 7;
+    car car6_module (
+        .i_Clk(i_Clk),
+        .i_car_x(i_car6_x),
+        .o_car_x(car6_x),
+    );
+
 
     // VGA module
     // VGA timing constants for 640x480 resolution
@@ -127,10 +190,23 @@ module main (
     wire pixel_color;
     assign pixel_color = (h_active && v_active);
 
-    always @(*) begin
+    always @(i_Clk) begin
         if (pixel_color) begin
-            if (cell_x == player_x && cell_y == player_y) begin
+            if ((car_x == cell_x && car_y == cell_y)
+                    || (car2_x == cell_x && car2_y == cell_y)
+                    || (car3_x == cell_x && car3_y == cell_y)
+                    || (car4_x == cell_x && car4_y == cell_y)
+                    || (car5_x == cell_x && car5_y == cell_y)
+                    // || (car6_x == cell_x && car6_y == cell_y)
+            ) begin
+                o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car
+                if (cell_x == player_x && cell_y == player_y) begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
+                    i_reset <= 1;
+                end
+            end else if (cell_x == player_x && cell_y == player_y) begin
                 o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
+            
             end else if ((cell_y >= road_top_start && cell_y < road_top_end) || (cell_y >= road_bottom_start && cell_y < road_bottom_end )) begin
                 o_VGA_Red = 3'b001; o_VGA_Grn = 3'b001; o_VGA_Blu = 3'b001; // Roads
             end else if ((cell_y >= grass_arrival_start && cell_y < grass_arrival_end) || (cell_y >= grass_middle_start && cell_y < grass_middle_end) || (cell_y >= grass_spawn_start && cell_y <= grass_spawn_end)) begin

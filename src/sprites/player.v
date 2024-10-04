@@ -2,12 +2,14 @@
 module player (
     output reg [9:0] o_player_x,
     output reg [9:0] o_player_y,
+    output wire o_reset,
 
     input i_Clk,
     input i_player_up,
     input i_player_down,
     input i_player_left,
     input i_player_right,
+    input i_reset,
 );
 
 initial begin
@@ -67,6 +69,14 @@ always @(posedge i_Clk) begin
         if (o_player_x < 20) begin
             o_player_x <= o_player_x + 1;
         end
+    end
+
+    if (i_reset == 1) begin
+        o_reset <= 1;
+        o_player_x <= 10;
+        o_player_y <= 15;
+    end else begin
+        o_reset <= 0;
     end
 
     if (o_player_y == 1) begin

@@ -1,8 +1,8 @@
 module road(
-    output reg [9:0] road_top_start,
-    output reg [9:0] road_top_end,
-    output reg [9:0] road_bottom_start,
-    output reg [9:0] road_bottom_end
+    output reg [3:0] road_top_start,
+    output reg [3:0] road_top_end,
+    output reg [3:0] road_bottom_start,
+    output reg [3:0] road_bottom_end
 );
 
 initial begin

@@ -1,15 +1,15 @@
 module car(
     input i_Clk, // clock 25MHz
 
-    input [9:0] i_car_x,
-    output reg [9:0] o_car_x,
+    input [4:0] i_car_x,
+    output reg [3:0] o_car_x,
 );
 
 initial begin
     init_car_x = 1'b0;
 end
 
-reg [29:0] clock_tick = 0;
+reg [23:0] clock_tick = 0;
 
 always @(posedge i_Clk) begin
     if (init_car_x == 1'b0) begin

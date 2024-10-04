@@ -1,7 +1,7 @@
 `include "modules/debounce_switch.v"
 module player (
-    output reg [9:0] o_player_x,
-    output reg [9:0] o_player_y,
+    output reg [4:0] o_player_x,
+    output reg [3:0] o_player_y,
     output wire o_reset,
 
     input i_Clk,

@@ -1,5 +1,4 @@
 `include "modules/7_segments.v"
-// `include "modules/vga.v"
 `include "sprites/player.v"
 `include "sprites/road.v"
 `include "sprites/grass.v"
@@ -56,8 +55,8 @@ module main (
     );
 
     // Player module
-    wire [9:0] player_x;
-    wire [9:0] player_y;
+    wire [4:0] player_x;
+    wire [3:0] player_y;
     reg i_reset = 0;
     wire o_reset;
     player player_module (
@@ -74,10 +73,10 @@ module main (
 
 
     // Road module
-    wire [9:0] road_top_start;
-    wire [9:0] road_top_end;
-    wire [9:0] road_bottom_start;
-    wire [9:0] road_bottom_end;
+    wire [3:0] road_top_start;
+    wire [3:0] road_top_end;
+    wire [3:0] road_bottom_start;
+    wire [3:0] road_bottom_end;
     road road_module (
         .road_top_start(road_top_start),
         .road_top_end(road_top_end),
@@ -86,12 +85,12 @@ module main (
     );
 
     // Grass module
-    wire [9:0] grass_arrival_start;
-    wire [9:0] grass_arrival_end;
-    wire [9:0] grass_middle_start;
-    wire [9:0] grass_middle_end;
-    wire [9:0] grass_spawn_start;
-    wire [9:0] grass_spawn_end;
+    wire [3:0] grass_arrival_start;
+    wire [3:0] grass_arrival_end;
+    wire [3:0] grass_middle_start;
+    wire [3:0] grass_middle_end;
+    wire [3:0] grass_spawn_start;
+    wire [3:0] grass_spawn_end;
     grass grass_module (
         .grass_arrival_start(grass_arrival_start),
         .grass_arrival_end(grass_arrival_end),
@@ -103,54 +102,54 @@ module main (
 
     // Car module
     // TODO: Find a way to clean this up
-    reg [9:0] i_car_x = 1;
-    wire [9:0] car_x;
-    wire [9:0] car_y = 2;
+    reg [4:0] i_car_x = 1;
+    wire [4:0] car_x;
+    wire [3:0] car_y = 2;
     car car_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car_x),
         .o_car_x(car_x),
     );
 
-    reg [9:0] i_car2_x = 15;
-    wire [9:0] car2_x;
-    wire [9:0] car2_y = 3;
+    reg [4:0] i_car2_x = 15;
+    wire [4:0] car2_x;
+    wire [3:0] car2_y = 3;
     car car2_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car2_x),
         .o_car_x(car2_x),
     );
 
-    reg [9:0] i_car3_x = 17;
-    wire [9:0] car3_x;
-    wire [9:0] car3_y = 4;
+    reg [4:0] i_car3_x = 17;
+    wire [4:0] car3_x;
+    wire [3:0] car3_y = 4;
     car car3_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car3_x),
         .o_car_x(car3_x),
     );
 
-    reg [9:0] i_car4_x = 9;
-    wire [9:0] car4_x;
-    wire [9:0] car4_y = 5;
+    reg [4:0] i_car4_x = 9;
+    wire [4:0] car4_x;
+    wire [3:0] car4_y = 5;
     car car4_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car4_x),
         .o_car_x(car4_x),
     );
 
-    reg [9:0] i_car5_x = 10;
-    wire [9:0] car5_x;
-    wire [9:0] car5_y = 6;
+    reg [4:0] i_car5_x = 10;
+    wire [4:0] car5_x;
+    wire [3:0] car5_y = 6;
     car car5_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car5_x),
         .o_car_x(car5_x),
     );
 
-    reg [9:0] i_car6_x = 7;
-    wire [9:0] car6_x;
-    wire [9:0] car6_y = 7;
+    reg [4:0] i_car6_x = 7;
+    wire [4:0] car6_x;
+    wire [3:0] car6_y = 7;
     car car6_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car6_x),
@@ -183,8 +182,8 @@ module main (
     assign o_VGA_VSync = ~(v_counter < V_SYNC_CYCLES);
 
     reg [9:0] tile_size = (H_DISPLAY/20);
-    reg [9:0] cell_x = 0;
-    reg [9:0] cell_y = 0;
+    reg [4:0] cell_x = 0;
+    reg [3:0] cell_y = 0;
 
     // Color output logic: Color only the left half of the screen
     wire pixel_color;

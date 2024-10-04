@@ -366,7 +366,7 @@ The number of lives remaining is displayed at the top of the screen.
 
 **Frogger on Homes**
 
-![Frogger](img/FrogSprite/OnlilyPad/OnLilyPad.png)
+![Frogger](img/FrogSprite/OnLilyPad/OnLilyPad.png)
 
 When Frogger reaches a home, the frog is displayed on the lily pad.
 

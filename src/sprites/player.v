@@ -68,6 +68,11 @@ always @(posedge i_Clk) begin
             o_player_x <= o_player_x + 1;
         end
     end
+
+    if (o_player_y == 1) begin
+        o_player_y <= 15;
+        o_player_x <= 10;
+    end
 end
 
 endmodule

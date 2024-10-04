@@ -1,5 +1,8 @@
 `include "modules/7_segments.v"
 `include "modules/vga.v"
+`include "sprites/player.v"
+`include "sprites/road.v"
+`include "sprites/grass.v"
 module main (
     // Clock
     input i_Clk,
@@ -48,31 +51,36 @@ module main (
     );
 
 
+
+    // Player module
+    wire [9:0] player_x;
+    wire [9:0] player_y;
+    player player_module (
+        .player_x(player_x),
+        .player_y(player_y)
+    );
+
+    // Road module
+    wire [9:0] road_start;
+    wire [9:0] road_end;
+    road road_module (
+        .road_start(road_start),
+        .road_end(road_end)
+    );
+
+    // Grass module
+    wire [9:0] grass_arrival_start;
+    wire [9:0] grass_arrival_end;
+    wire [9:0] grass_spawn_start;
+    wire [9:0] grass_spawn_end;
+    grass grass_module (
+        .grass_arrival_start(grass_arrival_start),
+        .grass_arrival_end(grass_arrival_end),
+        .grass_spawn_start(grass_spawn_start),
+        .grass_spawn_end(grass_spawn_end)
+    );
+
     // VGA module
-
-    // Defining the game map
-    reg [19:0] map [0:14];
-    reg [19:0] row_value;  // To store an entire row
-
-    initial begin
-        // Initialize the array manually (since Verilog doesn't support direct initialization)
-        map[0] = 20'b10101010101010101010;
-        map[1] = 20'b01010101010101010101;
-        map[2] = 20'b11111111111111111111;
-        map[3] = 20'b01010101010101010101;
-        map[4] = 20'b10101010101010101010;
-        map[5] = 20'b01010101010101010101;
-        map[6] = 20'b10101010101010101010;
-        map[7] = 20'b01010101010101010101;
-        map[8] = 20'b10101010101010101010;
-        map[9] = 20'b01010101010101010101;
-        map[10] = 20'b10101010101010101010;
-        map[11] = 20'b01010101010101010101;
-        map[12] = 20'b10101010101010101010;
-        map[13] = 20'b01010101010101010101;
-        map[14] = 20'b10101010101010101010;
-    end
-
     // VGA timing constants for 640x480 resolution
     parameter H_SYNC_CYCLES = 92;
     parameter H_BACK_PORCH  = 50;
@@ -102,23 +110,21 @@ module main (
 
     // Color output logic: Color only the left half of the screen
     wire pixel_color;
-    assign pixel_color = (h_active && v_active && (h_counter < H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY) && (v_counter < V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
+    assign pixel_color = (h_active && v_active);
 
-    // Color signals for white pixel (RGB = 111 111 111)
     always @(*) begin
         if (pixel_color) begin
-            row_value = map[cell_y];
-            case (row_value[cell_x])
-                1'b0: begin
-                        o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                    end
-                1'b1: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
+            if (cell_x == player_x && cell_y == player_y) begin
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+            end else if (cell_y > road_start && cell_y <= road_end) begin
+                o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+            end else if (cell_y > grass_arrival_start && cell_y <= grass_arrival_end) begin
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+            end else if (cell_y > grass_spawn_start && cell_y <= grass_spawn_end) begin
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+            end else begin
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+            end
         end else begin
             o_VGA_Red = 3'b000;
             o_VGA_Grn = 3'b000;
@@ -137,7 +143,7 @@ module main (
                 cell_y <= 0;
             end else begin
                 v_counter <= v_counter + 1;
-                if (v_counter > V_SYNC_CYCLES* V_BACK_PORCH + (tile_size*cell_y)) begin
+                if (v_counter > V_SYNC_CYCLES* V_BACK_PORCH + (tile_size*(cell_y-1))) begin
                     cell_y <= cell_y + 1;
                 end
             end
@@ -147,11 +153,7 @@ module main (
             if (h_counter > H_SYNC_CYCLES + H_BACK_PORCH + (tile_size*cell_x)) begin
                 cell_x <= cell_x + 1;
             end
-        end
-
-        
-
-        
+        end        
     end
 
 

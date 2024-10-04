@@ -10,9 +10,10 @@
 
 </br>
 
-**Written by:** [***Rémy CHARLES***](https://github.com/RemyCHARLES) </br>
-**Created on:** *2024-09-23* </br>
-**Last updated:** *2024-10-02*
+**Written by:** [*Rémy CHARLES*](https://github.com/RemyCHARLES)
+**Created on:** *2024-09-23* 
+**Last updated:** *2024-10-04*
+**Reviewed by:** *None*
 
 <!-- TABLE OF CONTENTS -->
 
@@ -117,14 +118,13 @@ This project aims to recreate the classic arcade game "**Frogger**" on an FPGA p
 
 ### 1.2.2 Vision
 
-The vision of this project is to provide an interactive and engaging gaming experience that pays homage to the classic arcade game Frogger. By leveraging the capabilities of FPGA technology, we aim to create a faithful recreation of the original game with enhanced graphics and gameplay features.
+The vision of this project is to provide an interactive and engaging gaming experience that pays homage to the classic arcade game Frogger. By leveraging the capabilities of FPGA technology, we aim to create a faithful recreation of the original game with enhanced graphics.
 
-This game will be designed to appeal to both nostalgic players who remember the original Frogger and new players who are looking for a fun and challenging gaming experience.
-
+This game will be designed to appeal to both nostalgic players who remember the original Frogger and new players who are looking for a remastered version of a classic game.
 ### 1.2.3 Objectives
 
-   - **Technology**: Implement the game logic and graphics using Verilog HDL on an FPGA platform.
-   - **Gameplay**: Recreate the classic Frogger gameplay with enhanced graphics and additional features.
+   - **Technology**: Implement the game logic and graphics using **Verilog HDL** on an FPGA platform.
+   - **Gameplay**: Recreate the classic Frogger gameplay with enhanced graphics.
 
 ### 1.2.4 Scope
 
@@ -239,14 +239,14 @@ Frogger is a frog aiming to return home safely after a day’s wandering. The jo
 
 **Theme**
 
-The theme of “Frogger: The Classic Leap” centers on the quest for safety and the inherent dangers of an everyday journey in a perilous environment. This theme embodies the universal struggle against obstacles, both in the natural world and human-created challenges, reflecting on the risk and vigilance needed in daily survival.
+The theme of "*Frogger*” centers on the quest for safety and the inherent dangers of an everyday journey in a perilous environment. This theme embodies the universal struggle against obstacles, both in the natural world and human-created challenges, reflecting on the risk and vigilance needed in daily survival.
 
 ### Game Objectives
 
 The main objective of the game is to guide Frogger safely across the road and river to reach his lily pad home. For that, the player must:
    - Avoid getting hit by cars on the road.
    - Cross the river by jumping on logs and avoiding sinking into the water.
-   - Reach the lily pad on the other side of the river to complete the level.
+   - Reach the lily pad on the other side of the river 5 times to complete the level.
 
 ### Player Goals
 
@@ -275,7 +275,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 
 **Scoring Mechanism**
 
-  - **Reaching a Home**: Each time Frogger successfully reaches a home, players score points. Bonus points are awarded for reaching a home with a female frog or a fly present.
+  - **Reaching a Home**: Each time Frogger successfully reaches a home, players score points. The score increases with each home reached.
   - **Time Bonus**: Players receive additional points based on the amount of time left on the timer after reaching a home.
   - **Progression**: Completing all homes resets the level with increased difficulty, including faster-moving vehicles and more erratic river obstacles.
 
@@ -309,7 +309,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 **Death**
 
    - **Collision**: If Frogger collides with a vehicle on the road or falls into the water, the player loses a life.
-   - **Lives**: Players have a limited number of lives to complete the game. Running out of lives results in a game over.
+   - **Lives**: Players have 5 lives to complete the game. Running out of lives results in a game over.
 
 ### 2.2.4 Win Conditions
 
@@ -357,6 +357,18 @@ When Frogger moves in a direction, an animation shows the frog jumping in that d
 ![Death](img/DeathSprite/DeathSprite7.png)
 
 When Frogger collides with a vehicle or falls into the water, a death animation is displayed.
+
+**Lives**
+
+![Lives](img/FrogSprite/LifeFrogger/FroggerLife.png)
+
+The number of lives remaining is displayed at the top of the screen.
+
+**Frogger on Homes**
+
+![Frogger](img/FrogSprite/OnlilyPad/OnLilyPad.png)
+
+When Frogger reaches a home, the frog is displayed on the lily pad.
 
 **Cars**
 
@@ -464,6 +476,7 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - **Homes**: The lily pad homes are located at the top of the screen, where Frogger must reach to complete the level.
    - **Score**: The player’s current score is displayed at the top of the screen.
    - **Timer**: A timer counts down the remaining time for the player to complete the level.
+   - **Lives**: The number of lives remaining is displayed at the top of the screen.
 
 **Game Over Screen**
 
@@ -508,6 +521,25 @@ When submerged, turtles do not provide a platform for Frogger to jump on.
    - ![#822fa1](https://placehold.co/15x15/822fa1/822fa1.png) `#822fa1 `
    - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
    - ![#d51c1c](https://placehold.co/15x15/d51c1c/d51c1c.png) `#d51c1c `
+
+</Details>
+
+<Details><Summary><b>Lives Colors</b></Summary>
+
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#75ef00](https://placehold.co/15x15/75ef00/75ef00.png) `#75ef00 `
+   - ![#ff00af](https://placehold.co/15x15/ff00af/ff00af.png) `#ff00af `
+
+</Details>
+
+<Details><summary><b>Frogger on Homes Colors</b></summary>
+
+   - ![#70e500](https://placehold.co/15x15/70e500/70e500.png) `#70e500 `
+   - ![#fbf236](https://placehold.co/15x15/fbf236/fbf236.png) `#fbf236 `
+   - ![#428700](https://placehold.co/15x15/428700/428700.png) `#428700 `
+   - ![#ff8500](https://placehold.co/15x15/ff8500/ff8500.png) `#ff8500 `
+   - ![#000000](https://placehold.co/15x15/000000/000000.png) `#000000 `
+
 </Details>
 
 <Details><Summary><b>Red Cars Colors</b></Summary>
@@ -902,5 +934,5 @@ The budget for this project includes the cost of the FPGA platform, development 
 
 # VII. Conclusion
 
-The development of “Frogger: The Classic Leap” aims to recreate the iconic arcade game in a digital format using Verilog HDL on an FPGA platform. The game concept, gameplay mechanics, visual elements, and user interface have been designed to provide an engaging and challenging gaming experience for players. By following the project plan, managing risks, and adhering to technical requirements, the team aims to deliver a high-quality game that meets the specified objectives and requirements. The future enhancements and feature roadmap provide a vision for expanding the game with additional levels, power-ups, and customization options to enhance the player experience. With a focus on performance, responsiveness, and resource utilization, the team is committed to delivering a successful and enjoyable game that captures the spirit of the classic Frogger arcade game.
+The development of “*Frogger*” aims to recreate the iconic arcade game in a digital format using Verilog HDL on an FPGA platform. The game concept, gameplay mechanics, visual elements, and user interface have been designed to provide an engaging and challenging gaming experience for players. By following the project plan, managing risks, and adhering to technical requirements, the team aims to deliver a high-quality game that meets the specified objectives and requirements. The future enhancements and feature roadmap provide a vision for expanding the game with additional levels, power-ups, and customization options to enhance the player experience. With a focus on performance, responsiveness, and resource utilization, the team is committed to delivering a successful and enjoyable game that captures the spirit of the classic Frogger arcade game.
 

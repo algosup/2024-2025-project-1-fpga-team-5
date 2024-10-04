@@ -186,7 +186,7 @@ The target audience for this game includes players who enjoy classic arcade game
 
 ### 1.2.7 Deliverables
 
-The main deliverables are the source code of the game, supported by multiple version of this game and mockups of the design.
+The main deliverables are the source code of the game, supported by multiple versions of this game and mockups of the design.
 
 Other deliverables include:
    - Functional Specification Document
@@ -303,7 +303,7 @@ The player’s goal is to successfully guide Frogger across the road and river t
 **Death**
 
    - **Collision**: If Frogger collides with a vehicle on the road or falls into the water, the player loses a life.
-   - **Lives**: PLayer has only 1 life to complete the level. If Frogger die, the game is over.
+   - **Lives**: Player has only 1 life to complete the level. If Frogger die, the game is over.
 
 ### 2.2.4 Win Conditions
 

@@ -19,3 +19,12 @@ The language used for this project is Verilog, an easy-to-understand hardware de
 | Séréna Bavarois   | Software Engineer | <img alt="https://github.com/NanaChocolat" src="https://avatars.githubusercontent.com/u/145995847?v=4" width=150 />     | [Séréna Bavarois](https://www.linkedin.com/in/s%C3%A9r%C3%A9na-bavarois/)     |
 | Camille Gayat     | Quality Assurance | <img alt="https://github.com/CamilleGayat" src="https://avatars.githubusercontent.com/u/145991254?v=4" width=150 />     | [Camille Gayat](https://www.linkedin.com/in/camille-g-a89114293/)             |
 | Salaheddine Namir | Technical Writer  | <img alt="https://github.com/T3rryc" src="https://avatars.githubusercontent.com/u/71770514?v=4" width=150 />            | [Salaheddine Namir](https://www.linkedin.com/in/salaheddine-namir-3402471b8/) |
+
+## Documents links
+
+- [Functional Specification](./Documents/Specification/Functional/FunctionalSpecification.md)
+- [Technical Specification](./Documents/Specification/Technical/TechnicalSpecification.md)
+- [Test Plan](./Documents/TestPlan/TestPlan.md)
+- [User Manual](./Documents/UserManual/User%20Manual.pdf)
+- [Weekly Reports](./Documents/Management/WeeklyReports/)
+- [Management Artifacts](./Documents/Management/ManagementArtifacts.md)

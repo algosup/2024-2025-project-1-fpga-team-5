@@ -112,11 +112,11 @@ The weekly reports folder can be found following [here](/Management/WeeklyReport
 
 You can directly access the reports individually following the below bullet points:
 
-- [Access Report for Week 1](/Management/WeeklyReports/Week1.md)
-- [Access Report for Week 2](/Management/WeeklyReports/Week2.md)
-- [Access Report for Week 3](/Management/WeeklyReports/Week3.md)
-- [Access Report for Week 4](/Management/WeeklyReports/Week4.md)
-- [Access Report for Week 5](/Management/WeeklyReports/Week5.md)
+- [Access Report for Week 1](./WeeklyReports/Week1.md)
+- [Access Report for Week 2](./WeeklyReports/Week2.md)
+- [Access Report for Week 3](./WeeklyReports/Week3.md)
+- [Access Report for Week 4](./WeeklyReports/Week4.md)
+- [Access Report for Week 5](./WeeklyReports/Week5.md)
 
 ## Post Mortem Analysis
 

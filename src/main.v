@@ -68,21 +68,29 @@ module main (
 
 
     // Road module
-    wire [9:0] road_start;
-    wire [9:0] road_end;
+    wire [9:0] road_top_start;
+    wire [9:0] road_top_end;
+    wire [9:0] road_bottom_start;
+    wire [9:0] road_bottom_end;
     road road_module (
-        .road_start(road_start),
-        .road_end(road_end)
+        .road_top_start(road_top_start),
+        .road_top_end(road_top_end),
+        .road_bottom_start(road_bottom_start),
+        .road_bottom_end(road_bottom_end)
     );
 
     // Grass module
     wire [9:0] grass_arrival_start;
     wire [9:0] grass_arrival_end;
+    wire [9:0] grass_middle_start;
+    wire [9:0] grass_middle_end;
     wire [9:0] grass_spawn_start;
     wire [9:0] grass_spawn_end;
     grass grass_module (
         .grass_arrival_start(grass_arrival_start),
         .grass_arrival_end(grass_arrival_end),
+        .grass_middle_start(grass_middle_start),
+        .grass_middle_end(grass_middle_end),
         .grass_spawn_start(grass_spawn_start),
         .grass_spawn_end(grass_spawn_end)
     );
@@ -122,13 +130,11 @@ module main (
     always @(*) begin
         if (pixel_color) begin
             if (cell_x == player_x && cell_y == player_y) begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-            end else if (cell_y > road_start && cell_y <= road_end) begin
-                o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-            end else if (cell_y > grass_arrival_start && cell_y <= grass_arrival_end) begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-            end else if (cell_y > grass_spawn_start && cell_y <= grass_spawn_end) begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
+            end else if ((cell_y >= road_top_start && cell_y < road_top_end) || (cell_y >= road_bottom_start && cell_y < road_bottom_end )) begin
+                o_VGA_Red = 3'b001; o_VGA_Grn = 3'b001; o_VGA_Blu = 3'b001; // Roads
+            end else if ((cell_y >= grass_arrival_start && cell_y < grass_arrival_end) || (cell_y >= grass_middle_start && cell_y < grass_middle_end) || (cell_y >= grass_spawn_start && cell_y <= grass_spawn_end)) begin
+                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b101; o_VGA_Blu = 3'b001; // Grass
             end else begin
                 o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
             end
@@ -162,5 +168,4 @@ module main (
             end
         end        
     end
-
 endmodule

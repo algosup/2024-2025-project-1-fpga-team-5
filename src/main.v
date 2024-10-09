@@ -25,25 +25,17 @@ module main (
     output reg [2:0] o_VGA_Blu,
 );
     
-    reg [24:0] clock_tick = 0;
     reg [6:0] level = 0;
 
     always @(posedge i_Clk) begin
         if (player_y == 1) begin
-            // if (clock_tick < 25000000) begin
-                // clock_tick <= clock_tick + 1;
-            // end else begin
                 if (level == 99) begin
                     level <= 0;
                 end else begin
                     level <= level + 1;
-                end
-                    // clock_tick <= 0;
-            // end // if (clock_tick < 25000000)
+                end          
         end else if (o_reset == 1) begin
             level <= 0;
-        end else begin
-            clock_tick <= 0;
         end
     end // always @(posedge i_Clk)
 
@@ -235,6 +227,7 @@ module main (
     assign pixel_color = (h_active && v_active);
 
     always @(i_Clk) begin
+        i_reset <= 0; 
         if (pixel_color) begin
             if ((car_x == cell_x && car_y == cell_y)
                     || (car2_x == cell_x && car2_y == cell_y)
@@ -246,33 +239,31 @@ module main (
                     || (car8_x == cell_x && car8_y == cell_y)
                     || (car9_x == cell_x && car9_y == cell_y)
                     || (car10_x == cell_x && car10_y == cell_y)
-                    || (car11_x == cell_x && car11_y == cell_y)
+                    // || (car11_x == cell_x && car11_y == cell_y)
             ) begin
-                o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car
+                o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
                 if (cell_x == player_x && cell_y == player_y) begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
+                    o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
                     i_reset <= 1;
                 end
             end else if (cell_x == player_x && cell_y == player_y) begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
-            
+                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
             end else if ((cell_y >= road_top_start && cell_y < road_top_end) || (cell_y >= road_bottom_start && cell_y < road_bottom_end )) begin
-                o_VGA_Red = 3'b001; o_VGA_Grn = 3'b001; o_VGA_Blu = 3'b001; // Roads
+                o_VGA_Red <= 3'b001; o_VGA_Grn <= 3'b001; o_VGA_Blu <= 3'b001; // Roads
             end else if ((cell_y >= grass_arrival_start && cell_y < grass_arrival_end) || (cell_y >= grass_middle_start && cell_y < grass_middle_end) || (cell_y >= grass_spawn_start && cell_y <= grass_spawn_end)) begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b101; o_VGA_Blu = 3'b001; // Grass
+                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b101; o_VGA_Blu <= 3'b001; // Grass
             end else begin
-                o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Black
             end
         end else begin
-            o_VGA_Red = 3'b000;
-            o_VGA_Grn = 3'b000;
-            o_VGA_Blu = 3'b000;
+            o_VGA_Red <= 3'b000;
+            o_VGA_Grn <= 3'b000;
+            o_VGA_Blu <= 3'b000;
         end
     end
 
     // Horizontal counter
     always @(posedge i_Clk) begin
-
         if (h_counter == H_LINE - 1) begin
             h_counter <= 0;
             cell_x <= 0;
@@ -291,6 +282,6 @@ module main (
             if (h_counter > H_SYNC_CYCLES + H_BACK_PORCH + (tile_size*cell_x)) begin
                 cell_x <= cell_x + 1;
             end
-        end        
+        end   
     end
 endmodule

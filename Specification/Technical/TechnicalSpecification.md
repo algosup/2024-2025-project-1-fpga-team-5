@@ -93,7 +93,7 @@ This project leverages FPGA technology to implement the Frogger game in hardware
 **Nice-to-Have Objectives**
 - Detailed, colored frog sprite and up to 16 cars with varying speeds.
 - Multiple levels (at least 8) with increasing difficulty.
-- Scoring system and enhanced visual feedback via [7-Segment Displays](#7-Segment-Displays).
+- Visual feedback via [7-Segment Displays](#7-Segment-Displays).
 - Performance optimization and [maintanibility](#maintanibility) for future features.
 
 #### 4. Assumptions
@@ -110,6 +110,9 @@ This project leverages FPGA technology to implement the Frogger game in hardware
 
 #### 1. Development Board
 <table>
+  <tr>
+      <td><b>Board Name</b></td>
+      <td colspan="2" align="center"><a href="https://nandland.com/the-go-board/">The Go Board</a></td>   </tr>
   <tr>
       <td><b>Power Requirement</td>
       <td>Operating Voltage:</td>
@@ -131,6 +134,8 @@ This project leverages FPGA technology to implement the Frogger game in hardware
    </tr>
 </table>
 
+![The Go Board](./img/goboard.jpg)
+
 #### 2. Input Controls
 <table>
    <tr>
@@ -151,11 +156,14 @@ This project leverages FPGA technology to implement the Frogger game in hardware
          <td>Right</td>
          <td>Down</td>
    </tr>
-
 </table>
+
+![Switches](./img/switches.jpg)
 
 #### 3. Light Emitting Diodes (LEDs)
 The code does not contain any references or functionalities related to the use of [LEDs](#LEDs) because we have chosen not to incorporate LED indicators into the game design, focusing instead on other visual outputs such as the VGA display.
+
+![LEDs](./img/leds.jpg)
 
 #### 4. 7-Segment Display
 <table>
@@ -168,6 +176,8 @@ The code does not contain any references or functionalities related to the use o
          <td>Displays numeric and alphanumeric information such as the current level of the User's game.</td>
     </tr>
 </table>
+
+![7-Segment Display](./img/7_segment.jpg)
 
 #### 5. VGA Connector
 <table>
@@ -189,6 +199,7 @@ The code does not contain any references or functionalities related to the use o
       </tr>
 </table>
 
+![VGA Connector](./img/vga.jpg)
 
 #### 6. Clock Signal
 <table>
@@ -460,7 +471,7 @@ Game timing is managed by counting clock cycles, which ensures smooth gameplay a
 >```
 ---
 ##### 6.4 Frame Rate Management:
-Synchronizing the frame rate with the VGA display’s refresh rate ensures that the graphics are updated smoothly, preventing issues like screen tearing. The system is designed to match the frame update frequency with the VGA display's 60Hz refresh rate.
+Synchronizing the frame rate with the VGA display’s refresh rate ensures that the graphics are updated smoothly, preventing issues like screen tearing. The system is designed to match the frame update frequency with the VGA display's 50Hz refresh rate.
 
 >Example:  
 >In the VGA controller within `src/main.v`, frame synchronization ensures smooth rendering:

@@ -21,7 +21,7 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/09
     - [3.1 Software](#31-software)
     - [3.2 Hardware](#32-hardware)
         - [3.2.1 FPGA Board Specifications](#321-fpga-board-specifications)
-        - [3.2.2 Computer Specifications](#322-computer-specifications)
+        - [3.2.2 Hardware Test Environment](#322-hardware-test-environment)
     - [3.3 Version Control Tool](#33-version-control-tool)
     - [3.4 Simulation Tool](#34-simulation-tool)
     - [3.5 Synthesis Tool](#35-synthesis-tool)
@@ -73,12 +73,28 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 - 25 MHz on-board clock
 - 1 Mb Flash for booting up your FPGA
 
-#### 3.2.2 Computer Specifications:
+#### 3.2.2 Hardware Test Environment:
 
-- Operating System: macOS Sequoia Version 15.0
-- Chip: Apple M3
-- Memory: 16GB
-- SSD Storage: 494.38 GB
+##### MacBook Air M3 2024
+
+| Specification | Details|
+|---------------|--------|
+| Operating system | macOS Sequoia 15.0 |
+| Processor | Apple M3 GPU 10 cores|
+| Memory | 16.0GB |
+| Storage | 493.38GB SSD|
+| Resolution | 2560 x 1664px |
+| Display | Built-in Liquid Retina Display |
+
+##### Lenovo Thinkbook 2021
+
+| Specification | Details|
+|---------------|--------|
+| Operating system | Windows 11 Pro 21H2 |
+| Processor | Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz   1.50 GHz |
+| Memory | 16.0GB |
+| Storage | 476GB SSD |
+| Resolution | 1080x1920px,  60Hz |
 
 ### 3.3 Version Control tool
 

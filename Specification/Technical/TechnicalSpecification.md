@@ -42,13 +42,13 @@
     - [6.2 Clock Division:](#62-clock-division)
     - [6.3 Game Timing:](#63-game-timing)
     - [6.4 Frame Rate Management:](#64-frame-rate-management)
-  - [V. Functional Requirements](#v-functional-requirements)
+- [V. Functional Requirements](#v-functional-requirements)
   - [1. Game Mechanics](#1-game-mechanics)
-- [2. User Input Handling](#2-user-input-handling)
-- [3. Display Requirements](#3-display-requirements)
-- [4. Game State Management](#4-game-state-management)
-- [5. Level Progression](#5-level-progression)
-- [6. Car Control Behavior](#6-car-control-behavior)
+  - [2. User Input Handling](#2-user-input-handling)
+  - [3. Display Requirements](#3-display-requirements)
+  - [4. Game State Management](#4-game-state-management)
+  - [5. Level Progression](#5-level-progression)
+  - [6. Car Control Behavior](#6-car-control-behavior)
 - [VI. Risks and Mitigation Strategies](#vi-risks-and-mitigation-strategies)
   - [1. Identified Risks](#1-identified-risks)
   - [2. Mitigation Strategies](#2-mitigation-strategies)
@@ -473,7 +473,7 @@ Synchronizing the frame rate with the VGA display’s refresh rate ensures that 
 
 ---
 
-#### V. Functional Requirements
+### V. Functional Requirements
 
 #### 1. Game Mechanics
 
@@ -614,7 +614,7 @@ end
 
 ---
 
-### 2. User Input Handling
+#### 2. User Input Handling
 
 User input is critical to navigating the game world. The system will respond to:
 
@@ -668,7 +668,7 @@ assign o_Switch = r_State;
 
 ---
 
-### 3. Display Requirements
+#### 3. Display Requirements
 
 To enhance the gaming experience, the visual display on the VGA screen should include:
 
@@ -729,7 +729,7 @@ end
 
 ---
 
-### 4. Game State Management
+#### 4. Game State Management
 
 The game will handle multiple states, ensuring smooth transitions and clear objectives at all times:
 
@@ -766,7 +766,7 @@ end
 
 ---
 
-### 5. Level Progression
+#### 5. Level Progression
 
 Level progression is a key part of keeping players engaged and challenged. The game will feature:
 
@@ -803,7 +803,7 @@ o_Segment1 = level; // Display current level
 
 ---
 
-### 6. Car Control Behavior
+#### 6. Car Control Behavior
 
 The cars are more than just obstacles; they introduce variability and challenge. Their behavior includes:
 

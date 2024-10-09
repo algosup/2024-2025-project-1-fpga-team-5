@@ -1,4 +1,4 @@
-<!-- PROJECT LOGO -->
+*<!-- PROJECT LOGO -->
 <br />
 <div alig="center">
     <h1 align="center"> Technical Specification</h1>
@@ -28,7 +28,7 @@
   - [3. Light Emitting Diodes (LEDs)](#3-light-emitting-diodes-leds)
   - [4. 7-Segment Display](#4-7-segment-display)
   - [5. VGA Connector](#5-vga-connector)
-  - [6. Other Components](#6-other-components)
+  - [6. Clock Signal](#6-clock-signal)
 - [IV. Software Architecture](#iv-software-architecture)
   - [1. Overview of Software Modules](#1-overview-of-software-modules)
   - [2. Module Interactions](#2-module-interactions)
@@ -42,13 +42,13 @@
     - [6.2 Clock Division:](#62-clock-division)
     - [6.3 Game Timing:](#63-game-timing)
     - [6.4 Frame Rate Management:](#64-frame-rate-management)
-- [V. Functional Requirements](#v-functional-requirements)
+  - [V. Functional Requirements](#v-functional-requirements)
   - [1. Game Mechanics](#1-game-mechanics)
-  - [2. User Input Handling](#2-user-input-handling)
-  - [3. Display Requirements](#3-display-requirements)
-  - [4. Game State Management](#4-game-state-management)
-  - [5. Level Progression](#5-level-progression)
-  - [6. Car Control Behavior](#6-car-control-behavior)
+- [2. User Input Handling](#2-user-input-handling)
+- [3. Display Requirements](#3-display-requirements)
+- [4. Game State Management](#4-game-state-management)
+- [5. Level Progression](#5-level-progression)
+- [6. Car Control Behavior](#6-car-control-behavior)
 - [VI. Risks and Mitigation Strategies](#vi-risks-and-mitigation-strategies)
   - [1. Identified Risks](#1-identified-risks)
   - [2. Mitigation Strategies](#2-mitigation-strategies)
@@ -76,25 +76,25 @@
 ### II. Introduction
 
 #### 1. Overview
-The project involves the development of a hardware-accelerated version of the Frogger arcade game on an [FPGA](#FPGA) using [Verilog](#Verilog). The game will run on a [VGA](#VGA) display and be controlled through integrated board switches, with a focus on optimizing performance and resource usage on the [FPGA](#FPGA).
+The project involves the development of a hardware-accelerated version of the [Frogger](#Frogger) arcade game on an [FPGA](#FPGA) using [Verilog](#Verilog). The game will run on a [VGA](#VGA) display and be controlled through integrated board switches, with a focus on optimizing performance and resource usage on the FPGA.
 #### 2. Context
-This project leverages [FPGA](#FPGA) technology to implement the Frogger game in hardware, aiming to exploit the parallelism and real-time capabilities of the platform. The use of [Verilog](#Verilog) allows for direct control of the [FPGA](#FPGA)'s resources, ensuring precise timing and efficient logic design.
+This project leverages FPGA technology to implement the Frogger game in hardware, aiming to exploit the parallelism and real-time capabilities of the platform. The use of Verilog allows for direct control of the FPGA's resources, ensuring precise timing and efficient logic design.
 
 #### 3. Goals and Objectives
 **Mandatory Requirements**
 
 - FPGA-based Frogger game using Verilog with VGA output.
 - VGA output with correct signal synchronization and real-time gameplay.
-- Functional input via FPGA switches with reliable debouncing.
-- Display a 1x1 frog sprite and at least one car on screen at all times.
+- Functional input via FPGA switches with reliable [debouncing](#debouncing).
+- Display a 1x1 frog [sprite](#sprite) and at least one car on screen at all times.
 - Game logic includes frog movement, car collision detection, and level progression.
 - Efficient memory and clock management.
 
 **Nice-to-Have Objectives**
 - Detailed, colored frog sprite and up to 16 cars with varying speeds.
 - Multiple levels (at least 8) with increasing difficulty.
-- Scoring system and enhanced visual feedback via LEDs / 7-Segment Displays.
-- Performance optimization and maintanibility for future features.
+- Scoring system and enhanced visual feedback via [7-Segment Displays](#7-Segment-Displays).
+- Performance optimization and [maintanibility](#maintanibility) for future features.
 
 #### 4. Assumptions
 
@@ -102,8 +102,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 - The VGA display is compatible with the signal output from the FPGA.
 - The input switches on the FPGA board are fully functional and responsive for user control.
 - Power supply to the FPGA will be stable and sufficient for the game's hardware demands.
-- The project will be developed and tested in an environment with access to necessary edevelopment tools (e.g., Verilog compiler, simulation software).
-- No external systems or APIs will be required to complete the project.
+- No external systems or [APIs](#APIs) will be required to complete the project.
 
 ---
 
@@ -127,8 +126,8 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
       <td>66 mm in width and 48 mm in height</td>
    </tr>
    <tr>
-      <td><b>Educational Purpose</td>
-      <td colspan="2">Designed for easy experimentation and prototyping without the need for additional breadboards or soldering.</td>
+      <td><b>Educational Purpose</b></td>
+      <td colspan="2">Designed for easy experimentation and prototyping without the need for additional <a href="#breadboards">breadboards</a> or soldering.</td>
    </tr>
 </table>
 
@@ -156,17 +155,7 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 </table>
 
 #### 3. Light Emitting Diodes (LEDs)
-<!-- <table>
-   <tr>
-         <td><b>Number of LEDs :</td>
-         <td colspan="3">4</td>
-   </tr>
-   <tr>
-         <td><b>Functionality:</td>
-         <td colspan="2">Provides visual feedback for board status and diagnostic information.</td>
-      <td colspan="2"><b><i>WHAT THE LED DOING</td>
-    </tr>
-</table> -->
+The code does not contain any references or functionalities related to the use of [LEDs](#LEDs) because we have chosen not to incorporate LED indicators into the game design, focusing instead on other visual outputs such as the VGA display.
 
 #### 4. 7-Segment Display
 <table>
@@ -183,10 +172,10 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 #### 5. VGA Connector
 <table>
    <tr>
-         <td><b>VGA Output</td>
-         <td>Connector Type:</td>
-         <td>15-pin D-sub connector (standard VGA)</td>
-   </tr>
+      <td><b>VGA Output</b></td>
+      <td>Connector Type:</td>
+      <td><a href="#15-pin-d-sub">15-pin D-sub</a> connector (standard VGA)</td>
+      </tr>
    <tr>
          <td><b>Supported Resolutions:</td>
          <td colspan="2"><b>640x480</b>, 800x600, 1024x768, 1280x1024</td>
@@ -201,10 +190,21 @@ This project leverages [FPGA](#FPGA) technology to implement the Frogger game in
 </table>
 
 
-#### 6. Other Components
-CLOCK
-<!-- idk for now, maybe even not needed -->
----
+#### 6. Clock Signal
+<table>
+      <tr>
+                  <td><b>Frequency:</td>
+                  <td>50 MHz</td>
+      </tr>
+      <tr>
+                  <td><b>Functionality:</td>
+                  <td colspan="2">Synchronizes game logic, display rendering, and user input processing.</td>
+      </tr>
+      <tr>
+                  <td><b>Clock Division:</b></td>
+                  <td colspan="2">Certain modules require slower clock signals to function correctly. <a href="#clock-division">Clock division</a> is used to generate these lower-frequency clocks, ensuring that these modules operate at an appropriate rate. For example, the car movement in the game is controlled using a slower clock to be seen by the human eyes and to make appropriate movements.</td>
+      </tr>
+</table>
 
 ### IV. Software Architecture
 
@@ -216,8 +216,8 @@ CLOCK
             <th><b>Description</td>
       </tr>
       <tr>
-            <td align="center"><pre><b>main.v</td>
-            <td>This is the entry point of the game, responsible for initializing and orchestrating the other modules. It manages the clock signals and ensures proper sequencing of game functions.</td>
+            <td align="center"><pre><b>main.v</b></pre></td>
+            <td>This is the entry point of the game, responsible for initializing and orchestrating the other modules. It manages the <a href="#6-clock-management">clock signals</a> and ensures proper sequencing of game functions.</td>
       </tr>
       <tr>
             <td align="center"><pre><b>frog.v</td>
@@ -228,8 +228,8 @@ CLOCK
             <td>Defines the behavior of the cars that the frog must avoid. It manages car speed, direction, and position. Multiple cars can be controlled through this module, with varying speeds across different levels.</td>
       </tr>
       <tr>
-            <td align="center"><pre><b>game_controller.v</td>
-            <td>Manages the game state, including start, play, game over, and level progression. This module ensures the game follows the intended flow, including tracking the player’s progress and adjusting difficulty.</td>
+            <td align="center"><pre><b>game_controller.v</b></pre></td>
+            <td>Manages the <a href="#game-state">game state</a>, including start, play, game over, and level progression. This module ensures the game follows the intended flow, including tracking the player’s progress and adjusting difficulty.</td>
       </tr>
       <tr>
             <td align="center"><pre><b>display_controller.v</td>
@@ -255,7 +255,6 @@ graph TD;
       B{Clock Signals}:::grey --> F[display_controller.v]:::highlight;
       B{Clock Signals}:::grey --> G[collision_detector.v]:::highlight;
       B{Clock Signals}:::grey --> H[level_manager.v]:::highlight;
-
       C[frog.v]:::highlight -->J((User Inputs)):::small --> E[game_controller.v]:::highlight;
       D[car.v]:::highlight -->K((Car Positions)):::small --> G[collision_detector.v]:::highlight;
       C[frog.v]:::highlight -->L((Frog Position)):::small --> G[collision_detector.v]:::highlight;
@@ -264,7 +263,6 @@ graph TD;
       E[game_controller.v]:::highlight -->P((Level Info)):::small --> H[level_manager.v]:::highlight;
       H[level_manager.v]:::highlight -->Q((Level Data)):::small --> D[car.v]:::highlight;
       F[display_controller.v]:::highlight -->R((Render Data)):::small -->I{VGA}:::vga;
-
 classDef highlight fill:#5C955C,stroke:#333,stroke-width:3px,color:#fff;
 classDef small fill:#333,font-size:10px,color:#fff;
 classDef vga fill:#ff9,stroke:#333,stroke-width:2px;
@@ -384,14 +382,12 @@ classDef grey fill:#333,stroke:#333,stroke-width:3px,color:#fff;
                   <td>Down switch input</td>
             </tr>
             <tr>
-                  <td rowspan="5" align="center"><b>VGA Output</td>
+                  <td rowspan="5" align="center"><b>VGA Output</b></td>
                   <td><code>o_VGA_HSync</code></td>
-                  <td>VGA horizontal sync output</td>
-            </tr>
+                  <td>VGA <a href="#horizontal-sync">horizontal sync</a> output</td>     </tr>
             <tr>
                   <td><code>o_VGA_VSync</code></td>
-                  <td>VGA vertical sync output</td>
-            </tr>
+                  <td>VGA <a href="#vertical-sync">vertical sync</a> output</td>     </tr>
             <tr>
                   <td><code>o_VGA_Red</code></td>
                   <td>VGA red component output</td>
@@ -407,13 +403,13 @@ classDef grey fill:#333,stroke:#333,stroke-width:3px,color:#fff;
 </table>
 
 #### 5. Memory Management
-<!-- In the Frogger FPGA project, memory is managed to optimize the limited resources of the FPGA. Key data such as the frog’s position, car positions, and game state are stored in registers for fast access. Larger data sets, like sprite information and display buffers, are stored in Block RAM (BRAM).
+In the Frogger FPGA project, memory is managed to optimize the limited resources of the FPGA. Key data such as the frog’s position, car positions, and game state are stored in registers for fast access. Larger data sets, like sprite information and display buffers, are stored in Block RAM (BRAM).
 
 Memory optimization strategies include:
 
-- Registers for small, frequently updated variables.
-- BRAM for larger assets like sprites and backgrounds.
-- Look-Up Tables (LUTs) to store fixed graphical elements. -->
+- [Registers](#registers) for small, frequently updated variables.
+- [BRAM](#BRAM) for larger assets like sprites and backgrounds.
+- Look-Up Tables ([LUTs](#LUTs)) to store fixed graphical elements.
 
 ---
 
@@ -477,7 +473,7 @@ Synchronizing the frame rate with the VGA display’s refresh rate ensures that 
 
 ---
 
-### V. Functional Requirements
+#### V. Functional Requirements
 
 #### 1. Game Mechanics
 
@@ -485,115 +481,136 @@ The core gameplay revolves around guiding a frog safely across a perilous road f
 
 - **Frog Movement**: The player controls a frog that moves up, down, left, and right across the screen.
 
-> <ins>Example (from `player.v`):</ins>  
->The player's movement is controlled using switches for up, down, left, and right. The `player.v` module handles debouncing for smooth input and updates the player's x and y coordinates based on directional inputs:
->```verilog
->always @(posedge i_Clk) begin
->if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
->      if (o_player_y > 1) begin
->            o_player_y <= o_player_y - 1;
->      end
->end else if (w_player_down == 1'b0 && r_player_down == 1'b1) begin
->      if (o_player_y < 15) begin
->            o_player_y <= o_player_y + 1;
->      end
->end
->// Similar logic for left and right...
->end
->```
+> <ins>Example (from player.v):</ins>  
+> The player's movement is controlled using switches for up, down, left, and right. The player.v module handles debouncing for smooth input and updates the player's x and y coordinates based on directional inputs:
+>
+```verilog
+always @(posedge i_Clk) begin
+    if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
+        if (o_player_y > 1) begin
+            o_player_y <= o_player_y - 1;
+        end
+    end else if (w_player_down == 1'b0 && r_player_down == 1'b1) begin
+        if (o_player_y < 15) begin
+            o_player_y <= o_player_y + 1;
+        end
+    end
+    // Similar logic for left and right...
+end
+```
+
 ---
 - **Cars**: Vehicles of varying speeds move horizontally across the screen, posing obstacles for the frog.
 
-> <ins>Example (from `car.v`):</ins>  
->The `car.v` module simulates the movement of cars across the screen, resetting their position after they pass the right side of the display:
->```verilog
->always @(posedge i_Clk) begin
->if (clock_tick < 12500000) begin
->      clock_tick <= clock_tick + 1;
->end else begin
->      clock_tick <= 0;
->      if (o_car_x < 20) begin
->            o_car_x <= o_car_x + 1;
->      end else begin
->            o_car_x <= 0;
->      end
->    end
->end
->```
+> <ins>Example (from car.v):</ins>  
+> The car.v module simulates the movement of cars across the screen, resetting their position after they pass the right side of the display:
+>
+```verilog
+always @(posedge i_Clk) begin
+    if (clock_tick < 12500000) begin
+        clock_tick <= clock_tick + 1;
+    end else begin
+        clock_tick <= 0;
+        if (o_car_x < 20) begin
+            o_car_x <= o_car_x + 1;
+        end else begin
+            o_car_x <= 0;
+        end
+    end
+end
+```
+
+---
+- **River Crossing**: The frog may need to navigate across a river or other water bodies, introducing additional challenges.
+  
+> <ins>Example :</ins>
+>
+
+---
+- **Log Hopping**: The frog may need to jump across logs or other floating objects to cross the river safely.
+> <ins>Example :</ins>
+>
+
 ---
 - **Collision Detection**: If the frog collides with a car, the game ends in a "Game Over" state.
 
-> <ins>Example (from `main.v`):</ins>  
->Collision detection checks whether the player's position matches that of any car:
->```verilog
->if ((car_x == player_x && car_y == player_y) || (car2_x == player_x && car2_y == player_y)) begin
->     o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player hit by a car
->     i_reset <= 1;
->end
->```
+> <ins>Example (from main.v):</ins>  
+> Collision detection checks whether the player's position matches that of any car:
+>
+```verilog
+if ((car_x == player_x && car_y == player_y) || (car2_x == player_x && car2_y == player_y)) begin
+    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player hit by a car
+    i_reset <= 1;
+end
+```
+
 ---
 - **Obstacles**: Alongside cars, elements like rivers or other hazards may be introduced to increase difficulty.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+> **The grass and road modules establish boundaries for movement; additional hazards could be introduced through extended map filling. However, specific mechanisms for dynamic obstacles outside of cars aren't detailed in the current code.**
+
 ---
 - **Goal**: Each level has a designated goal area that the frog must reach to progress.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+> **The goal could be defined in a new module that monitors player position relative to a certain vertical coordinate on the screen; specifics are lacking in current modules.**
+
 ---
 - **Level Progression**: With each completed level, difficulty ramps up—cars move faster, lanes get narrower, and new obstacles appear.
 
-> <ins>Example (from `main.v`):</ins>  
->The game keeps track of the current level and increments it when the frog reaches the top of the screen:
->```verilog
->if (player_y == 1) begin
->     if (level == 99) begin
->           level <= 0;
->     end else begin
->           evel <= level + 1;
->     end
->end
->```
----
-- **Scoring System**: Players earn points for progress.
+> <ins>Example (from main.v):</ins>  
+> The game keeps track of the current level and increments it when the frog reaches the top of the screen:
+>
+```verilog
+if (player_y == 1) begin
+    if (level == 99) begin
+        level <= 0;
+    end else begin
+        level <= level + 1;
+    end
+end
+```
 
-> <ins>Example (from `seven_segments.v`):</ins>  
->The player's score is displayed using a 7-segment display. The current level is divided into two digits for display:
->```verilog
->case (counter/10)
->      1: o_Segment1 = 7'b1111001; // 1
->      2: o_Segment1 = 7'b0100100; // 2
->      // Similar cases for other digits
->endcase
->```
 ---
 - **Visual Feedback**: Clear visual cues for important game states like level transitions and game over.
 
-> <ins>Example (from `main.v`):</ins>  
->The game manages colors on the VGA output to indicate the player's and cars' positions:
->```verilog
->if (cell_x == player_x && cell_y == player_y) begin
->      o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player color
->end
->```
----
-- **Reset Function**: A reset option allows players to restart the game at any point.
+> <ins>Example (from main.v):</ins>  
+> The game manages colors on the VGA output to indicate the player's and cars' positions:
+>
+```verilog
+if (cell_x == player_x && cell_y == player_y) begin
+    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player color
+end
+```
 
-> <ins>Example (from `player.v`):</ins>  
->The player can reset their position when the reset signal is triggered:
->```verilog
->if (i_reset == 1) begin
->     o_player_x <= 10;
->     o_player_y <= 15;
->     o_reset <= 1;
->  end else begin
->     o_reset <= 0;
->end
->```
+---
+- **Reset Function**: A reset option allows players to restart the game at any point. 
+
+> <ins>Example (from player.v):</ins>  
+> The player can reset their position when the reset signal is triggered:
+>
+```verilog
+if (i_reset == 1) begin
+    o_player_x <= 10;
+    o_player_y <= 15;
+    o_reset <= 1;
+end else begin
+    o_reset <= 0;
+end
+```
+
 ---
 - **Smooth, Real-time Gameplay**: Gameplay should feel seamless, with smooth animations and precise, responsive controls to ensure an engaging experience.
 
-  > The design of the modules (e.g., `debounce_switch.v`) ensures that user inputs are processed accurately, preventing any unintended actions and maintaining fluidity in player control.
-
+> <ins>Example (from debounce_switch.v):</ins>  
+> The design of the modules (e.g., debounce_switch.v) ensures that user inputs are processed accurately, preventing any unintended actions and maintaining fluidity in player control:
+>
+```verilog
+always @(posedge i_Clk) begin
+    if (i_Switch !== r_State && r_Count < c_DEBOUNCE_LIMIT)
+        r_Count <= r_Count + 1;
+    // Switch stabilization logic...
+end
+```
 
 ---
 
@@ -603,46 +620,51 @@ User input is critical to navigating the game world. The system will respond to:
 
 - **Directional Movement**: The FPGA switches will control the frog’s movements in four directions—up, down, left, and right.
 
-> Example (from `player.v`):  
->The player uses switches for directional control, with debounced inputs processed to ensure accurate movements:
->```verilog
->always @(posedge i_Clk) begin
->    r_player_up <= w_player_up;
->    r_player_down <= w_player_down;
->    // Logic for left and right movements...
->    if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
->        if (o_player_y > 1) begin
->            o_player_y <= o_player_y - 1;
->        end
->    end
->    // Similarly for down, left, and right...
->end
->```
+> <ins>Example (from player.v):</ins>  
+> The player uses switches for directional control, with debounced inputs processed to ensure accurate movements:
+>
+```verilog
+always @(posedge i_Clk) begin
+    r_player_up <= w_player_up;
+    r_player_down <= w_player_down;
+    // Logic for left and right movements...
+    if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
+        if (o_player_y > 1) begin
+            o_player_y <= o_player_y - 1;
+        end
+    end
+    // Similarly for down, left, and right...
+end
+```
+
 ---
 - **Game Reset**: Pressing all switches simultaneously will reset the game, restarting from the beginning.
 
-> <ins>Example (from `player.v`):</ins>  
->The reset functionality resets the player's position and the game state:
->```verilog
->if (i_reset == 1) begin
->    o_player_x <= 10;
->    o_player_y <= 15;
->    o_reset <= 1;
->end
->```
+> <ins>Example (from player.v):</ins>  
+> The reset functionality resets the player's position and the game state:
+>
+```verilog
+if (i_reset == 1) begin
+    o_player_x <= 10;
+    o_player_y <= 15;
+    o_reset <= 1;
+end
+```
+
 ---
 - **Debounced Inputs**: Debouncing ensures reliable control, preventing unintended multiple actions from a single switch press.
 
-> <ins>Example (from `debounce_switch.v`):</ins>  
->The debounce logic stabilizes the input switch state before passing it to the >player control module:
->```verilog
->always @(posedge i_Clk) begin
->    if (i_Switch !== r_State && r_Count < c_DEBOUNCE_LIMIT)
->        r_Count <= r_Count + 1;
->    // Switch stabilization logic...
->end
->assign o_Switch = r_State;
->```
+> <ins>Example (from debounce_switch.v):</ins>  
+> The debounce logic stabilizes the input switch state before passing it to the player control module:
+>
+```verilog
+always @(posedge i_Clk) begin
+    if (i_Switch !== r_State && r_Count < c_DEBOUNCE_LIMIT)
+        r_Count <= r_Count + 1;
+    // Switch stabilization logic...
+end
+assign o_Switch = r_State;
+```
 
 ---
 
@@ -652,50 +674,58 @@ To enhance the gaming experience, the visual display on the VGA screen should in
 
 - **Frog Sprite**: A clearly defined, smoothly moving frog that the player controls.
 
-  > <ins>Example (from `main.v`):</ins>  
-  >The output logic for the player sprite indicates its position:
-  >```verilog
-  >if (cell_x == player_x && cell_y == player_y) begin
-  >    // Color the player
-  >    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue for player
-  >end
-  >```
+> <ins>Example (from main.v):</ins>  
+> The output logic for the player sprite indicates its position:
+>
+```verilog
+if (cell_x == player_x && cell_y == player_y) begin
+    // Color the player
+    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue for player
+end
+```
+
 ---
 - **Moving Cars**: Vehicles of varying speeds and sizes that traverse the screen, presenting obstacles.
 
-> <ins>Example (from `car.v`):</ins>  
->The car module controls the horizontal velocity of cars based on a clock:
->```verilog
->if (clock_tick < 12500000) begin
->    clock_tick <= clock_tick + 1;
->end else begin
->    // Logic to reset car position...
->end
->```
+> <ins>Example (from car.v):</ins>  
+> The car module controls the horizontal velocity of cars based on a clock:
+>
+```verilog
+if (clock_tick < 12500000) begin
+    clock_tick <= clock_tick + 1;
+end else begin
+    // Logic to reset car position...
+end
+```
+
 ---
 - **Background Elements**: A thematic background (road, river, etc.) that sets the game environment.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+> **This would be represented by the graphic outputs from the `road.v` and `grass.v` modules. These modules define how road and grass areas appear and set boundaries for gameplay. However, code for dynamic river features isn't currently defined.** 
+
 ---
 - **7-Segment Display**: Displays the current level and other important game information.
 
-> <ins>Example (from `seven_segments.v`):</ins>  
->The 7-segment display updates to show the current level:
->```verilog
->case (counter/10)
->    // Cases for segments display...
->endcase
->```
+> <ins>Example (from seven_segments.v):</ins>  
+> The 7-segment display updates to show the current level:
+>
+```verilog
+case (counter/10)
+    // Cases for display...
+endcase
+```
+
 ---
 - **Visual Cues**: Transitions between game states (such as advancing levels or game over) should be obvious and immediate.
 
-> Example (from `main.v`):  
->Color changes and resets signify important game events:
->```verilog
->if (collision_condition) begin
->    // Color change for game over or level transition...
->end
->```
+> Example (from main.v):  
+> Color changes and resets signify important game events:
+>
+```verilog
+if (collision_condition) begin
+    // Color change for game over or level transition...
+end
+```
 
 ---
 
@@ -703,34 +733,36 @@ To enhance the gaming experience, the visual display on the VGA screen should in
 
 The game will handle multiple states, ensuring smooth transitions and clear objectives at all times:
 
-- **Start Screen**: Displays the game’s title and provides basic instructions for playing.
+- **Start Screen**: There won’t be a dedicated start screen.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
 ---
 - **Play State**: The core gameplay where the player controls the frog, attempting to cross the screen without hitting a car.
 
-  > Example (from current code logic):  
-  The primary game loop continuously checks for player input and updates the game state based on player movements and collisions.
+> **The play state is handled in `main.v` and encompasses the main game loop which constantly monitors player input, updates positions, and manages collision checks.**
+
 ---
 - **Game Over State**: If a collision occurs, the game ends with a game over screen.
 
-> <ins>Example (from `main.v`):</ins>  
->Collision detection triggers the game over state:
->```verilog
->if (collision_detected) begin
->    // Logic to display game over message and stop the game
->end
->```
+> <ins>Example (from main.v):</ins>  
+> Collision detection triggers the game over state:
+>
+```verilog
+if (collision_detected) begin
+    // Logic to display game over message and stop the game
+end
+```
+
 ---
 - **Level Transitions**: As the player successfully completes levels, difficulty increases, and new obstacles are introduced.
 
-> <ins>Example (from `main.v`):</ins>  
->The game can increment levels based on player position:
->```verilog
->if (player_y == 1) begin
->    // Logic to increment level...
->end
->```
+> <ins>Example (from main.v):</ins>  
+> The game can increment levels based on player position:
+>
+```verilog
+if (player_y == 1) begin
+    // Logic to increment level...
+end
+```
 
 ---
 
@@ -740,29 +772,34 @@ Level progression is a key part of keeping players engaged and challenged. The g
 
 - **Multiple Levels**: Each level ramps up in difficulty, with faster cars, more obstacles, and narrower lanes.
 
-> <ins>Example (from `main.v`):</ins>  
->Levels are managed using a variable that increments and affects game mechanics:
->```verilog
->if (level_increased) begin
->    // Logic to adjust car speeds and obstacles based on new level
->end
->```
+> <ins>Example (from main.v):</ins>  
+> Levels are managed using a variable that increments and affects game mechanics:
+>
+```verilog
+if (level_increased) begin
+    // Logic to adjust car speeds and obstacles based on new level
+end
+```
+
 ---
 - **Level Transitions**: Visual feedback (such as animations or messages) will signal the player’s progression between levels.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+> **There is currently no dedicated visual feedback mechanism implemented within the code; this could be added through changes in the VGA color output or visual cues.**
+
 ---
 - **Level Information**: The 7-segment display will clearly indicate the current level, helping players track their progress.
 
-> <ins>Example (from `seven_segments.v`):</ins>  
->The display shows level information as part of the score:
->```verilog
->o_Segment1 = level; // Display current level
->```
----
-- **Scalability**: The game should allow for easy addition of new levels and obstacles for future updates or expansions.
+> <ins>Example (from seven_segments.v):</ins>  
+> The display shows level information as part of the score:
+>
+```verilog
+o_Segment1 = level; // Display current level
+```
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+---
+- **Maintainability**: The game should allow for easy addition of new levels and obstacles for future updates or expansions.
+
+> **Currently implemented static logic will need to be adjusted to provide dynamic level generation features. Skeleton code exists but requires expansion for full maintainability.**
 
 ---
 
@@ -772,24 +809,26 @@ The cars are more than just obstacles; they introduce variability and challenge.
 
 - **Horizontal Movement**: Cars move steadily across the screen from either left to right or right to left.
 
-> <ins>Example (from `car.v`):</ins>  
->Cars reset their position after traveling a defined distance:
->```verilog
->if (o_car_x < 20) begin
->    o_car_x <= o_car_x + 1; // Move car horizontally
->end else begin
->    o_car_x <= 0; // Reset position
->end
->```
+> <ins>Example (from car.v):</ins>  
+> Cars reset their position after traveling a defined distance:
+>
+```verilog
+if (o_car_x < 20) begin
+    o_car_x <= o_car_x + 1; // Move car horizontally
+end else begin
+    o_car_x <= 0; // Reset position
+end
+```
+
 ---
 - **Lane Occupancy**: Only one car per lane at any given time, avoiding lane overcrowding.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
+> **The current car module does not enforce lane limits per module and needs logic to ensure proper lane assignment or extend the number of car instances.**
+
 ---
 - **Randomized Patterns**: Car speed and position are randomized for each level, adding an element of unpredictability.
 
-  > [MISSING INFORMATIONS TO PROVIDE A CORRECT DESCRIPTION]
-
+> **Currently vehicles are instantiated with specified starting positions. Randomization can improve challenge but is not in the current design. Additional logic must be developed for this.**
 
 ---
 
@@ -797,7 +836,45 @@ The cars are more than just obstacles; they introduce variability and challenge.
 
 #### 1. Identified Risks  
 
-#### 2. Mitigation Strategies
+- **Hardware Limitations**: The FPGA development board may have finite resources, such as the number of logic cells and RAM available. These limitations could hinder the ability to implement all desired game features, such as advanced graphics or complex gameplay mechanics. For example, if too much logic is required for player controls and graphics, the overall system may become unresponsive.
+
+- **Timing Issues**: Ensuring smooth performance without lag can be particularly challenging due to the strict timing requirements of the VGA output and the handling of user inputs. If the timing of these signals is off, it can lead to visual artifacts or delayed responses, greatly affecting gameplay.
+
+- **Input Debouncing**: The physical switches used for player input can experience bouncing, causing multiple triggers from a single press. If this bouncing is not controlled, the player may experience unintended movements during gameplay. This can lead to frustration and affect the overall gaming experience.
+
+- **Collision Detection Challenges**: Detecting collisions accurately between the frog and the moving cars or other obstacles can be difficult. If this aspect is not well-implemented, players might find themselves colliding inconsistently, which can frustrate players and make the game feel unfair or broken.
+
+- **Integration Issues**: Integrating various modules (e.g., player controls, cars, road layout) may lead to unexpected interactions and bugs. For instance, if the collision detection relies on player position but the position is not calculated correctly due to integration errors, this could lead to game malfunction.
+
+- **Resource Overuse**: Some game features may consume more computational resources than anticipated, resulting in performance drops. For example, if too many simultaneous vehicles are being processed, it may slow down the game due to inadequate computational resources.
+
+---
+
+#### 2. Mitigation Strategies  
+
+- **Resource Management**: Regularly monitor and evaluate resource usage throughout development. This includes profiling your logic and memory consumption to ensure that you stay within the limits of the FPGA. If resource constraints arise, consider simplifying graphics or features. Example: If memory utilization approaches max capacity, implementing sprite sheets for characters could be a solution to lower memory demands.
+
+- **Timing Analysis**: Conduct a thorough examination of the timing requirements and refine your design to ensure smooth performance. This can include calculating the required delays for different signals and ensuring they meet the necessary timing constraints. Utilize tools like Logicly for manual timing checks to verify that your signal outputs are correct.
+
+- **Robust Debouncing Logic**: Develop an effective debouncing mechanism to filter out noise from switch inputs, ensuring that only stable signals are registered for game controls. For example:
+  ```verilog
+  always @(posedge i_Clk) begin
+      if (i_Switch !== r_State) begin
+          r_Count <= r_Count + 1; // Increment count for bouncing
+      end else if (r_Count > DEBOUNCE_LIMIT) begin
+          r_State <= i_Switch; // Update state only on stable signal
+          r_Count <= 0; // Reset count
+      end
+  end
+  ```
+  
+- **Comprehensive Collision Testing**: Create a detailed collision detection algorithm that is tested against various scenarios. Extensive testing will ensure that the game properly detects all collision cases, diminishing player frustration. For example, if a player is at the edge of a car sprite, your algorithm should still recognize their position accurately.
+
+- **Iterative Testing**: Instead of focusing on complex debugging routines in Verilog, we have chosen to streamline our process by utilizing direct monitoring to test the code. This approach allows us to observe the performance and functionality of the game as it runs on the FPGA, enabling quicker validation and troubleshooting without getting bogged down in debug complexities.
+
+- **Module Integration Testing**: Before final implementation, conduct robust tests of how all modules work together. Identify potential conflicts or unexpected behaviors. Creating testbenches for each module will validate interactions and help isolate issues early.
+
+- **Resource Monitoring**: Continuously monitor the FPGA to ensure it is within its resource capacity. If issues are detected, you can identify features that are consuming excess resources and either modify or remove them for optimal performance.
 
 ---
 
@@ -805,13 +882,23 @@ The cars are more than just obstacles; they introduce variability and challenge.
 
 |  Terms  |  Definitions  |  Source  |
 |:---:|:---|:---:|
+|  <a name="Frogger">Frogger</a>  |  A classic arcade game where the player navigates a frog across a busy road and river.  |  [Wikipedia](https://en.wikipedia.org/wiki/Frogger)  |
 |  <a name="FPGA">FPGA</a>  |  Field-Programmable Gate Array, an integrated circuit designed to be configured by a customer or a designer after manufacturing.  |  [Wikipedia](https://en.wikipedia.org/wiki/Field-programmable_gate_array)  |
 |  <a name="Verilog">Verilog</a>  |  A hardware description language used to model electronic systems.  |  [Wikipedia](https://en.wikipedia.org/wiki/Verilog)  |
 |  <a name="VGA">VGA</a>  |  Video Graphics Array, a display standard for PC computers.  |  [Wikipedia](https://en.wikipedia.org/wiki/Video_Graphics_Array)  |
-|  <a name="LED">LED</a>  |  Light-Emitting Diode, a semiconductor light source.  |  [Wikipedia](https://en.wikipedia.org/wiki/Light-emitting_diode)  |
-|  <a name="7-Segment-Display">7-Segment Display</a>  |  A form of electronic display device for displaying decimal numerals.  |  [Wikipedia](https://en.wikipedia.org/wiki/Seven-segment_display)  |
+|  <a name="Debouncing">Debouncing</a>  |  The process of removing noise or bounce from a signal, typically used for switch inputs in digital systems.  |  [Wikipedia](https://en.wikipedia.org/wiki/Switch#Contact_bounce)  |
+|  <a name="Sprite">Sprite</a>  |  A two-dimensional image or animation that is integrated into a larger scene.  |  [Wikipedia](https://en.wikipedia.org/wiki/Sprite_(computer_graphics))  |
+|  <a name="7-Segment-Displays">7-Segment Displays</a>  |  A form of electronic display device for displaying decimal numerals.  |  [Wikipedia](https://en.wikipedia.org/wiki/Seven-segment_display)  |
+|  <a name="maintainability">Maintainability</a>  |  The ease with which a software system can be maintained or modified.  |  [Wikipedia](https://en.wikipedia.org/wiki/Maintainability)  |
+|  <a name="APIs">APIs</a>  |  Application Programming Interfaces, a set of rules and protocols for building and interacting with software applications.  |  [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface)  |
+|  <a name="breadboards">breadboards</a>  |  A construction base for prototyping of electronics.  |  [Wikipedia](https://en.wikipedia.org/wiki/Breadboard)  |
+|  <a name="LEDs">LEDs</a>  |  Light-Emitting Diode, a semiconductor light source.  |  [Wikipedia](https://en.wikipedia.org/wiki/Light-emitting_diode)  |
+|  <a name="15-pin-d-sub">15-pin D-sub</a>  |  A type of electrical connector commonly used for VGA connections.  |  [Wikipedia](https://en.wikipedia.org/wiki/D-subminiature)  |
+|  <a name="Clock-division">Clock division</a>  |  A circuit that divides the frequency of an input clock signal to produce a lower-frequency output.  |  [Wikipedia](https://en.wikipedia.org/wiki/Clock_divider)  |
+|  <a name="Clock-signal">Clock signal</a>  |  A periodic signal used to synchronize the operation of digital circuits.  |  [Wikipedia](https://en.wikipedia.org/wiki/Clock_signal)  |
 |  <a name="Game-State">Game State</a>  |  The current state of the game, including the position of the player, obstacles, and other game elements.  |  [Wikipedia](https://en.wikipedia.org/wiki/Game_state)  |
-|  <a name="Scoring-System">Scoring System</a>  |  A mechanism for tracking and rewarding player performance in a game.  |  [Wikipedia](https://en.wikipedia.org/wiki/Scoring_system)  |
-|  <a name="Level-Progression">Level Progression</a>  |  The advancement of the player through different stages of the game, typically increasing in difficulty.  |  [Wikipedia](https://en.wikipedia.org/wiki/Level_(video_gaming))  |
-|  <a name="Car-Control-Behavior">Car Control Behavior</a>  |  The movement and interaction of cars in the game, including speed, direction, and collision detection.  |  [Wikipedia](https://en.wikipedia.org/wiki/Car_behavior)  |
-
+|  <a name="horizontal-sync">Horizontal Sync</a>  |  A signal used in video systems to coordinate the refresh rate of the display.  |  [Wikipedia](https://en.wikipedia.org/wiki/Horizontal_sync)  |
+|  <a name="vertical-sync">Vertical Sync</a>  |  A signal used in video systems to indicate the end of a frame and the beginning of a new one.  |  [Wikipedia](https://en.wikipedia.org/wiki/Vertical_sync)  |
+|  <a name="Registers">Registers</a>  |  Small, fast memory elements used to store data within digital circuits.  |  [Wikipedia](https://en.wikipedia.org/wiki/Registers)  |
+|  <a name="BRAM">BRAM</a>  |  Block RAM, a type of memory available in FPGAs that can be used for storing data.  |  [Xilinx](https://www.xilinx.com/support/documentation/ip_documentation/blk_mem_gen/v8_4/pg058-blk-mem-gen.pdf)  |
+|  <a name="LUTs">LUTs</a>  |  Look-Up Table, a type of memory used in FPGAs to implement logic functions.  |  [Xilinx](https://www.xilinx.com/support/documentation/sw_manuals/xilinx11/cgd.pdf)  |

@@ -2,6 +2,7 @@ module car(
     input i_Clk, // clock 25MHz
 
     input [4:0] i_car_x,
+    input [4:0] i_car_speed,
     output reg [4:0] o_car_x,
 );
 
@@ -24,7 +25,7 @@ always @(posedge i_Clk) begin
         // 1 second has passed
         clock_tick <= 0;
         if (o_car_x < 20) begin
-            o_car_x <= o_car_x + 1;
+            o_car_x <= o_car_x + i_car_speed;
         end else begin
             o_car_x <= 0;
         end

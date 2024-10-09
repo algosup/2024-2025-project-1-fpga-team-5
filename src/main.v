@@ -96,101 +96,123 @@ module main (
     // Car module
     // TODO: Find a way to clean this up
     reg [4:0] i_car_x = 1;
+    reg [2:0] i_car_speed = 2;
     wire [4:0] car_x;
     wire [3:0] car_y = 2;
     car car_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car_x),
+        .i_car_speed(i_car_speed),
         .o_car_x(car_x),
     );
 
     reg [4:0] i_car2_x = 15;
+    reg [2:0] i_car2_speed = 3;
     wire [4:0] car2_x;
     wire [3:0] car2_y = 3;
     car car2_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car2_x),
+        .i_car_speed(i_car2_speed),
         .o_car_x(car2_x),
     );
 
     reg [4:0] i_car3_x = 17;
+    reg [2:0] i_car3_speed = 2;
     wire [4:0] car3_x;
     wire [3:0] car3_y = 4;
     car car3_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car3_x),
+        .i_car_speed(i_car3_speed),
         .o_car_x(car3_x),
     );
 
     reg [4:0] i_car4_x = 9;
+    reg [2:0] i_car4_speed = 2;
     wire [4:0] car4_x;
     wire [3:0] car4_y = 5;
     car car4_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car4_x),
+        .i_car_speed(i_car4_speed),
         .o_car_x(car4_x),
     );
 
     reg [4:0] i_car5_x = 10;
+    reg [2:0] i_car5_speed = 3;
     wire [4:0] car5_x;
     wire [3:0] car5_y = 6;
     car car5_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car5_x),
+        .i_car_speed(i_car5_speed),
         .o_car_x(car5_x),
     );
 
     reg [4:0] i_car6_x = 7;
+    reg [2:0] i_car6_speed = 1;
     wire [4:0] car6_x;
     wire [3:0] car6_y = 7;
     car car6_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car6_x),
+        .i_car_speed(i_car6_speed),
         .o_car_x(car6_x),
     );
     
     reg [4:0] i_car7_x = 12;
+    reg [2:0] i_car7_speed = 1;
     wire [4:0] car7_x;
     wire [3:0] car7_y = 10;
     car car7_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car7_x),
+        .i_car_speed(i_car7_speed),
         .o_car_x(car7_x),
     );
 
     reg [4:0] i_car8_x = 20;
+    reg [2:0] i_car8_speed = 1;
     wire [4:0] car8_x;
     wire [3:0] car8_y = 11;
     car car8_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car8_x),
+        .i_car_speed(i_car8_speed),
         .o_car_x(car8_x),
     );
 
     reg [4:0] i_car9_x = 19;
+    reg [2:0] i_car9_speed = 1;
     wire [4:0] car9_x;
     wire [3:0] car9_y = 12;
     car car9_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car9_x),
+        .i_car_speed(i_car9_speed),
         .o_car_x(car9_x),
     );
 
     reg [4:0] i_car10_x = 6;
+    reg [2:0] i_car10_speed = 1;
     wire [4:0] car10_x;
     wire [3:0] car10_y = 13;
     car car10_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car10_x),
+        .i_car_speed(i_car10_speed),
         .o_car_x(car10_x),
     );
 
     reg [4:0] i_car11_x = 9;
+    reg [2:0] i_car11_speed = 2;
     wire [4:0] car11_x;
     wire [3:0] car11_y = 14;
     car car11_module (
         .i_Clk(i_Clk),
         .i_car_x(i_car11_x),
+        .i_car_speed(i_car11_speed),
         .o_car_x(car11_x),
     );
 
@@ -239,7 +261,7 @@ module main (
                     || (car8_x == cell_x && car8_y == cell_y)
                     || (car9_x == cell_x && car9_y == cell_y)
                     || (car10_x == cell_x && car10_y == cell_y)
-                    || (car11_x == cell_x && car11_y == cell_y)
+                    // || (car11_x == cell_x && car11_y == cell_y)
             ) begin
                 o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
                 if (cell_x == player_x && cell_y == player_y) begin

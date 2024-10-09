@@ -15,7 +15,10 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/09
 
 - [1. Introduction](#1-introduction)
     - [1.1 Overview](#11-overview)
-    - [1.2 Testing Scope](#12-testing-scope)
+    - [1.2 Objectives and Tasks](#12-objectives-and-tasks)
+        - [1.2.1 Objectives](#121-objectives)
+        - [1.2.2 Tasks](#122-tasks)
+    - [1.3 Testing Scope](#13-testing-scope)
 - [2. How to Set Up](#2-how-to-set-up)
 - [3. Test Tools](#3-test-tools)
     - [3.1 Software](#31-software)
@@ -43,11 +46,30 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/09
 
 The primary aim of this project is to develop a Frogger game inspired by the classic 1981 version created by Konami, using FPGA technology and Verilog for implementation. The main objective of the game is to guide four frogs safely across a busy road and a flowing river while avoiding various obstacles such as cars and logs. Players must navigate each frog to their home. For more specifications, refer to (functional spec link).
 
-### 1.2 Testing Scope
+### 1.2 Objectives and Tasks
 
-- The playability on both macOS and Windows platforms.
-- The interface and controls are user-friendly.
-- All game features, including movement and collision mechanics, are successfully tested.
+#### 1.2.1 Objectives
+
+These are the objectives of the test plan:
+
+- Verify the playability of the game on both macOS and Windows.
+- Assess the user-friendliness of the game and the controls.
+- Confirm that the functional requirements are met.
+- Evaluate the performance of the game.
+
+#### 1.2.2 Tasks
+
+These are the tasks to ensure the quality of the game:
+
+- Write test cases for all functionalities.
+- Document and report each issue using issue tracking.
+- Conduct Unit Testing for each features.
+- Perform integration and system testing to evaluate how features work together.
+- Conduct Stress and Performance testing.
+
+### 1.3 Testing Scope
+
+The scope of testing for the Frogger game project includes the verification of both functional and non-functional requirements of the system, as well as an evaluation of its performance and user-friendliness.
 
 ## 2. How to Set Up
 

@@ -5,6 +5,8 @@ module car(
     output reg [4:0] o_car_x,
 );
 
+reg [4:0] init_car_x;
+
 initial begin
     init_car_x = 1'b0;
 end

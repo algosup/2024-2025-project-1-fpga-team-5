@@ -1,4 +1,4 @@
-*<!-- PROJECT LOGO -->
+<!-- PROJECT LOGO -->
 <br />
 <div alig="center">
     <h1 align="center"> Technical Specification</h1>
@@ -178,7 +178,7 @@ The code does not contain any references or functionalities related to the use o
       </tr>
    <tr>
          <td><b>Supported Resolutions:</td>
-         <td colspan="2"><b>640x480</b>, 800x600, 1024x768, 1280x1024</td>
+         <td colspan="2"><sin>640x480</sin>, 800x600, 1024x768, 1280x1024</td>
    </tr>
    <tr>
          <td rowspan="2"><b>Functionality:</td>
@@ -206,6 +206,7 @@ The code does not contain any references or functionalities related to the use o
       </tr>
 </table>
 
+---
 ### IV. Software Architecture
 
 #### 1. Overview of Software Modules
@@ -521,17 +522,6 @@ end
 ```
 
 ---
-- **River Crossing**: The frog may need to navigate across a river or other water bodies, introducing additional challenges.
-  
-> <ins>Example :</ins>
->
-
----
-- **Log Hopping**: The frog may need to jump across logs or other floating objects to cross the river safely.
-> <ins>Example :</ins>
->
-
----
 - **Collision Detection**: If the frog collides with a car, the game ends in a "Game Over" state.
 
 > <ins>Example (from main.v):</ins>  
@@ -543,11 +533,6 @@ if ((car_x == player_x && car_y == player_y) || (car2_x == player_x && car2_y ==
     i_reset <= 1;
 end
 ```
-
----
-- **Obstacles**: Alongside cars, elements like rivers or other hazards may be introduced to increase difficulty.
-
-> **The grass and road modules establish boundaries for movement; additional hazards could be introduced through extended map filling. However, specific mechanisms for dynamic obstacles outside of cars aren't detailed in the current code.**
 
 ---
 - **Goal**: Each level has a designated goal area that the frog must reach to progress.
@@ -599,21 +584,6 @@ end
 ```
 
 ---
-- **Smooth, Real-time Gameplay**: Gameplay should feel seamless, with smooth animations and precise, responsive controls to ensure an engaging experience.
-
-> <ins>Example (from debounce_switch.v):</ins>  
-> The design of the modules (e.g., debounce_switch.v) ensures that user inputs are processed accurately, preventing any unintended actions and maintaining fluidity in player control:
->
-```verilog
-always @(posedge i_Clk) begin
-    if (i_Switch !== r_State && r_Count < c_DEBOUNCE_LIMIT)
-        r_Count <= r_Count + 1;
-    // Switch stabilization logic...
-end
-```
-
----
-
 #### 2. User Input Handling
 
 User input is critical to navigating the game world. The system will respond to:
@@ -672,7 +642,7 @@ assign o_Switch = r_State;
 
 To enhance the gaming experience, the visual display on the VGA screen should include:
 
-- **Frog Sprite**: A clearly defined, smoothly moving frog that the player controls.
+- **Frog Sprite**: A clearly defined, smoothly frog that the player controls.
 
 > <ins>Example (from main.v):</ins>  
 > The output logic for the player sprite indicates its position:
@@ -699,7 +669,7 @@ end
 ```
 
 ---
-- **Background Elements**: A thematic background (road, river, etc.) that sets the game environment.
+- **Background Elements**: A thematic background (road, grass, etc.) that sets the game environment.
 
 > **This would be represented by the graphic outputs from the `road.v` and `grass.v` modules. These modules define how road and grass areas appear and set boundaries for gameplay. However, code for dynamic river features isn't currently defined.** 
 
@@ -716,24 +686,12 @@ endcase
 ```
 
 ---
-- **Visual Cues**: Transitions between game states (such as advancing levels or game over) should be obvious and immediate.
-
-> Example (from main.v):  
-> Color changes and resets signify important game events:
->
-```verilog
-if (collision_condition) begin
-    // Color change for game over or level transition...
-end
-```
-
----
 
 #### 4. Game State Management
 
 The game will handle multiple states, ensuring smooth transitions and clear objectives at all times:
 
-- **Start Screen**: There won’t be a dedicated start screen.
+- **Start Screen**: There won’t be a dedicated start screen as we decide to focus on the main requirement of the game.
 
 ---
 - **Play State**: The core gameplay where the player controls the frog, attempting to cross the screen without hitting a car.
@@ -782,7 +740,7 @@ end
 ```
 
 ---
-- **Level Transitions**: Visual feedback (such as animations or messages) will signal the player’s progression between levels.
+- **Level Transitions**: Visual feedback (such as messages) will signal the player’s progression between levels.
 
 > **There is currently no dedicated visual feedback mechanism implemented within the code; this could be added through changes in the VGA color output or visual cues.**
 
@@ -795,11 +753,6 @@ end
 ```verilog
 o_Segment1 = level; // Display current level
 ```
-
----
-- **Maintainability**: The game should allow for easy addition of new levels and obstacles for future updates or expansions.
-
-> **Currently implemented static logic will need to be adjusted to provide dynamic level generation features. Skeleton code exists but requires expansion for full maintainability.**
 
 ---
 

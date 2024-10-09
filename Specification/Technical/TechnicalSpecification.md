@@ -134,7 +134,7 @@ This project leverages FPGA technology to implement the Frogger game in hardware
    </tr>
 </table>
 
-![The Go Board](./img/goboard.jpg)
+<img src="./img/goboard.jpg" alt="Go Board" style="border: 2px solid black; width: 300px; height: auto;">
 
 #### 2. Input Controls
 <table>
@@ -158,12 +158,12 @@ This project leverages FPGA technology to implement the Frogger game in hardware
    </tr>
 </table>
 
-![Switches](./img/switches.jpg)
+<img src="./img/switches.jpg" alt="Switches" style="border: 2px solid black; width: 300px; height: auto;">
 
 #### 3. Light Emitting Diodes (LEDs)
 The code does not contain any references or functionalities related to the use of [LEDs](#LEDs) because we have chosen not to incorporate LED indicators into the game design, focusing instead on other visual outputs such as the VGA display.
 
-![LEDs](./img/leds.jpg)
+<img src="./img/LEDs.jpg" alt="LEDs" style="border: 2px solid black; width: 300px; height: auto;">
 
 #### 4. 7-Segment Display
 <table>
@@ -177,7 +177,7 @@ The code does not contain any references or functionalities related to the use o
     </tr>
 </table>
 
-![7-Segment Display](./img/7_segment.jpg)
+<img src="./img/7_segment.jpg" alt="7-Segment Display" style="border: 2px solid black; width: 300px; height: auto;">
 
 #### 5. VGA Connector
 <table>
@@ -199,7 +199,8 @@ The code does not contain any references or functionalities related to the use o
       </tr>
 </table>
 
-![VGA Connector](./img/vga.jpg)
+<img src="./img/VGA1.jpg" alt="VGA Connector2" style="border: 2px solid black; width: 300px; height: auto;">
+<img src="./img/VGA2.jpg" alt="VGA Connector1" style="border: 2px solid black; width: 300px; height: auto;">
 
 #### 6. Clock Signal
 <table>

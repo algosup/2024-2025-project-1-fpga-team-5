@@ -77,25 +77,22 @@ module main (
     );
 
     // Grass module
-    wire [3:0] grass_arrival;
+    wire [3:0] grass_arrival_start;
+    wire [3:0] grass_arrival_end;
     wire [3:0] grass_middle;
-    wire [3:0] grass_spawn;
+    wire [3:0] grass_spawn_start;
+    wire [3:0] grass_spawn_end;
     grass grass_module (
-        .grass_arrival(grass_arrival),
+        .grass_arrival_start(grass_arrival_start),
+        .grass_arrival_end(grass_arrival_end),
         .grass_middle(grass_middle),
-        .grass_spawn(grass_spawn)
+        .grass_spawn_start(grass_spawn_start),
+        .grass_spawn_end(grass_spawn_end)
     );
 
 
     // Car module
     // TODO: Find a way to clean this up
-    wire [4:0] car_x;
-    wire [3:0] car_y = 2;
-    car #(.CAR_START(1), .CAR_SPEED(2), .CAR_DIRECTION(0)) car_module (
-        .i_Clk(i_Clk),
-        .o_car_x(car_x),
-    );
-
     wire [4:0] car2_x;
     wire [3:0] car2_y = 3;
     car #(.CAR_START(15), .CAR_SPEED(3), .CAR_DIRECTION(0)) car2_module (
@@ -164,14 +161,6 @@ module main (
         .o_car_x(car10_x),
     );
 
-
-    wire [4:0] car11_x;
-    wire [3:0] car11_y = 14;
-    car #(.CAR_START(9), .CAR_SPEED(2), .CAR_DIRECTION(0)) car11_module (
-        .i_Clk(i_Clk),
-        .o_car_x(car11_x),
-    );
-
     wire [4:0] car12_x;
     wire [3:0] car12_y = 9;
     car #(.CAR_START(2), .CAR_SPEED(3), .CAR_DIRECTION(0)) car12_module (
@@ -212,11 +201,11 @@ module main (
     wire pixel_color;
     assign pixel_color = (h_active && v_active);
 
+
     always @(i_Clk) begin
         i_reset <= 0; 
         if (pixel_color) begin
-            if ((car_x == cell_x && car_y == cell_y)
-                    || (car2_x == cell_x && car2_y == cell_y)
+            if ((car2_x == cell_x && car2_y == cell_y)
                     || (car3_x == cell_x && car3_y == cell_y)
                     || (car4_x == cell_x && car4_y == cell_y)
                     || (car5_x == cell_x && car5_y == cell_y)
@@ -225,8 +214,7 @@ module main (
                     || (car8_x == cell_x && car8_y == cell_y)
                     || (car9_x == cell_x && car9_y == cell_y)
                     || (car10_x == cell_x && car10_y == cell_y)
-                    || (car11_x == cell_x && car11_y == cell_y)
-                    // || (car12_x == cell_x && car12_y == cell_y)
+                    || (car12_x == cell_x && car12_y == cell_y)
             ) begin
                 o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
                 if (cell_x == player_x && cell_y == player_y) begin
@@ -236,7 +224,10 @@ module main (
                 o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
             end else if ((cell_y >= road_top_start && cell_y < road_top_end) || (cell_y >= road_bottom_start && cell_y < road_bottom_end )) begin
                 o_VGA_Red <= 3'b001; o_VGA_Grn <= 3'b001; o_VGA_Blu <= 3'b001; // Roads
-            end else if ((cell_y == grass_arrival) || (cell_y == grass_middle) || (cell_y == grass_spawn)) begin
+            end else if ((cell_y >= grass_arrival_start && cell_y <= grass_arrival_end)
+                        || (cell_y == grass_middle)
+                        || (cell_y >= grass_spawn_start && cell_y <= grass_spawn_end)
+            ) begin
                 o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b101; o_VGA_Blu <= 3'b001; // Grass
             end else begin
                 o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Black

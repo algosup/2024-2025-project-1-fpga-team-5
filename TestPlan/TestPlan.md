@@ -1,18 +1,31 @@
 
-<h1 align="center"> Test plan </h1>
+# <h1 align="center"> Test plan </h1>
+
 
 ---
 
 <p align="center"> 
-Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/09/2024
+Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/10/2024
 </p>
 
 ---
 
+<br><details>
+<summary> Approvals <i>(Click to expand)</i></summary>
+
+### Approvals
+
+| Reviewer          | Role              | Approved | Date       |
+| ----------------- | ----------------- | -------- | ---------- |
+
+
+</details>
+
 <details>
 
-<summary>Table of contents</summary>
+<summary>Table of contents <i>(Click to expand)</i></summary>
 
+- [Test plan](#test-plan)
 - [1. Introduction](#1-introduction)
     - [1.1 Overview](#11-overview)
     - [1.2 Objectives and Tasks](#12-objectives-and-tasks)
@@ -44,7 +57,7 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/09
 
 ### 1.1 Overview
 
-The primary aim of this project is to develop a Frogger game inspired by the classic 1981 version created by Konami, using FPGA technology and Verilog for implementation. The main objective of the game is to guide four frogs safely across a busy road and a flowing river while avoiding various obstacles such as cars and logs. Players must navigate each frog to their home. For more specifications, refer to (functional spec link).
+The primary aim of this project is to develop a Frogger game inspired by the classic 1981 version created by Konami, using FPGA technology and Verilog for implementation. The main objective of the game is to guide four frogs safely across a busy road and a flowing river while avoiding various obstacles such as cars and logs. Players must navigate each frog to their home. For more specifications, refer to the [Functional Specification](Documents/Specification/Functional/FunctionalSpecification.md).
 
 ### 1.2 Objectives and Tasks
 
@@ -65,6 +78,7 @@ These are the tasks to ensure the quality of the game:
 - Document and report each issue using issue tracking.
 - Conduct Unit Testing for each features.
 - Perform integration and system testing to evaluate how features work together.
+- Perform User Acceptance testing to determine whether the game is user-friendly.
 - Conduct Stress and Performance testing.
 
 ### 1.3 Testing Scope
@@ -105,7 +119,7 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 | Processor | Apple M3 GPU 10 cores|
 | Memory | 16.0GB |
 | Storage | 493.38GB SSD|
-| Resolution | 2560 x 1664px |
+| Resolution | 2560x1664px |
 | Display | Built-in Liquid Retina Display |
 
 ##### Lenovo Thinkbook 2021
@@ -146,7 +160,15 @@ For this project, APIO v0.9.4 will be utilized as the primary synthesis tool. It
 
 ## 5. Test Cases
 
-You can find the various Test Cases [→ here](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing). The purpose of this document is to outline the future features that will need to be tested in advance to identify potential defects early in the project.
+You can find the various Test Cases [→ here](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing). The purpose of this document is to outline the future features that will need to be tested in advance to identify potential defects early in the project. The cases are presented in the following format:
+
+- *Test Case:* A description of the scenario being tested.
+- *Type of Case:* Categorized as Audio/Visual, Game States/Dynamics, or Game Mechanics.
+- *Current Status:* Indicated as Not Started, In Progress, or Done.
+- *Expected Result:* The anticipated outcome of the test.
+- *Actual Result:* The observed outcome after testing.
+
+
 
 ## 6. Risks and Contingencies
 

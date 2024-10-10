@@ -207,12 +207,12 @@ module main (
         if (pixel_color) begin
             if ((car2_x == cell_x && car2_y == cell_y)
                     || (car3_x == cell_x && car3_y == cell_y)
-                    || (car4_x == cell_x && car4_y == cell_y)
+                    || ((car4_x == cell_x || car4_x-1 == cell_x) && car4_y == cell_y)
                     || (car5_x == cell_x && car5_y == cell_y)
-                    || (car6_x == cell_x && car6_y == cell_y)
+                    || ((car6_x == cell_x || car6_x+1 == cell_x) && car6_y == cell_y)
                     || (car7_x == cell_x && car7_y == cell_y)
-                    || (car8_x == cell_x && car8_y == cell_y)
-                    || (car9_x == cell_x && car9_y == cell_y)
+                    || ((car8_x == cell_x || car8_x-1 == cell_x) && car8_y == cell_y)
+                    || ((car9_x == cell_x || car9_x-1 == cell_x) && car9_y == cell_y)
                     || (car10_x == cell_x && car10_y == cell_y)
                     || (car12_x == cell_x && car12_y == cell_y)
             ) begin

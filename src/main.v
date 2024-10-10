@@ -52,9 +52,10 @@ module main (
 
 
     // BRAM instantiation using SB_RAM40_4K
-    wire [7:0] bram_data_out;
-    reg [7:0] bram_data_in;
-    reg [11:0] bram_addr;
+    wire [3:0] bram_data_out;
+    reg [3:0] bram_data_in;
+    reg [9:0] bram_addr_r;
+    reg [9:0] bram_addr_w;
     reg bram_we;
 
     SB_RAM40_4K #(
@@ -72,19 +73,20 @@ module main (
         .INIT_B(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
         .INIT_C(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
         .INIT_D(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000)
+        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000),
+        .WRITE_MODE(2),
+        .READ_MODE(2)
     ) bram (
         .RDATA(bram_data_out),
-        .RADDR(bram_addr),
+        .RADDR(bram_addr_r),
         .RCLK(i_Clk),
         .RCLKE(1'b1),
         .RE(1'b1),
-        .WADDR(bram_addr),
+        .WADDR(bram_addr_w),
         .WCLK(i_Clk),
-        .WCLKE(1'b1),
+        .WCLKE(1'b0),
         .WDATA(bram_data_in),
         .WE(bram_we),
-        .MASK(8'b00000000)
     );
 
     // VGA timing constants for 640x480 resolution
@@ -122,12 +124,11 @@ module main (
     always @(posedge i_Clk) begin
     if (pixel_color) begin
         // Compute the BRAM address: two cells per address (4 bits each), 8 cells per row
-        bram_addr = ((cell_y*8)) + (cell_x/8); // 8 cells per row (each address covers 2 cells)
+        bram_we <= 1'b0;
+        bram_addr_r <= ((cell_y-1) * 20 + cell_x); // 8 cells per row (each address covers 2 cells)
 
         // Select between the lower and upper cell
-            if (cell_x % 2 == 0) begin
-            // Lower 4 bits for the even cell
-            case (bram_data_out[3:0])
+            case (bram_data_out)
                 4'b0000: begin
                     o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
                 end
@@ -137,27 +138,49 @@ module main (
                 4'b0010: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
                 end
+                4'b0011: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Yellow
+                end
+                4'b0100: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Magenta
+                end
+                4'b0101: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // Cyan
+                end
+                4'b0110: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b000; // Olive
+                end
+                4'b0111: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // Purple
+                end
+                4'b1000: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b100; // Teal
+                end
+                4'b1001: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b000; // Orange
+                end
+                4'b1010: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Lime
+                end
+                4'b1011: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b100; // Aqua
+                end
+                4'b1100: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // Pink
+                end
+                4'b1101: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Violet
+                end
+                4'b1110: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b111; // Sky Blue
+                end
+                4'b1111: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // White
+                end
                 default: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
                 end
             endcase
-        end else begin
-            // Upper 4 bits for the odd cell
-            case (bram_data_out[7:4])
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                end
-                4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
-        end
     end else begin
         // If not displaying color, set all outputs to black
         o_VGA_Red = 3'b000;
@@ -199,25 +222,5 @@ end
     // Temporary variable to store new player position
     reg [9:0] new_player_pos_y;
     reg [9:0] new_player_pos_x;
-
-    // Movements module
-    // always @(posedge i_Clk) begin
-    //     if (i_Switch_1 & clock_tick == 25000000) begin
-    //         // Move player up
-    //         if (player_pos_y > 0) begin
-    //             // Replace the previous tile
-    //             map[player_pos_y] <= (map[player_pos_y] & ~(3'b010 << (player_pos_x * 3))) | (3'b001 << (player_pos_x * 3));
-                
-    //             new_player_pos_y = player_pos_y - 1;
-                
-    //             // Move player up
-    //             player_pos_y <= new_player_pos_y;
-                
-    //             // Set the new player position
-    //             map[new_player_pos_y] <= (map[new_player_pos_y] & ~(3'b111 << (player_pos_x * 3))) | (3'b010 << (player_pos_x * 3));
-    //         end
-    //     end 
-    // end
-
 
 endmodule

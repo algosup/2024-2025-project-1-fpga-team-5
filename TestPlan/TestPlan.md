@@ -158,6 +158,69 @@ For this project, APIO v0.9.4 will be utilized as the primary synthesis tool. It
 
 ### 4.2 Issue Tracking
 
+The goal of issue tracking, as the name suggests, is to monitor and document issues in both the code and project documents. These issues are then reported on [GitHub](https://github.com/algosup/2024-2025-project-1-fpga-team-5/issues), allowing the responsible team members to address and resolve them efficiently.
+
+⚠️ There are three categories used to classify a problem based on its level of severity: ⚠️
+
+![Low-priority issue](https://img.shields.io/badge/Low_priority_issue-0b6623) 
+- This category is for issues that have minimal impact on the project or document and do not significantly affect its functionality. 
+---
+
+![Medium-priority issue](https://img.shields.io/badge/Medium_priority_issue-e6b400)
+- This category is for issues that need to be fixed but do not severely disrupt the project or document, though they may cause minor inconveniences. 
+---
+
+![High-priority issue](https://img.shields.io/badge/High_priority_issue-bb2124)
+- This category is for critical issues that need to be addressed as soon as possible because they either slow down the project significantly or completely halt its progress.
+
+---
+
+This template is used to report issues related to the code.
+
+**Code issue report template:**
+
+*Problem line:*
+
+*Problem name:* 
+
+*Reported By:* 
+
+*Date Reported:*
+
+*Defect level:*
+
+*Description:*
+
+*Problem reproducing:*
+
+*Expected Outcome:*
+
+*Assigned To:*
+
+*Comments:*
+
+---
+
+This template is used to report issues related to the documents.
+
+**Documents issue report template:**
+
+*Problem line:*
+
+*Problem name:*
+
+*Reported By:*
+
+*Date Reported:*
+
+*Defect level:*
+
+*Description:*
+
+*Assigned To:*
+
+*Comments:*
+
 ## 5. Test Cases
 
 You can find the various Test Cases [→ here](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing). The purpose of this document is to outline the future features that will need to be tested in advance to identify potential defects early in the project. The cases are presented in the following format:

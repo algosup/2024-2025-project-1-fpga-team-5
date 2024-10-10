@@ -32,6 +32,6 @@ module seven_segments (
             9: o_Segment2 = 7'b0010000; // 9
             default: o_Segment2 = 7'b1000000; // 0
         endcase
-    end
+    end // always @(*)
 
 endmodule

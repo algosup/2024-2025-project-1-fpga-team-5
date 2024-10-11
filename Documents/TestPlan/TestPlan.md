@@ -167,6 +167,18 @@ For this project, APIO v0.9.4 will be utilized as the primary synthesis tool. It
 
 ### 4.1 Procedure
 
+*Responsible:* Does the work to complete the task.
+*Accountable:* Delegates work and is the last one to review the task or deliverable before it's deemed complete.
+*Consulted:* Provides input based on how it will impact their project work or their domain of expertise on the deliverable.
+*Informed:* Needs to be kept in the loop on project progress, rather than roped into details of every deliverable.
+
+| Role | RACI | Responsibilities |
+|------|------|------------------|
+| Project Manager | Informed | Approve the test results and have the final say. |
+| Quality Assurance | Responsible | Write the test cases and execute the various tests. |
+| Technical Lead | Consulted | Provide feedback. |
+| Software Engineer | Accountable | Develop unit tests. |
+
 #### 4.1.1 Unit Testing
 
 Unit testing involves isolating each feature to test them individually to ensure that everything is working as expected.
@@ -255,8 +267,9 @@ This template is used to report issues related to the documents.
 You can find the various Test Cases [→ here](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing). The purpose of this document is to outline the future features that will need to be tested in advance to identify potential defects early in the project. The cases are presented in the following format:
 
 - *Test Case:* A description of the scenario being tested.
-- *Type of Case:* Categorized as Audio/Visual, Game States/Dynamics, or Game Mechanics.
-- *Current Status:* Indicated as Not Started, In Progress, or Done.
+- *Type:* Categorized as Audio/Visual, Game States/Dynamics, or Game Mechanics.
+- *Status:* Indicates whether the test is Not Started, In Progress, or Done.
+- *Test results:* Indicates whether the test has Failed or Passed.
 - *Expected Result:* The anticipated outcome of the test.
 - *Actual Result:* The observed outcome after testing.
 

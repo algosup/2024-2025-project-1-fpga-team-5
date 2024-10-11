@@ -582,7 +582,7 @@ The core gameplay revolves around guiding a frog safely across a perilous road f
 ---
 #### 2. User Input Handling
 
-User input is critical to navigating the game world. The system will respond to:
+User input is critical for navigating the game world. The system will respond to:
 
 - **Directional Movement**: The FPGA switches will control the frog’s movements in four directions—up, down, left, and right.
 

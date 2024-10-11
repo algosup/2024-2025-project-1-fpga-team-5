@@ -26,6 +26,7 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/10
 <summary>Table of contents <i>(Click to expand)</i></summary>
 
 - [Test plan](#test-plan)
+- [Approvals](#approvals)
 - [1. Introduction](#1-introduction)
     - [1.1 Overview](#11-overview)
     - [1.2 Objectives and Tasks](#12-objectives-and-tasks)
@@ -43,6 +44,9 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/10
     - [3.5 Synthesis Tool](#35-synthesis-tool)
 - [4. Test Strategy](#4-test-strategy)
     - [4.1 Procedure](#41-procedure)
+        - [4.1.1 Unit Testing](#411-unit-testing)
+        - [4.1.2 Integration Testing](#412-integration-testing)
+        - [4.1.3 User Acceptance Testing](#413-user-acceptance-testing)
     - [4.2 Issue Tracking](#42-issue-tracking)
 - [5. Test Cases](#5-test-cases)
 - [6. Risks and Contingencies](#6-risks-and-contingencies)
@@ -54,6 +58,8 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/10
 ---
 
 ## 1. Introduction
+
+---
 
 ### 1.1 Overview
 
@@ -87,7 +93,11 @@ The scope of testing for the Frogger game project includes the verification of b
 
 ## 2. How to Set Up
 
+---
+
 ## 3. Test Tools
+
+---
 
 Test tools refer to the various materials and instruments that will be employed throughout the testing process.
 
@@ -153,7 +163,24 @@ For this project, APIO v0.9.4 will be utilized as the primary synthesis tool. It
 
 ## 4. Test Strategy
 
+---
+
 ### 4.1 Procedure
+
+#### 4.1.1 Unit Testing
+
+Unit testing involves isolating each feature to test them individually to ensure that everything is working as expected.
+
+**Process:**
+
+<img src="img/UnitTesting.png" 
+        alt="UnitTestingImage" 
+        width="400"/>
+
+#### 4.1.2 Integration Testing
+
+#### 4.1.3 User Acceptance Testing
+
 
 
 ### 4.2 Issue Tracking
@@ -223,6 +250,8 @@ This template is used to report issues related to the documents.
 
 ## 5. Test Cases
 
+---
+
 You can find the various Test Cases [→ here](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing). The purpose of this document is to outline the future features that will need to be tested in advance to identify potential defects early in the project. The cases are presented in the following format:
 
 - *Test Case:* A description of the scenario being tested.
@@ -235,6 +264,12 @@ You can find the various Test Cases [→ here](https://docs.google.com/spreadshe
 
 ## 6. Risks and Contingencies
 
+---
+
 ## 7. Appendix
 
+---
+
 ## 8. Glossary
+
+---

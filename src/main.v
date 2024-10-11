@@ -1,4 +1,4 @@
-`include "modules/7_segments.v"
+// `include "modules/7_segments.v"
 module main (
     // Clock
     input i_Clk,
@@ -6,21 +6,18 @@ module main (
     // 7-segments display
     output reg [6:0] o_Segment1,
     output reg [6:0] o_Segment2,
-
     input i_Switch_1,
     input i_Switch_2,
     input i_Switch_3,
     input i_Switch_4,
-
     // VGA
     output o_VGA_HSync, // Horizontal Sync
     output o_VGA_VSync, // Vertical Sync
-
     output reg [2:0] o_VGA_Red,
     output reg [2:0] o_VGA_Grn,
-    output reg [2:0] o_VGA_Blu,
+    output reg [2:0] o_VGA_Blu
 );
-    
+
     reg [24:0] clock_tick = 0;
     reg [6:0] level = 0;
 
@@ -41,94 +38,87 @@ module main (
     end
 
     // display level_counter on 7_segments module
-    seven_segments level_counter(
-        .counter(level),
-        .o_Segment1(o_Segment1),
-        .o_Segment2(o_Segment2)
-    );
+    // seven_segments level_counter(
+    //     .counter(level),
+    //     .o_Segment1(o_Segment1),
+    //     .o_Segment2(o_Segment2)
+    // );
 
 
     // VGA module
-
-
     // BRAM instantiation using SB_RAM40_4K
-    wire [3:0] bram_data_out;
-    reg [3:0] bram_data_in;
-    reg [9:0] bram_addr_r;
-    reg [9:0] bram_addr_w;
+    wire [15:0] bram_data_out;
+    reg [15:0] bram_data_in;
+    reg [10:0] bram_addr;
     reg bram_we;
-
     SB_RAM40_4K #(
-        .INIT_0(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_1(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_2(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_3(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_4(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_5(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_6(80'b0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_7(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_8(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_9(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_A(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_B(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_C(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
-        .INIT_D(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
-        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000),
-        .WRITE_MODE(2),
-        .READ_MODE(2)
-    ) bram (
+        .INIT_0(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_1(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_2(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_3(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_4(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_5(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_6(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_7(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_8(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_9(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_A(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_B(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_C(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_D(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .INIT_E(80'b0001_0000_0001_0000_0001_0000_0001_0000_0001_0010_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000),
+        .INIT_F(80'b0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001_0000_0001),
+        .WRITE_MODE(0),
+        .READ_MODE(0)
+    ) bram_inst (
         .RDATA(bram_data_out),
-        .RADDR(bram_addr_r),
+        .RADDR(bram_addr),
         .RCLK(i_Clk),
         .RCLKE(1'b1),
         .RE(1'b1),
-        .WADDR(bram_addr_w),
+        .WADDR(bram_addr),
         .WCLK(i_Clk),
-        .WCLKE(1'b0),
+        .WCLKE(1'b1),
         .WDATA(bram_data_in),
-        .WE(bram_we),
+        .WE(bram_we)
     );
-
     // VGA timing constants for 640x480 resolution
     parameter H_SYNC_CYCLES = 92;
     parameter H_BACK_PORCH  = 50;
     parameter H_DISPLAY     = 640;
     parameter H_FRONT_PORCH = 18;
     parameter H_LINE        = H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY + H_FRONT_PORCH;
-
     parameter V_SYNC_CYCLES = 2;
     parameter V_BACK_PORCH  = 33;
     parameter V_DISPLAY     = 480;
     parameter V_FRONT_PORCH = 10;
     parameter V_FRAME       = V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY + V_FRONT_PORCH;
-
     reg [9:0] h_counter = 0;
     reg [9:0] v_counter = 0;
-
     wire h_active = (h_counter >= (H_SYNC_CYCLES + H_BACK_PORCH)) && (h_counter < (H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY));
     wire v_active = (v_counter >= (V_SYNC_CYCLES + V_BACK_PORCH)) && (v_counter < (V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
-
     // Generate sync signals
     assign o_VGA_HSync = ~(h_counter < H_SYNC_CYCLES);
     assign o_VGA_VSync = ~(v_counter < V_SYNC_CYCLES);
-
     reg [9:0] tile_size = (H_DISPLAY/20);
     reg [4:0] cell_x = 0;
     reg [4:0] cell_y = 0;
-
     // Color output logic: Color only the left half of the screen
     wire pixel_color;
     assign pixel_color = (h_active && v_active && (h_counter < H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY) && (v_counter < V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
-
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
+// Reset color outputs
+    o_VGA_Red = 3'b000;
+    o_VGA_Grn = 3'b000;
+    o_VGA_Blu = 3'b000;
     if (pixel_color) begin
         // Compute the BRAM address: two cells per address (4 bits each), 8 cells per row
-        bram_we <= 1'b0;
-        bram_addr_r <= ((cell_y-1) * 20 + cell_x); // 8 cells per row (each address covers 2 cells)
-
-        // Select between the lower and upper cell
-            case (bram_data_out)
+        bram_addr = ((cell_x-1) / 4);
+            // Lower 4 bits for the even cell
+            if (cell_x % 4 == 1) begin
+            // Lower 4 bits for the even cell
+            case (bram_data_out[3:0])
                 4'b0000: begin
                     o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
                 end
@@ -138,49 +128,58 @@ module main (
                 4'b0010: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
                 end
-                4'b0011: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Yellow
+                default: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
                 end
-                4'b0100: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Magenta
+            endcase
+        end else if (cell_x % 4 == 2) begin
+            // Upper 4 bits for the odd cell
+            case (bram_data_out[7:4])
+                4'b0000: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
                 end
-                4'b0101: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // Cyan
+                4'b0001: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
                 end
-                4'b0110: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b000; // Olive
-                end
-                4'b0111: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // Purple
-                end
-                4'b1000: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b100; // Teal
-                end
-                4'b1001: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b000; // Orange
-                end
-                4'b1010: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Lime
-                end
-                4'b1011: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b100; // Aqua
-                end
-                4'b1100: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // Pink
-                end
-                4'b1101: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Violet
-                end
-                4'b1110: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b100; o_VGA_Blu = 3'b111; // Sky Blue
-                end
-                4'b1111: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // White
+                4'b0010: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
                 end
                 default: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
                 end
             endcase
+        end else if (cell_x % 4 == 3) begin
+            // Upper 4 bits for the odd cell
+            case (bram_data_out[11:8])
+                4'b0000: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                end
+                4'b0001: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                end
+                4'b0010: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                end
+                default: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                end
+            endcase
+        end else begin
+            case (bram_data_out[15:12])
+                4'b0000: begin
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                end
+                4'b0001: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                end
+                4'b0010: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                end
+                default: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                end
+            endcase
+        end
     end else begin
         // If not displaying color, set all outputs to black
         o_VGA_Red = 3'b000;
@@ -188,12 +187,8 @@ module main (
         o_VGA_Blu = 3'b000;
     end
 end
-
-
-
     // Horizontal counter
     always @(posedge i_Clk) begin
-
         if (h_counter == H_LINE - 1) begin
             h_counter <= 0;
             cell_x <= 0;
@@ -215,10 +210,8 @@ end
         end
         
     end
-
     reg [9:0] player_pos_x = 10;
     reg [9:0] player_pos_y = 15;    
-
     // Temporary variable to store new player position
     reg [9:0] new_player_pos_y;
     reg [9:0] new_player_pos_x;

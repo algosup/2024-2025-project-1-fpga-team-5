@@ -108,85 +108,84 @@ module main (
     assign pixel_color = (h_active && v_active && (h_counter < H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY) && (v_counter < V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
-// Reset color outputs
-    o_VGA_Red = 3'b000;
-    o_VGA_Grn = 3'b000;
-    o_VGA_Blu = 3'b000;
-    if (pixel_color) begin
-        // Compute the BRAM address: two cells per address (4 bits each), 8 cells per row
-        bram_addr = ((cell_x-1) / 4);
-            // Lower 4 bits for the even cell
-            if (cell_x % 4 == 1) begin
-            // Lower 4 bits for the even cell
-            case (bram_data_out[3:0])
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                end
-                4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
-        end else if (cell_x % 4 == 2) begin
-            // Upper 4 bits for the odd cell
-            case (bram_data_out[7:4])
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                end
-                4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
-        end else if (cell_x % 4 == 3) begin
-            // Upper 4 bits for the odd cell
-            case (bram_data_out[11:8])
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                end
-                4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
-        end else begin
-            case (bram_data_out[15:12])
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
-                end
-                4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
-                end
-                4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
-                end
-                default: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
-                end
-            endcase
-        end
-    end else begin
-        // If not displaying color, set all outputs to black
+        // Reset color outputs
         o_VGA_Red = 3'b000;
         o_VGA_Grn = 3'b000;
         o_VGA_Blu = 3'b000;
+
+        if (pixel_color) begin
+            // Compute the BRAM address: 4 cells per address (4 bits each)
+            bram_addr = ((cell_x-1) / 4);
+            
+            if (cell_x % 4 == 1) begin
+                case (bram_data_out[3:0])
+                    4'b0000: begin
+                        o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                    end
+                    4'b0001: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                    end
+                    4'b0010: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                    end
+                    default: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                    end
+                endcase
+            end else if (cell_x % 4 == 2) begin
+                case (bram_data_out[7:4])
+                    4'b0000: begin
+                        o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                    end
+                    4'b0001: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                    end
+                    4'b0010: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                    end
+                    default: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                    end
+                endcase
+            end else if (cell_x % 4 == 3) begin
+                case (bram_data_out[11:8])
+                    4'b0000: begin
+                        o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                    end
+                    4'b0001: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                    end
+                    4'b0010: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                    end
+                    default: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                    end
+                endcase
+            end else begin
+                case (bram_data_out[15:12])
+                    4'b0000: begin
+                        o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                    end
+                    4'b0001: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                    end
+                    4'b0010: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                    end
+                    default: begin
+                        o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
+                    end
+                endcase
+            end
+        end else begin
+            // If not displaying color, set all outputs to black
+            o_VGA_Red = 3'b000;
+            o_VGA_Grn = 3'b000;
+            o_VGA_Blu = 3'b000;
+        end
     end
-end
+
     // Horizontal counter
     always @(posedge i_Clk) begin
         if (h_counter == H_LINE - 1) begin
@@ -210,10 +209,5 @@ end
         end
         
     end
-    reg [9:0] player_pos_x = 10;
-    reg [9:0] player_pos_y = 15;    
-    // Temporary variable to store new player position
-    reg [9:0] new_player_pos_y;
-    reg [9:0] new_player_pos_x;
 
 endmodule

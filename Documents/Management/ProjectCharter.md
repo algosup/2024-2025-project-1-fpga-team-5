@@ -24,9 +24,8 @@ This project required us to replicate the game as close as possible to the origi
 | Rémy Charles      | Program Manager   | Communication with the client<br>Functional specification delivery<br>Risk management                               | Functional specification                                                                                                                  |
 | Michel Riff       | Technical Leader  | Define coding conventions<br>Technical specification delivery<br>Manages developer tasks                            | Technical specification                                                                                                                   |
 | Mathias Gagnepain | Software engineer | Write the code<br>Fix bugs<br>Document the code<br>Create the tests if needed for the code                          | All required functionalities implemented<br>Bug-free code                                                                                 |
-| Séréna Bavarois   | Software engineer | Write the code<br>Fix bugs<br>Document the code<br>Create the tests if needed for the code                          | All required functionalities implemented<br>Bug-free code                                                                                 |
 | Camille Gayat     | Quality assurance | Verify documents<br>Test the program<br>Confirm we match the client expectations<br>Test plan delivery              | Test Plan<br>Identification of bugs<br>Comprehensive and exhaustive documentation                                                         |
-| Salaheddine Namir | Technical Writer  | User Manual                                                                                                         |                                                                                                                                           |
+| Salaheddine Namir | Technical Writer  | User Manual                                                                                                         | Provide a written user manual to provide an easy understanding of the game to the client                                                  |
 
 ## Project Plan
 
@@ -83,7 +82,7 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 ## Allocated Resources
 
 Budget: 0€
-Workforce allocated: 7 team members
+Workforce allocated: 6 team members
 Worktime: 20 half-days of 3h30 each
 
-Total human hours estimation: 490h
+Total human hours estimation: 420 hours

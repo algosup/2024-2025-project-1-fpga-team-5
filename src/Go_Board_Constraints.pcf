@@ -50,3 +50,13 @@ set_io o_VGA_Grn[2] 33
 set_io o_VGA_Blu[0] 28
 set_io o_VGA_Blu[1] 41
 set_io o_VGA_Blu[2] 42
+
+set_io o_VGA_Red[0] 36
+set_io o_VGA_Red[1] 37
+set_io o_VGA_Red[2] 40
+set_io o_VGA_Grn[0] 29
+set_io o_VGA_Grn[1] 30
+set_io o_VGA_Grn[2] 33
+set_io o_VGA_Blu[0] 28
+set_io o_VGA_Blu[1] 41
+set_io o_VGA_Blu[2] 42

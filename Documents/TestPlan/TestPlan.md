@@ -46,7 +46,8 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/10
     - [4.1 Procedure](#41-procedure)
         - [4.1.1 Unit Testing](#411-unit-testing)
         - [4.1.2 Integration Testing](#412-integration-testing)
-        - [4.1.3 User Acceptance Testing](#413-user-acceptance-testing)
+        - [4.1.3 Stress and Performance Testing](#413-stress-and-performance-testing)
+        - [4.1.4 User Acceptance Testing](#414-user-acceptance-testing)
     - [4.2 Issue Tracking](#42-issue-tracking)
 - [5. Test Cases](#5-test-cases)
 - [6. Risks and Contingencies](#6-risks-and-contingencies)
@@ -181,19 +182,43 @@ For this project, APIO v0.9.4 will be utilized as the primary synthesis tool. It
 
 #### 4.1.1 Unit Testing
 
-Unit testing involves isolating each feature to test them individually to ensure that everything is working as expected.
+Unit testing involves isolating each feature to test it individually, ensuring that everything works as expected by using test benches.
 
 **Process:**
 
 <img src="img/UnitTesting.png" 
         alt="UnitTestingImage" 
-        width="400"/>
+        width="300"/>
 
 #### 4.1.2 Integration Testing
 
-#### 4.1.3 User Acceptance Testing
+After unit tests, integration testing will be conducted. The goal of this testing is to evaluate all the features together using a test bench.
 
+**Process:**
 
+<img src="img/IntegrationTesting.png" 
+        alt="IntegrationTestingImage" 
+        width="300"/>
+
+#### 4.1.3 Stress and Performance Testing
+
+After integration testing, This is the turn of stress testing and performance testing. The purpose of stress testing is to determine how the FPGA board and the game will behave under extreme conditions. In contrast, performance testing aims to evaluate the speed, responsiveness, and stability of the FPGA board and the game under various conditions.
+
+**Process:**
+
+<img src="img/StressPerformanceTesting.png" 
+        alt="StressPerformanceTestingImage" 
+        width="400"/>
+
+#### 4.1.4 User Acceptance Testing
+
+Finally, the last test will be user acceptance testing. The goal is to allow a group of random people to play the game and provide feedback on its user-friendliness.
+
+**Process:**
+
+<img src="img/UserAcceptanceTesting.png" 
+        alt="UserAcceptanceTestingImage" 
+        width="300"/>
 
 ### 4.2 Issue Tracking
 

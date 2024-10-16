@@ -304,6 +304,12 @@ You can find the various Test Cases [→ here](https://docs.google.com/spreadshe
 
 ---
 
+| Risk | Risk level | Contigency |
+|------|------------|------------|
+| Hardware malfunction | ![Medium](https://img.shields.io/badge/Medium-e6b400) | Conduct regular inspections of the hardware equipment. If there is a problem, report it to the project manager and replace the board. |
+| Insufficient resources | ![High](https://img.shields.io/badge/High-bb2124) | Optimize the code to utilize less resources, prioritizing the most important features first. |
+| Project scope creep | ![Medium](https://img.shields.io/badge/Medium-e6b400) | Identify and clarify the needs and scope to mitigate this risk. |
+
 ## 7. Appendix
 
 ---

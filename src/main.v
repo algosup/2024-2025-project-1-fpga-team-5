@@ -167,99 +167,6 @@ module main (
         .o_car_x(car12_x),
     );
 
-
-    // VGA module
-    // VGA timing constants for 640x480 resolution
-    parameter H_SYNC_CYCLES = 92;
-    parameter H_BACK_PORCH  = 50;
-    parameter H_DISPLAY     = 640;
-    parameter H_FRONT_PORCH = 18;
-    parameter H_LINE        = H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY + H_FRONT_PORCH;
-
-    parameter V_SYNC_CYCLES = 2;
-    parameter V_BACK_PORCH  = 33;
-    parameter V_DISPLAY     = 480;
-    parameter V_FRONT_PORCH = 10;
-    parameter V_FRAME       = V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY + V_FRONT_PORCH;
-
-    reg [9:0] h_counter = 0;
-    reg [9:0] v_counter = 0;
-
-    wire h_active = (h_counter >= (H_SYNC_CYCLES + H_BACK_PORCH)) && (h_counter < (H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY));
-    wire v_active = (v_counter >= (V_SYNC_CYCLES + V_BACK_PORCH)) && (v_counter < (V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
-
-    // Generate sync signals
-    assign o_VGA_HSync = ~(h_counter < H_SYNC_CYCLES);
-    assign o_VGA_VSync = ~(v_counter < V_SYNC_CYCLES);
-
-    reg [9:0] tile_size = (H_DISPLAY/20);
-    reg [4:0] cell_x = 0;
-    reg [3:0] cell_y = 0;
-
-    // Color output logic: Color only the left half of the screen
-    wire pixel_color;
-    assign pixel_color = (h_active && v_active);
-
-
-    always @(i_Clk) begin
-        i_reset <= 0; 
-        if (pixel_color) begin
-            if ((car2_x == cell_x && car2_y == cell_y)
-                    || (car3_x == cell_x && car3_y == cell_y)
-                    || ((car4_x == cell_x || car4_x-1 == cell_x) && car4_y == cell_y)
-                    || (car5_x == cell_x && car5_y == cell_y)
-                    || ((car6_x == cell_x || car6_x+1 == cell_x) && car6_y == cell_y)
-                    || (car7_x == cell_x && car7_y == cell_y)
-                    || ((car8_x == cell_x || car8_x-1 == cell_x) && car8_y == cell_y)
-                    || ((car9_x == cell_x || car9_x-1 == cell_x) && car9_y == cell_y)
-                    || (car10_x == cell_x && car10_y == cell_y)
-                    || (car12_x == cell_x && car12_y == cell_y)
-            ) begin
-                o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
-                if (cell_x == player_x && cell_y == player_y) begin
-                    i_reset <= 1;
-                end
-            end else if (cell_x == player_x && cell_y == player_y) begin
-                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
-            end else if ((cell_y >= road_top_start && cell_y < road_top_end) || (cell_y >= road_bottom_start && cell_y < road_bottom_end )) begin
-                o_VGA_Red <= 3'b001; o_VGA_Grn <= 3'b001; o_VGA_Blu <= 3'b001; // Roads
-            end else if ((cell_y >= grass_arrival_start && cell_y <= grass_arrival_end)
-                        || (cell_y == grass_middle)
-                        || (cell_y >= grass_spawn_start && cell_y <= grass_spawn_end)
-            ) begin
-                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b101; o_VGA_Blu <= 3'b001; // Grass
-            end else begin
-                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Black
-            end
-        end else begin
-            o_VGA_Red <= 3'b000;
-            o_VGA_Grn <= 3'b000;
-            o_VGA_Blu <= 3'b000;
-        end
-    end
-
-    // Horizontal counter
-    always @(posedge i_Clk) begin
-        if (h_counter == H_LINE - 1) begin
-            h_counter <= 0;
-            cell_x <= 0;
-            if (v_counter == V_FRAME - 1) begin
-                v_counter <= 0;
-                cell_y <= 0;
-            end else begin
-                v_counter <= v_counter + 1;
-                if (v_counter > V_SYNC_CYCLES* V_BACK_PORCH + (tile_size*(cell_y-1))) begin
-                    cell_y <= cell_y + 1;
-                end
-            end
-            
-        end else begin
-            h_counter <= h_counter + 1;
-            if (h_counter > H_SYNC_CYCLES + H_BACK_PORCH + (tile_size*cell_x)) begin
-                cell_x <= cell_x + 1;
-            end
-        end   
-    end
     // VGA module
     // BRAM instantiation using SB_RAM40_4K
     wire [15:0] bram_data_out;
@@ -268,21 +175,21 @@ module main (
     reg bram_we;
     // Actually address avec the underscore are used for the map but for unknown reason, 11 addresses before aren't accessible
     SB_RAM40_4K #(
-        .INIT_0(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_1(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_2(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_3(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_4(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_5(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_6(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_7(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_8(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_9(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_A(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_B(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_C(256'h01010101010101010101010101010101010101010101_01010101010101010101),
-        .INIT_D(256'h10101010101010101010101010101010101010101010_10101010101010101010),
-        .INIT_E(256'h01010101010101010101010101010101010101010101_21010101010101010101),
+        .INIT_0(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
+        .INIT_1(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
+        .INIT_2(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666766666),
+        .INIT_3(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666663666),
+        .INIT_4(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666066666666666),
+        .INIT_5(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666676666666666),
+        .INIT_6(256'hffffffffffffffffffffffffffffffffffffffffffff_66666456666666666666),
+        .INIT_7(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
+        .INIT_8(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666066666666),
+        .INIT_9(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666666663),
+        .INIT_A(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666666546),
+        .INIT_B(256'hffffffffffffffffffffffffffffffffffffffffffff_66665466666666666666),
+        .INIT_C(256'hffffffffffffffffffffffffffffffffffffffffffff_67666666666666666666),
+        .INIT_D(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
+        .INIT_E(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111112111111111),
         .WRITE_MODE(0),
         .READ_MODE(0)
     ) bram_inst (
@@ -325,6 +232,7 @@ module main (
     reg [3:0] tile = 0;
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
+        i_reset <= 0; 
         if (pixel_color) begin
             // Compute the BRAM address: 4 cells (4 bits each) per address (16 bits)
             bram_addr = (((cell_y)) * 16) + ((20-(cell_x)) / 4);
@@ -341,13 +249,28 @@ module main (
 
             case (tile)
                 4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Red
+                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car1
                 end
                 4'b0001: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b000; // Green
+                    o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b101; o_VGA_Blu <= 3'b001; // Grass
                 end
                 4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Blue
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
+                end
+                4'b0011: begin
+                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // Car2
+                end
+                4'b0100: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // TruckFront
+                end
+                4'b0101: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // TruckBack
+                end
+                4'b0110: begin
+                    o_VGA_Red <= 3'b001; o_VGA_Grn <= 3'b001; o_VGA_Blu <= 3'b001; // Road
+                end
+                4'b0111: begin
+                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car3
                 end
                 default: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
@@ -360,6 +283,24 @@ module main (
             o_VGA_Blu = 3'b000;
         end
     end
+
+
+    //     if (pixel_color) begin
+    //         if ((car2_x == cell_x && car2_y == cell_y)
+    //                 || (car3_x == cell_x && car3_y == cell_y)
+    //                 || ((car4_x == cell_x || car4_x-1 == cell_x) && car4_y == cell_y)
+    //                 || (car5_x == cell_x && car5_y == cell_y)
+    //                 || ((car6_x == cell_x || car6_x+1 == cell_x) && car6_y == cell_y)
+    //                 || (car7_x == cell_x && car7_y == cell_y)
+    //                 || ((car8_x == cell_x || car8_x-1 == cell_x) && car8_y == cell_y)
+    //                 || ((car9_x == cell_x || car9_x-1 == cell_x) && car9_y == cell_y)
+    //                 || (car10_x == cell_x && car10_y == cell_y)
+    //                 || (car12_x == cell_x && car12_y == cell_y)
+    //         ) begin
+    //             o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
+    //             if (cell_x == player_x && cell_y == player_y) begin
+    //                 i_reset <= 1;
+    //             end
 
     // Horizontal counter
     always @(posedge i_Clk) begin

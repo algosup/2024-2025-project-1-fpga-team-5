@@ -351,6 +351,11 @@ Resumption criteria refer to the requirements needed to restart the testing phas
 
 ---
 
+- [Functional Specification](Documents/Specification/Functional/FunctionalSpecification.md)
+- [Technical Specification](Documents/Specification/Technical/TechnicalSpecification.md)
+- [Test Cases](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing)
+- [User Manual](Documents/UserManual/UserManual.pdf)
+
 ## 8. Glossary
 
 ---

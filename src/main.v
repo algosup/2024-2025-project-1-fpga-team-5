@@ -48,6 +48,9 @@ module main (
     // Player module
     wire [4:0] player_x;
     wire [3:0] player_y;
+    wire [4:0] player_previous_x;
+    wire [3:0] player_previous_y;
+    reg [0:0] i_player_moved = 1'b0;
     reg i_reset = 0;
     wire o_reset;
     player player_module (
@@ -59,8 +62,12 @@ module main (
         .o_player_x(player_x),
         .o_player_y(player_y),
         .i_reset(i_reset),
-        .o_reset(o_reset)
+        .o_reset(o_reset),
+        .o_player_previous_x(player_previous_x),
+        .o_player_previous_y(player_previous_y),
+        .i_player_moved(i_player_moved)
     );
+
 
 
     // Road module
@@ -172,24 +179,25 @@ module main (
     wire [15:0] bram_data_out;
     reg [15:0] bram_data_in;
     reg [10:0] bram_addr;
-    reg bram_we;
+    reg bram_we = 1'b0;
+    reg bram_re = 1'b1;
     // Actually address avec the underscore are used for the map but for unknown reason, 11 addresses before aren't accessible
     SB_RAM40_4K #(
-        .INIT_0(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
-        .INIT_1(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
-        .INIT_2(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666766666),
-        .INIT_3(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666663666),
-        .INIT_4(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666066666666666),
-        .INIT_5(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666676666666666),
-        .INIT_6(256'hffffffffffffffffffffffffffffffffffffffffffff_66666456666666666666),
-        .INIT_7(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
-        .INIT_8(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666066666666),
-        .INIT_9(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666666663),
-        .INIT_A(256'hffffffffffffffffffffffffffffffffffffffffffff_66666666666666666546),
-        .INIT_B(256'hffffffffffffffffffffffffffffffffffffffffffff_66665466666666666666),
-        .INIT_C(256'hffffffffffffffffffffffffffffffffffffffffffff_67666666666666666666),
-        .INIT_D(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111111111111111),
-        .INIT_E(256'hffffffffffffffffffffffffffffffffffffffffffff_11111111112111111111),
+        .INIT_0(256'h00000000000000000000000000000000000000000000_11111111111111111111),
+        .INIT_1(256'h00000000000000000000000000000000000000000000_11111111111111111111),
+        .INIT_2(256'h00000000000000000000000000000000000000000000_66666666666666766666),
+        .INIT_3(256'h00000000000000000000000000000000000000000000_66666666666666663666),
+        .INIT_4(256'h00000000000000000000000000000000000000000000_66666666066666666666),
+        .INIT_5(256'h00000000000000000000000000000000000000000000_66666666676666666666),
+        .INIT_6(256'h00000000000000000000000000000000000000000000_66666456666666666666),
+        .INIT_7(256'h00000000000000000000000000000000000000000000_11111111111111111111),
+        .INIT_8(256'h00000000000000000000000000000000000000000000_66666666666066666666),
+        .INIT_9(256'h00000000000000000000000000000000000000000000_66666666666666666663),
+        .INIT_A(256'h00000000000000000000000000000000000000000000_66666666666666666546),
+        .INIT_B(256'h00000000000000000000000000000000000000000000_66665466666666666666),
+        .INIT_C(256'h00000000000000000000000000000000000000000000_67666666666666666666),
+        .INIT_D(256'h00000000000000000000000000000000000000000000_11111111111111111111),
+        .INIT_E(256'h00000000000000000000000000000000000000000000_11111111112111111111),
         .WRITE_MODE(0),
         .READ_MODE(0)
     ) bram_inst (
@@ -197,7 +205,7 @@ module main (
         .RADDR(bram_addr),
         .RCLK(i_Clk),
         .RCLKE(1'b1),
-        .RE(1'b1),
+        .RE(bram_re),
         .WADDR(bram_addr),
         .WCLK(i_Clk),
         .WCLKE(1'b1),
@@ -230,12 +238,34 @@ module main (
     assign pixel_color = (h_active && v_active && (h_counter < H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY) && (v_counter < V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
 
     reg [3:0] tile = 0;
+    reg clock_counter = 0;
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
+        // Access the current player position in the BRAM and change the 1'h2 for 1'h9 in the RAM
+        if (clock_counter == 0) begin
+            if (player_previous_y != player_y || player_previous_x != player_x) begin
+                bram_addr <= 8'd242;//(15 * 16) + (20-(10)) / 4;
+                bram_data_in <= 16'h0110;
+                bram_re <= 1'b0;
+                bram_we <= 1'b1;
+                i_player_moved <= 1'b1;
+                clock_counter <= 1;
+            end
+
+        // De-assert bram_we in the next clock cycle
+        end else begin
+            bram_we <= 1'b0;
+            bram_re <= 1'b1;
+            i_player_moved <= 1'b0;
+            clock_counter <= 0;
+        end
+
+
+
         i_reset <= 0; 
-        if (pixel_color) begin
+        if (pixel_color && bram_we == 1'b0) begin
             // Compute the BRAM address: 4 cells (4 bits each) per address (16 bits)
-            bram_addr = (((cell_y)) * 16) + ((20-(cell_x)) / 4);
+            bram_addr <= (cell_y * 16) + (20-(cell_x)) / 4;
 
             if (cell_x % 4 == 1) begin
                 tile = bram_data_out[15:12];

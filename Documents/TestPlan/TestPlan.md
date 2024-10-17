@@ -37,7 +37,8 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/17
     - [2.1 Software](#21-software)
     - [2.2 Hardware](#22-hardware)
         - [2.2.1 FPGA Board Specifications](#221-fpga-board-specifications)
-        - [2.2.2 Hardware Test Environment](#222-hardware-test-environment)
+        - [2.2.2 Screen  ](#222-screen-specifications)
+        - [2.2.3 Hardware Test Environment](#223-hardware-test-environment)
     - [2.3 Version Control Tool](#23-version-control-tool)
     - [2.4 Simulation Tool](#24-simulation-tool)
     - [2.5 Synthesis Tool](#25-synthesis-tool)
@@ -120,11 +121,22 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 - 25 MHz on-board clock
 - 1 Mb Flash for booting up your FPGA
 
-#### 2.2.2 Hardware Test Environment:
+#### 2.2.2 Screen Specifications:
+
+| Specification | Details |
+|:-------------:|:-------:|
+| Resolution | Full HD (1920x1080px) |
+| Screen size | 24.5 inches |
+| Refresh rate | 75 Hz |
+| Panel type | IPS |
+| Input ports | 1xHDMI 1.4 <br><br> 1xVGA |
+| Audio | Built-in speakers (2W) |
+
+#### 2.2.3 Hardware Test Environment:
 
 ##### MacBook Air M3 2024
 
-| Specification | Details|
+| Specification | Details |
 |:---------------:|:--------:|
 | Operating system | macOS Sequoia 15.0 |
 | Processor | Apple M3 GPU 10 cores|
@@ -141,7 +153,7 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 | Processor | Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz   1.50 GHz |
 | Memory | 16.0GB |
 | Storage | 476GB SSD |
-| Resolution | 1080x1920px,  60Hz |
+| Resolution | 1080x1920px <br><br> 60Hz |
 
 ### 2.3 Version Control tool
 
@@ -366,8 +378,8 @@ Resumption criteria refer to the requirements needed to restart the testing phas
 | Verilog | Verilog is a hardware description language (HDL) used to model and simulate digital systems and circuits, enabling designers to describe the structure and behavior of electronic components. |
 | Simulate | Simulate means to create a model or representation of a system or process to analyze its behavior under various conditions, often using software to replicate real-world scenarios. |
 | Test bench | Test bench is a simulated environment used to verify the functionality of a hardware design by providing inputs, monitoring outputs, and checking behavior against expected results. |
-| Unit testing | Unit Testing is a software testing method that involves testing individual components or functions of a program in isolation to ensure they work correctly. |
-| Integration testing | Integration Testing is a testing process that evaluates the interaction and compatibility between combined software components or systems to ensure they work together as intended. |
-| Stress testing | Stress Testing is a testing technique that evaluates a system's performance under extreme conditions or loads to identify its breaking points and ensure stability and reliability. |
-| Performance testing | Performance Testing is a testing method used to evaluate the speed, responsiveness, and stability of a system under a particular workload to ensure it meets performance requirements. |
-| User Acceptance testing | User Acceptance Testing (UAT) is the final phase of software testing where end-users validate that the system meets their needs and requirements before it goes live. |
+| Unit Testing | Unit Testing is a software testing method that involves testing individual components or functions of a program in isolation to ensure they work correctly. |
+| Integration Testing | Integration Testing is a testing process that evaluates the interaction and compatibility between combined software components or systems to ensure they work together as intended. |
+| Stress Testing | Stress Testing is a testing technique that evaluates a system's performance under extreme conditions or loads to identify its breaking points and ensure stability and reliability. |
+| Performance Testing | Performance Testing is a testing method used to evaluate the speed, responsiveness, and stability of a system under a particular workload to ensure it meets performance requirements. |
+| User Acceptance Testing | User Acceptance Testing (UAT) is the final phase of software testing where end-users validate that the system meets their needs and requirements before it goes live. |

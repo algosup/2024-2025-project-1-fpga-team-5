@@ -37,7 +37,7 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/17
     - [2.1 Software](#21-software)
     - [2.2 Hardware](#22-hardware)
         - [2.2.1 FPGA Board Specifications](#221-fpga-board-specifications)
-        - [2.2.2 Screen  ](#222-screen-specifications)
+        - [2.2.2 Screen Specifications](#222-screen-specifications)
         - [2.2.3 Hardware Test Environment](#223-hardware-test-environment)
     - [2.3 Version Control Tool](#23-version-control-tool)
     - [2.4 Simulation Tool](#24-simulation-tool)
@@ -150,7 +150,7 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 | Specification | Details|
 |:---------------:|:--------:|
 | Operating system | Windows 11 Pro 21H2 |
-| Processor | Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz   1.50 GHz |
+| Processor | Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz   1.50GHz |
 | Memory | 16.0GB |
 | Storage | 476GB SSD |
 | Resolution | 1080x1920px <br><br> 60Hz |

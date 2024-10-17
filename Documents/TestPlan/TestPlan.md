@@ -127,7 +127,7 @@ For this project, we will use FPGA technology and Verilog due to the extensive p
 |:-------------:|:-------:|
 | Resolution | Full HD (1920x1080px) |
 | Screen size | 24.5 inches |
-| Refresh rate | 75 Hz |
+| Refresh rate | 75Hz |
 | Panel type | IPS |
 | Input ports | 1xHDMI 1.4 <br><br> 1xVGA |
 | Audio | Built-in speakers (2W) |

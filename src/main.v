@@ -46,6 +46,7 @@ module main (
     // Player module
     wire [4:0] player_x;
     wire [3:0] player_y;
+    wire [8:0] player_color;
     reg i_reset = 0;
     wire o_reset;
     player player_module (
@@ -58,6 +59,7 @@ module main (
         .o_player_y(player_y),
         .i_reset(i_reset),
         .o_reset(o_reset),
+        .player_color(player_color)
     );
 
 
@@ -141,7 +143,6 @@ module main (
     // VGA module
     // BRAM instantiation using SB_RAM40_4K
     wire [15:0] bram_data_out;
-    reg [15:0] bram_data_in;
     reg [10:0] bram_addr;
     reg bram_we = 1'b0;
     reg bram_re = 1'b1;
@@ -164,7 +165,7 @@ module main (
         .INIT_E(256'h00000000000000000000000000000000000000000000_11111111111111111111),
         .WRITE_MODE(0),
         .READ_MODE(0)
-    ) bram_inst (
+    ) map_inst (
         .RDATA(bram_data_out),
         .RADDR(bram_addr),
         .RCLK(i_Clk),
@@ -173,7 +174,6 @@ module main (
         .WADDR(bram_addr),
         .WCLK(i_Clk),
         .WCLKE(1'b1),
-        .WDATA(bram_data_in),
         .WE(bram_we)
     );
     // VGA timing constants for 640x480 resolution
@@ -250,10 +250,11 @@ module main (
                     i_reset <= 1;
                 end
             end else if (cell_x == player_x && cell_y == player_y) begin
-                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
+                o_VGA_Red <= player_color[8:6]; 
+                o_VGA_Grn <= player_color[5:3]; 
+                o_VGA_Blu <= player_color[2:0]; // Player
             end
-        end else begin
-            // If not displaying color, set all outputs to black
+        end else begin 
             o_VGA_Red = 3'b000;
             o_VGA_Grn = 3'b000;
             o_VGA_Blu = 3'b000;

@@ -1,8 +1,10 @@
 `include "modules/debounce_switch.v"
+`include "modules/draw_sprite.v"
 module player #(parameter PLAYER_ORIGIN_X = 11, parameter PLAYER_ORIGIN_Y = 14) (
     output reg [4:0] o_player_x,
     output reg [3:0] o_player_y,
     output reg o_reset,
+    output reg [8:0] player_color,
 
     input i_Clk,
     input i_player_up,
@@ -84,5 +86,13 @@ always @(posedge i_Clk) begin
         o_player_x <= PLAYER_ORIGIN_X;
     end
 end
+
+draw_sprite player_sprite (
+    .i_Clk(i_Clk),
+    .x(o_player_x),
+    .y(o_player_y),
+    .sprite(9'b000_000_111),
+    .pixel(player_color)
+);
 
 endmodule

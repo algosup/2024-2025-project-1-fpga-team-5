@@ -5,7 +5,7 @@
 ---
 
 <p align="center"> 
-Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/17/2024
+Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/18/2024
 </p>
 
 ---
@@ -16,7 +16,8 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/17
 ### Approvals
 
 | Reviewer          | Role              | Approved | Date       |
-| ----------------- | ----------------- | -------- | ---------- |
+| ----------------- | ----------------- |:--------:| ---------- |
+| Rémy CHARLES      | Program Manager   | ✅       |  10/18/2024 |
 
 
 </details>

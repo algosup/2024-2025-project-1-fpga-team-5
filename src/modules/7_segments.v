@@ -3,7 +3,7 @@ module seven_segments (
     input [6:0] counter,
     // 7-segments display
     output reg [6:0] o_Segment1,
-    output reg [6:0] o_Segment2,
+    output reg [6:0] o_Segment2
 );
     
     always @(*) begin

@@ -1,9 +1,7 @@
 `include "modules/debounce_switch.v"
-module player (
+module player #(parameter PLAYER_ORIGIN_X = 11, parameter PLAYER_ORIGIN_Y = 14) (
     output reg [4:0] o_player_x,
     output reg [3:0] o_player_y,
-    output reg [4:0] o_player_previous_x,
-    output reg [3:0] o_player_previous_y,
     output reg o_reset,
 
     input i_Clk,
@@ -11,15 +9,12 @@ module player (
     input i_player_down,
     input i_player_left,
     input i_player_right,
-    input i_reset,
-    input i_player_moved
+    input i_reset
 );
 
 initial begin
-    o_player_x = 10;
-    o_player_y = 15;
-    o_player_previous_x = 10;
-    o_player_previous_y = 15;
+    o_player_x = PLAYER_ORIGIN_X;
+    o_player_y = PLAYER_ORIGIN_Y;
 end
 
 reg  r_player_up = 1'b0;
@@ -58,48 +53,35 @@ always @(posedge i_Clk) begin
     r_player_left <= w_player_left;
     r_player_right <= w_player_right;
 
-    if (i_player_moved == 1'b1) begin
-        o_player_previous_x <= o_player_x;
-        o_player_previous_y <= o_player_y;
-    end
-
     if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
-        if (o_player_y > 1) begin
-            o_player_previous_y <= o_player_y;
+        if (o_player_y > 0) begin
             o_player_y <= o_player_y - 1;
         end
     end else if (w_player_down == 1'b0 && r_player_down == 1'b1) begin
-        if (o_player_y < 15) begin
-            o_player_previous_y <= o_player_y;
+        if (o_player_y < 14) begin
             o_player_y <= o_player_y + 1;
         end
     end else if (w_player_left == 1'b0 && r_player_left == 1'b1) begin
         if (o_player_x > 1) begin
-            o_player_previous_x <= o_player_x;
             o_player_x <= o_player_x - 1;
         end
     end else if (w_player_right == 1'b0 && r_player_right == 1'b1) begin
         if (o_player_x < 20) begin
-            o_player_previous_x <= o_player_x;
             o_player_x <= o_player_x + 1;
         end
     end
 
     if (i_reset == 1) begin
         o_reset <= 1;
-        o_player_x <= 10;
-        o_player_y <= 15;
-        o_player_previous_x <= 10;
-        o_player_previous_y <= 15;
+        o_player_x <= PLAYER_ORIGIN_X;
+        o_player_y <= PLAYER_ORIGIN_Y;
     end else begin
         o_reset <= 0;
     end
 
-    if (o_player_y == 1) begin
-        o_player_y <= 15;
-        o_player_x <= 10;
-        o_player_previous_x <= 10;
-        o_player_previous_y <= 15;
+    if (o_player_y == 0) begin
+        o_player_y <= PLAYER_ORIGIN_Y;
+        o_player_x <= PLAYER_ORIGIN_X;
     end
 end
 

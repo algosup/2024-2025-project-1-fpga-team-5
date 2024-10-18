@@ -1,7 +1,5 @@
 `include "modules/7_segments.v"
 `include "sprites/player.v"
-`include "sprites/road.v"
-`include "sprites/grass.v"
 `include "sprites/car.v"
 module main (
     // Clock
@@ -28,7 +26,7 @@ module main (
     reg [6:0] level = 0;
 
     always @(posedge i_Clk) begin
-        if (player_y == 1) begin
+        if (player_y == 0) begin
                 if (level == 99) begin
                     level <= 0;
                 end else begin
@@ -48,9 +46,6 @@ module main (
     // Player module
     wire [4:0] player_x;
     wire [3:0] player_y;
-    wire [4:0] player_previous_x;
-    wire [3:0] player_previous_y;
-    reg [0:0] i_player_moved = 1'b0;
     reg i_reset = 0;
     wire o_reset;
     player player_module (
@@ -63,51 +58,20 @@ module main (
         .o_player_y(player_y),
         .i_reset(i_reset),
         .o_reset(o_reset),
-        .o_player_previous_x(player_previous_x),
-        .o_player_previous_y(player_previous_y),
-        .i_player_moved(i_player_moved)
-    );
-
-
-
-    // Road module
-    wire [3:0] road_top_start;
-    wire [3:0] road_top_end;
-    wire [3:0] road_bottom_start;
-    wire [3:0] road_bottom_end;
-    road road_module (
-        .road_top_start(road_top_start),
-        .road_top_end(road_top_end),
-        .road_bottom_start(road_bottom_start),
-        .road_bottom_end(road_bottom_end)
-    );
-
-    // Grass module
-    wire [3:0] grass_arrival_start;
-    wire [3:0] grass_arrival_end;
-    wire [3:0] grass_middle;
-    wire [3:0] grass_spawn_start;
-    wire [3:0] grass_spawn_end;
-    grass grass_module (
-        .grass_arrival_start(grass_arrival_start),
-        .grass_arrival_end(grass_arrival_end),
-        .grass_middle(grass_middle),
-        .grass_spawn_start(grass_spawn_start),
-        .grass_spawn_end(grass_spawn_end)
     );
 
 
     // Car module
     // TODO: Find a way to clean this up
     wire [4:0] car2_x;
-    wire [3:0] car2_y = 3;
+    wire [3:0] car2_y = 2;
     car #(.CAR_START(15), .CAR_SPEED(3), .CAR_DIRECTION(0)) car2_module (
         .i_Clk(i_Clk),
         .o_car_x(car2_x),
     );
 
     wire [4:0] car3_x;
-    wire [3:0] car3_y = 4;
+    wire [3:0] car3_y = 3;
     car #(.CAR_START(17), .CAR_SPEED(2)) car3_module (
         .i_Clk(i_Clk),
         .o_car_x(car3_x),
@@ -115,14 +79,14 @@ module main (
 
 
     wire [4:0] car4_x;
-    wire [3:0] car4_y = 5;
+    wire [3:0] car4_y = 4;
     car #(.CAR_START(9), .CAR_SPEED(2)) car4_module (
         .i_Clk(i_Clk),
         .o_car_x(car4_x),
     );
 
     wire [4:0] car5_x;
-    wire [3:0] car5_y = 6;
+    wire [3:0] car5_y = 5;
     car #(.CAR_START(10), .CAR_SPEED(3), .CAR_DIRECTION(0)) car5_module (
         .i_Clk(i_Clk),
         .o_car_x(car5_x),
@@ -130,7 +94,7 @@ module main (
 
 
     wire [4:0] car6_x;
-    wire [3:0] car6_y = 7;
+    wire [3:0] car6_y = 6;
     car #(.CAR_START(7), .CAR_SPEED(1), .CAR_DIRECTION(0)) car6_module (
         .i_Clk(i_Clk),
         .o_car_x(car6_x),
@@ -138,7 +102,7 @@ module main (
     
 
     wire [4:0] car7_x;
-    wire [3:0] car7_y = 10;
+    wire [3:0] car7_y = 9;
     car #(.CAR_START(12), .CAR_SPEED(1)) car7_module (
         .i_Clk(i_Clk),
         .o_car_x(car7_x),
@@ -146,14 +110,14 @@ module main (
 
 
     wire [4:0] car8_x;
-    wire [3:0] car8_y = 11;
+    wire [3:0] car8_y = 10;
     car #(.CAR_START(20), .CAR_SPEED(1)) car8_module (
         .i_Clk(i_Clk),
         .o_car_x(car8_x),
     );
 
     wire [4:0] car9_x;
-    wire [3:0] car9_y = 12;
+    wire [3:0] car9_y = 11;
     car #(.CAR_START(19), .CAR_SPEED(1))car9_module (
         .i_Clk(i_Clk),
         .o_car_x(car9_x),
@@ -161,14 +125,14 @@ module main (
 
 
     wire [4:0] car10_x;
-    wire [3:0] car10_y = 13;
+    wire [3:0] car10_y = 12;
     car #(.CAR_START(6), .CAR_SPEED(1)) car10_module (
         .i_Clk(i_Clk),
         .o_car_x(car10_x),
     );
 
     wire [4:0] car12_x;
-    wire [3:0] car12_y = 9;
+    wire [3:0] car12_y = 8;
     car #(.CAR_START(2), .CAR_SPEED(3), .CAR_DIRECTION(0)) car12_module (
         .i_Clk(i_Clk),
         .o_car_x(car12_x),
@@ -185,19 +149,19 @@ module main (
     SB_RAM40_4K #(
         .INIT_0(256'h00000000000000000000000000000000000000000000_11111111111111111111),
         .INIT_1(256'h00000000000000000000000000000000000000000000_11111111111111111111),
-        .INIT_2(256'h00000000000000000000000000000000000000000000_66666666666666766666),
-        .INIT_3(256'h00000000000000000000000000000000000000000000_66666666666666663666),
-        .INIT_4(256'h00000000000000000000000000000000000000000000_66666666066666666666),
-        .INIT_5(256'h00000000000000000000000000000000000000000000_66666666676666666666),
-        .INIT_6(256'h00000000000000000000000000000000000000000000_66666456666666666666),
+        .INIT_2(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_3(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_4(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_5(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_6(256'h00000000000000000000000000000000000000000000_22222222222222222222),
         .INIT_7(256'h00000000000000000000000000000000000000000000_11111111111111111111),
-        .INIT_8(256'h00000000000000000000000000000000000000000000_66666666666066666666),
-        .INIT_9(256'h00000000000000000000000000000000000000000000_66666666666666666663),
-        .INIT_A(256'h00000000000000000000000000000000000000000000_66666666666666666546),
-        .INIT_B(256'h00000000000000000000000000000000000000000000_66665466666666666666),
-        .INIT_C(256'h00000000000000000000000000000000000000000000_67666666666666666666),
+        .INIT_8(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_9(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_A(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_B(256'h00000000000000000000000000000000000000000000_22222222222222222222),
+        .INIT_C(256'h00000000000000000000000000000000000000000000_22222222222222222222),
         .INIT_D(256'h00000000000000000000000000000000000000000000_11111111111111111111),
-        .INIT_E(256'h00000000000000000000000000000000000000000000_11111111112111111111),
+        .INIT_E(256'h00000000000000000000000000000000000000000000_11111111111111111111),
         .WRITE_MODE(0),
         .READ_MODE(0)
     ) bram_inst (
@@ -238,32 +202,11 @@ module main (
     assign pixel_color = (h_active && v_active && (h_counter < H_SYNC_CYCLES + H_BACK_PORCH + H_DISPLAY) && (v_counter < V_SYNC_CYCLES + V_BACK_PORCH + V_DISPLAY));
 
     reg [3:0] tile = 0;
-    reg clock_counter = 0;
     // Color signals for white pixel (RGB = 111 111 111)
     always @(posedge i_Clk) begin
-        // Access the current player position in the BRAM and change the 1'h2 for 1'h9 in the RAM
-        if (clock_counter == 0) begin
-            if (player_previous_y != player_y || player_previous_x != player_x) begin
-                bram_addr <= 8'd242;//(15 * 16) + (20-(10)) / 4;
-                bram_data_in <= 16'h0110;
-                bram_re <= 1'b0;
-                bram_we <= 1'b1;
-                i_player_moved <= 1'b1;
-                clock_counter <= 1;
-            end
-
-        // De-assert bram_we in the next clock cycle
-        end else begin
-            bram_we <= 1'b0;
-            bram_re <= 1'b1;
-            i_player_moved <= 1'b0;
-            clock_counter <= 0;
-        end
-
-
-
         i_reset <= 0; 
-        if (pixel_color && bram_we == 1'b0) begin
+        if (pixel_color) begin
+            // Read the tilemap from the BRAM
             // Compute the BRAM address: 4 cells (4 bits each) per address (16 bits)
             bram_addr <= (cell_y * 16) + (20-(cell_x)) / 4;
 
@@ -277,35 +220,38 @@ module main (
                 tile = bram_data_out[3:0];
             end
 
+            // Drawing the map
             case (tile)
-                4'b0000: begin
-                    o_VGA_Red = 3'b111; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car1
-                end
                 4'b0001: begin
                     o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b101; o_VGA_Blu <= 3'b001; // Grass
                 end
                 4'b0010: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b111; // Player
-                end
-                4'b0011: begin
-                    o_VGA_Red = 3'b000; o_VGA_Grn = 3'b111; o_VGA_Blu = 3'b111; // Car2
-                end
-                4'b0100: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // TruckFront
-                end
-                4'b0101: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b100; // TruckBack
-                end
-                4'b0110: begin
                     o_VGA_Red <= 3'b001; o_VGA_Grn <= 3'b001; o_VGA_Blu <= 3'b001; // Road
-                end
-                4'b0111: begin
-                    o_VGA_Red = 3'b100; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Car3
                 end
                 default: begin
                     o_VGA_Red = 3'b000; o_VGA_Grn = 3'b000; o_VGA_Blu = 3'b000; // Black
                 end
             endcase
+
+            // Drawing cars
+            if ((car2_x == cell_x && car2_y == cell_y)
+                    || (car3_x == cell_x && car3_y == cell_y)
+                    || ((car4_x == cell_x || car4_x-1 == cell_x) && car4_y == cell_y)
+                    || (car5_x == cell_x && car5_y == cell_y)
+                    || ((car6_x == cell_x || car6_x+1 == cell_x) && car6_y == cell_y)
+                    || (car7_x == cell_x && car7_y == cell_y)
+                    || ((car8_x == cell_x || car8_x-1 == cell_x) && car8_y == cell_y)
+                    || ((car9_x == cell_x || car9_x-1 == cell_x) && car9_y == cell_y)
+                    || (car10_x == cell_x && car10_y == cell_y)
+                    || (car12_x == cell_x && car12_y == cell_y)
+            ) begin
+                o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
+                if (cell_x == player_x && cell_y == player_y) begin
+                    i_reset <= 1;
+                end
+            end else if (cell_x == player_x && cell_y == player_y) begin
+                o_VGA_Red <= 3'b000; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b111; // Player
+            end
         end else begin
             // If not displaying color, set all outputs to black
             o_VGA_Red = 3'b000;
@@ -313,24 +259,6 @@ module main (
             o_VGA_Blu = 3'b000;
         end
     end
-
-
-    //     if (pixel_color) begin
-    //         if ((car2_x == cell_x && car2_y == cell_y)
-    //                 || (car3_x == cell_x && car3_y == cell_y)
-    //                 || ((car4_x == cell_x || car4_x-1 == cell_x) && car4_y == cell_y)
-    //                 || (car5_x == cell_x && car5_y == cell_y)
-    //                 || ((car6_x == cell_x || car6_x+1 == cell_x) && car6_y == cell_y)
-    //                 || (car7_x == cell_x && car7_y == cell_y)
-    //                 || ((car8_x == cell_x || car8_x-1 == cell_x) && car8_y == cell_y)
-    //                 || ((car9_x == cell_x || car9_x-1 == cell_x) && car9_y == cell_y)
-    //                 || (car10_x == cell_x && car10_y == cell_y)
-    //                 || (car12_x == cell_x && car12_y == cell_y)
-    //         ) begin
-    //             o_VGA_Red <= 3'b111; o_VGA_Grn <= 3'b000; o_VGA_Blu <= 3'b000; // Car
-    //             if (cell_x == player_x && cell_y == player_y) begin
-    //                 i_reset <= 1;
-    //             end
 
     // Horizontal counter
     always @(posedge i_Clk) begin

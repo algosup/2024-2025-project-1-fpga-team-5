@@ -24,6 +24,6 @@ The language used for this project is Verilog, an easy-to-understand hardware de
 - [Functional Specification](./Documents/Specification/Functional/FunctionalSpecification.md)
 - [Technical Specification](./Documents/Specification/Technical/TechnicalSpecification.md)
 - [Test Plan](./Documents/TestPlan/TestPlan.md)
-- [User Manual](./Documents/UserManual/User%20Manual.pdf)
+- [User Manual](./Documents/UserManual/UserManual.pdf)
 - [Weekly Reports](./Documents/Management/WeeklyReports/)
 - [Management Artifacts](./Documents/Management/ManagementArtifacts.md)

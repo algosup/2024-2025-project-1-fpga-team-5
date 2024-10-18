@@ -217,7 +217,7 @@ The code does not contain any references or functionalities related to the use o
 <table>
       <tr>
                   <td><b>Frequency:</td>
-                  <td>50 MHz</td>
+                  <td>25 MHz</td>
       </tr>
       <tr>
                   <td><b>Functionality:</td>

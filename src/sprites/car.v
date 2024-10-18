@@ -1,7 +1,7 @@
 module car #(parameter CAR_START = 1, parameter CAR_SPEED = 1, parameter CAR_DIRECTION = 1) (
     input i_Clk, // clock 25MHz
 
-    output reg [4:0] o_car_x,
+    output reg [4:0] o_car_x
 );
 
 reg [0:0] init_car_x;

@@ -6,8 +6,8 @@ module main (
     input i_Clk,
 
     // 7-segments display
-    output reg [6:0] o_Segment1,
-    output reg [6:0] o_Segment2,
+    output wire [6:0] o_Segment1,
+    output wire [6:0] o_Segment2,
 
     input i_Switch_1,
     input i_Switch_2,
@@ -20,7 +20,7 @@ module main (
 
     output reg [2:0] o_VGA_Red,
     output reg [2:0] o_VGA_Grn,
-    output reg [2:0] o_VGA_Blu,
+    output reg [2:0] o_VGA_Blu
 );
     
     reg [6:0] level = 0;
@@ -69,14 +69,14 @@ module main (
     wire [3:0] car2_y = 2;
     car #(.CAR_START(15), .CAR_SPEED(3), .CAR_DIRECTION(0)) car2_module (
         .i_Clk(i_Clk),
-        .o_car_x(car2_x),
+        .o_car_x(car2_x)
     );
 
     wire [4:0] car3_x;
     wire [3:0] car3_y = 3;
     car #(.CAR_START(17), .CAR_SPEED(2)) car3_module (
         .i_Clk(i_Clk),
-        .o_car_x(car3_x),
+        .o_car_x(car3_x)
     );
 
 
@@ -84,14 +84,14 @@ module main (
     wire [3:0] car4_y = 4;
     car #(.CAR_START(9), .CAR_SPEED(2)) car4_module (
         .i_Clk(i_Clk),
-        .o_car_x(car4_x),
+        .o_car_x(car4_x)
     );
 
     wire [4:0] car5_x;
     wire [3:0] car5_y = 5;
     car #(.CAR_START(10), .CAR_SPEED(3), .CAR_DIRECTION(0)) car5_module (
         .i_Clk(i_Clk),
-        .o_car_x(car5_x),
+        .o_car_x(car5_x)
     );
 
 
@@ -99,7 +99,7 @@ module main (
     wire [3:0] car6_y = 6;
     car #(.CAR_START(7), .CAR_SPEED(1), .CAR_DIRECTION(0)) car6_module (
         .i_Clk(i_Clk),
-        .o_car_x(car6_x),
+        .o_car_x(car6_x)
     );
     
 
@@ -107,7 +107,7 @@ module main (
     wire [3:0] car7_y = 9;
     car #(.CAR_START(12), .CAR_SPEED(1)) car7_module (
         .i_Clk(i_Clk),
-        .o_car_x(car7_x),
+        .o_car_x(car7_x)
     );
 
 
@@ -115,14 +115,14 @@ module main (
     wire [3:0] car8_y = 10;
     car #(.CAR_START(20), .CAR_SPEED(1)) car8_module (
         .i_Clk(i_Clk),
-        .o_car_x(car8_x),
+        .o_car_x(car8_x)
     );
 
     wire [4:0] car9_x;
     wire [3:0] car9_y = 11;
     car #(.CAR_START(19), .CAR_SPEED(1))car9_module (
         .i_Clk(i_Clk),
-        .o_car_x(car9_x),
+        .o_car_x(car9_x)
     );
 
 
@@ -130,14 +130,14 @@ module main (
     wire [3:0] car10_y = 12;
     car #(.CAR_START(6), .CAR_SPEED(1)) car10_module (
         .i_Clk(i_Clk),
-        .o_car_x(car10_x),
+        .o_car_x(car10_x)
     );
 
     wire [4:0] car12_x;
     wire [3:0] car12_y = 8;
     car #(.CAR_START(2), .CAR_SPEED(3), .CAR_DIRECTION(0)) car12_module (
         .i_Clk(i_Clk),
-        .o_car_x(car12_x),
+        .o_car_x(car12_x)
     );
 
     // VGA module

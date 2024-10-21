@@ -70,7 +70,7 @@ Created by: Camille GAYAT <br> Creation Date: 09/27/2024 <br> Last update: 10/18
 
 ### 1.1 Overview
 
-The primary aim of this project is to develop a Frogger game inspired by the classic 1981 version created by Konami, using [FPGA](#8-glossary) technology and [Verilog](#8-glossary) for implementation. The main objective of the game is to guide four frogs safely across a busy road and a flowing river while avoiding various obstacles such as cars and logs. Players must navigate each frog to their home. For more specifications, refer to the [Functional Specification](Documents/Specification/Functional/FunctionalSpecification.md).
+The primary aim of this project is to develop a Frogger game inspired by the classic 1981 version created by Konami, using [FPGA](#8-glossary) technology and [Verilog](#8-glossary) for implementation. The main objective of the game is to guide four frogs safely across a busy road and a flowing river while avoiding various obstacles such as cars and logs. Players must navigate each frog to their home. For more specifications, refer to the [Functional Specification](../Specification/Functional/FunctionalSpecification.md).
 
 ### 1.2 Objectives and Tasks
 
@@ -364,10 +364,10 @@ Resumption criteria refer to the requirements needed to restart the testing phas
 
 ---
 
-- [Functional Specification](Documents/Specification/Functional/FunctionalSpecification.md)
-- [Technical Specification](Documents/Specification/Technical/TechnicalSpecification.md)
+- [Functional Specification](../Specification/Functional/FunctionalSpecification.md)
+- [Technical Specification](../Specification/Technical/TechnicalSpecification.md)
 - [Test Cases](https://docs.google.com/spreadsheets/d/19hOothj9DaywUXqyfjia2evk6Djy2kNbEhjEEK4RGDQ/edit?usp=sharing)
-- [User Manual](Documents/UserManual/UserManual.pdf)
+- [User Manual](../UserManual/UserManual.pdf)
 
 ## 8. Glossary
 

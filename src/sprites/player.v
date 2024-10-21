@@ -96,7 +96,7 @@ end
 SB_RAM40_4K #(
     .INIT_0(256'h00000000000000000000000000000000_00000000000000000000000000000000),
     .INIT_1(256'h00000000000000000000000000000000_00000000000000000000000000000000),
-    .INIT_2(256'h00000000000001111110000000000000_00000000000000000000000000000000),
+    .INIT_2(256'h12310000000001111110000000000000_00000000000000000000000000000000),
     .INIT_3(256'h00011100000112222221100000111000_00000000000000000000000000000000),
     .INIT_4(256'h00022200000222222222200000222000_00000000000000000000000000000000),
     .INIT_5(256'h01222200444222222222244400222210_00000000000000000000000000000000),
@@ -134,9 +134,10 @@ reg [5:0] local_pixel_x = 0;
 reg [5:0] local_pixel_y = 0;
 
 always @(posedge i_Clk) begin
-    if (local_pixel_x > 32) begin
+    // Increment local pixel coordinates
+    if (local_pixel_x == 31) begin
         local_pixel_x <= 0;
-        if (local_pixel_y > 32) begin
+        if (local_pixel_y == 15) begin
             local_pixel_y <= 0;
         end else begin
             local_pixel_y <= local_pixel_y + 1;
@@ -145,22 +146,16 @@ always @(posedge i_Clk) begin
         local_pixel_x <= local_pixel_x + 1;
     end
 
-
+    // Increment clock tick and update BRAM address and modifier
     if (clock_tick < 3) begin
         clock_tick <= clock_tick + 1;
     end else begin
         clock_tick <= 0;
-        bram_addr <= bram_addr + modifier;
-        if (modifier == 7) begin
-            modifier <= 15 * local_pixel_y+1;
-        end else if (modifier == 15*8) begin
-            modifier <= modifier - 1;
-        end else begin
-            modifier <= 15;
-        end
+        bram_addr <= 47 - local_pixel_x/2;//(local_pixel_y*16) - local_pixel_x/4; //o_player_y * 32 + o_player_x + local_pixel_y * 32 + local_pixel_x;
     end
 
-    case (clock_tick)
+    // Update sprite based on clock tick
+    case (local_pixel_x % 4)
         2'b00: sprite <= bram_data_out[3:0];
         2'b01: sprite <= bram_data_out[7:4];
         2'b10: sprite <= bram_data_out[11:8];

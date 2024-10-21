@@ -5,35 +5,25 @@ module draw_sprite #(
     input i_Clk,              // Clock signal
     input [4:0] x,            // X coordinate of the pixel (0 to 15)
     input [3:0] y,            // Y coordinate of the pixel (0 to 15)
-    input [15:0] sprite,      // 8-bit sprite data;
+    input [3:0] sprite,      // 8-bit sprite data;
     output reg [8:0] pixel    // Output 9-bit RGB pixel
 );
 
-// Local pixel coordinates
-reg [5:0] local_pixel_x = 0;
-reg [5:0] local_pixel_y = 0;
 
 
 always @(posedge i_Clk) begin
     // Calculate local pixel coordinates
-    if (local_pixel_x > 32) begin
-        local_pixel_x <= 0;
-        if (local_pixel_y > 32) begin
-            local_pixel_y <= 0;
-        end else begin
-            local_pixel_y <= local_pixel_y + 1;
-        end
-    end else begin
-        local_pixel_x <= local_pixel_x + 1;
-    end
+    
 
 
-    if (sprite[3:0] == 4'h1) begin
-        pixel <= 9'b000_111_000;
-    end else if (sprite[3:0] == 4'h2) begin
-        pixel <= 9'b111_000_000;
-    end else if (sprite[3:0] == 4'h0) begin
-        pixel <= 9'b000_000_111;
+    if (sprite == 4'h1) begin
+        pixel <= 9'b111_111_010;
+    end else if (sprite == 4'h2) begin
+        pixel <= 9'b011_111_010;
+    end else if (sprite == 4'h3) begin
+        pixel <= 9'b000_000_001;
+    end else if (sprite == 4'h4) begin
+        pixel <= 9'b111_111_111;
     end else begin
         pixel <= 9'b111_000_111;
     end

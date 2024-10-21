@@ -1,5 +1,5 @@
 `include "modules/debounce_switch.v"
-module player (
+module player #(parameter PLAYER_ORIGIN_X = 11, parameter PLAYER_ORIGIN_Y = 14) (
     output reg [4:0] o_player_x,
     output reg [3:0] o_player_y,
     output reg o_reset,
@@ -9,12 +9,12 @@ module player (
     input i_player_down,
     input i_player_left,
     input i_player_right,
-    input i_reset,
+    input i_reset
 );
 
 initial begin
-    o_player_x = 10;
-    o_player_y = 15;
+    o_player_x = PLAYER_ORIGIN_X;
+    o_player_y = PLAYER_ORIGIN_Y;
 end
 
 reg  r_player_up = 1'b0;
@@ -54,11 +54,11 @@ always @(posedge i_Clk) begin
     r_player_right <= w_player_right;
 
     if (w_player_up == 1'b0 && r_player_up == 1'b1) begin
-        if (o_player_y > 1) begin
+        if (o_player_y > 0) begin
             o_player_y <= o_player_y - 1;
         end
     end else if (w_player_down == 1'b0 && r_player_down == 1'b1) begin
-        if (o_player_y < 15) begin
+        if (o_player_y < 14) begin
             o_player_y <= o_player_y + 1;
         end
     end else if (w_player_left == 1'b0 && r_player_left == 1'b1) begin
@@ -73,15 +73,15 @@ always @(posedge i_Clk) begin
 
     if (i_reset == 1) begin
         o_reset <= 1;
-        o_player_x <= 10;
-        o_player_y <= 15;
+        o_player_x <= PLAYER_ORIGIN_X;
+        o_player_y <= PLAYER_ORIGIN_Y;
     end else begin
         o_reset <= 0;
     end
 
-    if (o_player_y == 1) begin
-        o_player_y <= 15;
-        o_player_x <= 10;
+    if (o_player_y == 0) begin
+        o_player_y <= PLAYER_ORIGIN_Y;
+        o_player_x <= PLAYER_ORIGIN_X;
     end
 end
 
